@@ -1,0 +1,8 @@
+OP_IF
+  <now + 3 months> OP_CHECKLOCKTIMEVERIFY OP_DROP
+  <C pubkey> OP_CHECKSIGVERIFY
+  1
+OP_ELSE
+  2
+OP_ENDIF
+ <A pubkey> <B pubkey> 2 OP_CHECKMULTISI

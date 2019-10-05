@@ -1,0 +1,3 @@
+OP_0 <A Signature> <B Signature> OP_2 <Public key A> <Public key B>
+<Public key C> OP_3 OP_CHECKMULTISIG
+OP_HASH160 <P2SH key> OP_EQUAL

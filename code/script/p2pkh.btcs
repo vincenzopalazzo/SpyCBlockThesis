@@ -1,0 +1,2 @@
+<A Signature> <A Public Key>
+OP_DUP OP_HASH160 <A Public Key Hash> OP_EQUALVERIFY OP_CHECKSIG

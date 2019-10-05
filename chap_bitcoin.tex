@@ -1,0 +1,337 @@
+\chapter{Bitcoin}
+\label{chap:bitcoin}
+
+\section{Introduzione}
+\label{sec:introduzione}
+
+Bitcoin introdusse per primo il concetto di blockchain: ciò permise la creazione di un metodo di pagamento peer-to-peer esente da un intermediario, definita anche come criptovaluta decentralizzata.
+Introdotto da una persona o un gruppo di persone sotto lo pseudonimo di “Satoshi Nakamoto”, Bitcoin viene descritto per la prima volta nel white paper intitolato "Bitcoin: A Peer-to-Peer Electronic Cash System” pubblicato nell’ottobre 2008 sulla mailing list di crittografia del sito metzdowd.com.
+Il 3 gennaio 2009 venne rilasciata la versione 0.1 del codice sorgente sotto licenza MIT da Satoshi Nakamoto che smise di contribuire al progetto nel dicembre 2011. Si stima che ad oggi Satoshi Nakamoto possegga un milione di bitcoin \footnote{Un milione di bitcoin equivale a 9297736092.00 di euro, nel 16/07/2019}, sparsi in vari wallet.
+
+\section{Transazioni}
+\label{sec:transazionibitcoin}
+
+Le transazioni sono una parte fondamentale di Bitcoin, infatti tutto il sistema è progettato per assicurare la creazione, propagazione e pubblicazione di transazioni su blockchain, ma queste ultime sono concettualmente differenti dalle transazioni a cui siamo abituati: ad esempio, una transazione di un database relazionale rappresenta un evento che innesca un cambio di stato all’interno della base di dati, dove in caso di malfunzionamenti la base di dati ritorna nella condizione precedente, prima che l’evento fosse scatenato.
+Le transazioni di Bitcoin sono concettualmente differenti e se ne possono distinguere due tipi: la transazione {\it coinbase\/} e la transazione comune.
+\begin{itemize}
+  \item La transazione coinbase è un evento speciale che si verifica sul sistema, il cui formato risulta non valido per la blockchain, perché la sua struttura contiene zero input e un output. Questo evento rappresenta nel sistema un’emissione di nuovi bitcoin (argomento trattato nel capitolo \ref{miningbitcoin}), rendendo la transazione coinbase una transazione speciale per il sistema Bitcoin.
+  \item Una transazione comune è un evento che punta a sbloccare una transazione esistente su blockchain, conosciuta come UTXO (argomento trattato nel capitolo 4 su Bitcoin script) volta a creare un movimento di bitcoin.
+\end{itemize}
+
+Possono verificarsi principalmente due tipi di fallimenti, durante la creazione di una transazione:
+\begin{enumerate}
+  \item Una transazione non è valida per il sistema Bitcoin; in questo caso esso viene inoltrata alla rete come una transazione valida ma essa verrà rigettata dal primo nodo completo\footnote{Per nodo completo viene inteso un nodo che possiede l’intera copia di blockchain ed è abilitato per la validazione di transazioni, viene utilizzato comunemente dai miner.} utile. Un esempio di transazione non valida è una transazione che contiene zero input ed un output.
+  \item Una transazione valida per il sistema ma non valida per sbloccare UTXO: essa viene accettata dal sistema Bitcoin perché valida ma quella transazione non è capace di sbloccare nessun UTXO, ad esempio una transazione che prova a spendere due volte lo stesso UTXO (evento di doppia spesa).
+\end{enumerate}
+
+Bitcoin pertanto introduce le transazioni come “consumabili” cioè una transazione di input consuma una UTXO e nello stesso istante produce un UTXO ex novo, inoltre Bitcoin è il primo tentativo di successo ad introdurre il concetto di transazione come struttura dati che definisce un trasferimento di valore da una o più fonti ad una o più destinazioni.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/raw-transaction-bitcoin.png}
+\end{center}
+\caption{Rappresenta la struttura delle transazioni in Bitcoin.}
+\label{fig:rawtransactionbitcoin}
+\end{figure}
+
+La struttura della transazione (Figura \ref{fig:rawtransactionbitcoin}) contiene dei campi che forniscono informazioni addizionali, ad esempio:
+\begin{itemize}
+  \item {\bf Versione\/}: indica le regole che strutturano la transazione.
+  \item {\bf LockTime\/}: definisce il primo istante in cui la transazione viene considerata valida e può essere trasmessa sulla rete Bitcoin; è rappresentato attraverso un valore intero compreso tra 0 e 500 milioni, assumendo  significati diversi in base al valore assegnato, cioè:
+  \begin{itemize}
+    \item \(LockTime = 0 \): la transazione viene propagata ed eseguita all’istante di creazione.
+    \item \( LockTime \in (0, 500 milioni] \): il valore viene interpretato come un’altezza di blocco, cioè la transazione sarà valida solo dopo essere stato pubblicato il blocco con altezza uguale al valore di lock time.
+    \item \(LockTime > 500 milioni \): il valore viene interpretato come timestamp Unix e quindi la transazione sarà valida solo dopo la data rappresentata dal valore di lock time.
+  \end{itemize}
+\end{itemize}
+
+Gli input di transazione e gli output hanno anche loro una struttura che definisce in che modo si possono “spendere” i bitcoin associati a quella transazione, con altre informazioni addizionali, ma nessuna di esse è relazionata direttamente con un wallet oppure un’identità.
+La struttura delle transazioni di output (Figura \ref{fig:outputtransaztionbitcoin}) introduce un concetto fondamentale per Bitcoin, cioè le transazioni di output non spese, conosciute anche come UTXO.
+Quasi tutte le transazioni di output sono UTXO riconosciute da tutta la rete Bitcoin e sbloccabili attraverso uno script di sblocco (scriptSig).
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/output-transactions-bitcoin.png}
+\end{center}
+\caption{Rappresentazione struttura delle transazioni di output.}
+\label{fig:outputtransaztionbitcoin}
+\end{figure}
+
+\begin{itemize}
+  \item {\bf Valore\/}: valore di bitcoin espressi in satoshi che rappresentano una frazione di bitcoin come i centesimi per gli euro, \( 1 bitcoin = 1*10^8 satoshi \).
+  \item {\bf Script di blocco\/}: conosciuto come script public key, contiene le informazioni necessarie per bloccare l’output e non permettere a chiunque di spenderlo.
+\end{itemize}
+
+La struttura delle transazioni di input (Figura \ref{fig:inputtransaztionbitcoin}) contiene due informazioni importanti: il riferimento alla transazione precedente e la condizione di sblocco della UTXO.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/input-transactions-bitcoin.png}
+\end{center}
+\caption{Rappresentazione struttura delle transazione d’input in Bitcoin.}
+\label{fig:inputtransaztionbitcoin}
+\end{figure}
+
+\section{Bitcoin Script}
+\label{sec:bitcoin script}
+
+Gli script all’interno delle transazioni di Bitcoin vengono scritti in Bitcoin Script che è un linguaggio basato su stack e contiene molti operatori.
+La mancanza di loop è funzionalità di controllo di flusso complesse rende Bitcoin Script molto limitato rispetto a linguaggi moderni come Solidity; questo cataloga Bitcoin Script come un linguaggio di programmazione non Turing completo, e garantisce così l’impossibilità di eseguire loop infiniti oppure fenomeni di code-injection all’interno delle transazioni, che potrebbero causare attacchi DoS (denial-of-service) sulla rete Bitcoin.
+Gli script vengono eseguiti in modalità atomica, cioè senza possedere uno stato pre e post esecuzione. Bitcoin convalida le transazioni eseguendo gli script contenuti al suo interno: in particolare lo script di sblocco e lo script di blocco vengono eseguiti in sequenza e l'input risulta valido solo nel caso in cui lo script di sblocco soddisfi le condizioni dello script di blocco.
+
+Nel client Bitcoin originale, gli script di sblocco e blocco venivano concatenati ed eseguiti in sequenza, ma per motivi di sicurezza questo è stato modificato nel 2010, a causa di una vulnerabilità che ha permesso a uno script di sblocco non valido di inviare dati nello stack e corrompere lo script di blocco.
+Nell'attuale implementazione, gli script vengono eseguiti separatamente, con lo stack trasferito tra le due esecuzioni, dove è possibile dividere la modalità di esecuzione in due passi:
+
+\begin{enumerate}
+  \item Lo script di sblocco viene eseguito, se l’esecuzione non riporta errori, allora lo stack principale viene copiato e lo script di blocco viene eseguito.
+  \item Se, eseguendo lo script di blocco con i dati dello stack precedente, nel nuovo stack il risultato è "TRUE", allora lo script di sblocco è riuscito a risolvere le condizioni imposte dallo script di blocco e, pertanto, l'input è un'autorizzazione valida per spendere UTXO. Se dopo l'esecuzione dello script combinato rimangono risultati diversi da "TRUE", l'input non è valido perché non è riuscito a soddisfare le condizioni di spesa inserite in UTXO.
+\end{enumerate}
+
+Durante lo sviluppo sono state rese possibili l’esecuzione di soli script di transazioni standard: ad oggi l’implementazione di riferimento ne contiene sette e sono definite in un tipo enumerazione all’interno del file standard.h (Codice \ref{code:enumtx}) del client Bitcoin Core.
+
+\lstinputlisting[label=code:enumtx, caption=Porzione di codice che riporta il tipo enumerazione nel file standard.h di bitcoin core.]{code/enumtx.cpp}
+
+\subsection{P2PKH}
+Lo script {\it pay-to-public-key-hash \/} fino a qualche anno fa era la tipologia di script più diffusa, perché lo script di blocco veniva composto dal hash della chiave pubblica e questo consentiva di non esporre la chiave pubblica del ricevente; l’output può essere sbloccato da uno script di sblocco contenente la chiave pubblica e la firma, e un esempio generalizzato potrebbe essere il seguente:
+
+\begin{lstlisting}[language=bitcoinscript, caption={P2PKH Script di blocco}]
+ OP_DUP OP_HASH160 <A Public Key Hash> OP_EQUALVERIFY
+ OP_CHECKSIG
+\end{lstlisting}
+
+\begin{lstlisting}[language=bitcoinscript, caption={P2PKH Script di sblocco}]
+<A Signature> <A Public Key>
+\end{lstlisting}
+
+\lstinputlisting[language=bitcoinscript, caption=Script completo]{code/script/p2pkh.btcs}
+
+Quando lo script viene eseguito lo stack è popolato con i valori dello script di sblocco come in Figura \ref{fig:stackp2pkh01}.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2pkh/1.png}
+\end{center}
+\caption{Stato iniziale dello stack.}
+\label{fig:stackp2pkh01}
+\end{figure}
+
+Incontrato l’operatore OP\_DUP, viene eseguita la copia dell’ultimo valore inserito all’interno dello stack, cioè <A pubkey> come in Figura \ref{fig:stackp2pkh02}.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2pkh/2.png}
+\end{center}
+\caption{Stato dello stack dopo l’esecuzione dell operatore OP\_DUP.}
+\label{fig:stackp2pkh02}
+\end{figure}
+
+Incontrando l’operatore OP\_HASH160 viene calcolato l’hash dell’ultimo valore inserito ottenendo lo stato dello stack rappresentato in Figura \ref{fig:stackp2pkh03}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2pkh/3.png}
+\end{center}
+\caption{Stato dello stack dopo l’esecuzione dell’operatore OP\_HASH160.}
+\label{fig:stackp2pkh03}
+\end{figure}
+
+Viene quindi inserito all’interno dello stack l’hash della chiave pubblica atteso, cioè <A Pub Key Hash>, ottenendo lo stack rappresentato in Figura \ref{fig:stackp2pkh04}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2pkh/4.png}
+\end{center}
+\caption{Stato dello stack dopo l’inserimento della chiave pubblica attesa.}
+\label{fig:stackp2pkh04}
+\end{figure}
+
+L ’operatore OP\_EQUALVERIFY a questo punto verifica che le chiavi pubbliche siano uguali, se lo sono l’esecuzione continua altrimenti termina con un risultato diverso da TRUE. Se l’esecuzione prosegue, viene valutato l’ultimo OP code cioè OP\_CHECKSIG, che ha il compito di verificare l’appartenenza della firma e della chiave pubblica alla medesima chiave privata A.
+
+\subsection{P2PK}
+Lo script {\it pay-to-public-key \/} è una forma di script più semplice del precedente, perché non viene applicato l’hash alla chiave pubblica e, quindi, l’indirizzo del ricevente è memorizzato nella transazione; per bloccare questo script si necessita solo della firma, il che fa sì che lo stack si semplifichi come segue:
+\begin{lstlisting}[language=bitcoinscript, caption={P2PK Script completo}]
+<A Signature>
+<A Public Key > OP_CHECKSIG
+\end{lstlisting}
+
+Quando il programma viene eseguito, lo stack è popolato con i valori dello script di sblocco come illustrato in Figura \ref{fig:stackp2pk01}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2pk/1.png}
+\end{center}
+\caption{Stato dello stack dopo l’inserimento dello scriptSig.}
+\label{fig:stackp2pk01}
+\end{figure}
+
+Nel passo successivo la chiave pubblica viene inserita nello stack, come rappresentato dalla Figura \ref{fig:stackp2pk02}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2pk/2.png}
+\end{center}
+\caption{Stato dello stack dopo l’inserimento del <public key>.}
+\label{fig:stackp2pk02}
+\end{figure}
+
+Ora avviene quindi la verifica tra firma e chiave pubblica con l’operatore OP\_CHECKSIG e, se  l’operatore ha come risultato TRUE, allora la transazione è sbloccabile con lo script di sblocco inserito.
+
+\subsection{P2MS}
+Gli script {\it pay-to-multisignature} definiscono una condizione M:N (molti a molti) dove M è il numero minimo di firme necessarie per verificare lo script di blocco e N è il numero totale di chiavi pubbliche.
+Il numero massimo di combinazioni ammesse per uno script P2MS è 15:15 ma solo le combinazioni rientranti nell’intervallo 3:3 sono considerate standard altrimenti lo script viene valutato come script non standard per Bitcoin.
+Un esempio di script P2MS 2:3 è il seguente:
+
+\begin{lstlisting}[language=bitcoinscript, caption={Script P2MS completo}]
+OP_0 <A Signature> <B Signature>
+OP_2 <Public key A> <Public key B> <Public key C> OP_3 OP_CHECKMULTISIG
+\end{lstlisting}
+Dove OP\_0 funge da segnaposto per un bug nell’implementazione di OP\_CHECKMULTISIG, il cui unico scopo è quello di aggirare un bug che è diventato accidentalmente una regola di consenso.
+
+Lo stack inizialmente verrà popolato con i valori dello script di sblocco; la presenza dell’operatore OP\_0 implica che lo stack sia vuoto quando lo si incontra. Lo stato dello stack è rappresentato dalla Figura \ref{fig:stackmultsing01}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/multisig/1.png}
+\end{center}
+\caption{Stato dello stack dopo l’inserimento dello scriptSig nello stack.}
+\label{fig:stackmultsing01}
+\end{figure}
+
+L’operatore OP\_2 verifica che nello stack ci siano 2 elementi, successivamente vengono inserite le tre chiavi pubbliche, ottenendo così uno stato come in Figura \ref{fig:stackmultsing02}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/multisig/2.png}
+\end{center}
+\caption{Stato dello stack dopo la verifica con OP\_2 e l’inserimento nello stack delle chiavi pubbliche.}
+\label{fig:stackmultsing02}
+\end{figure}
+
+Infine le firme vengono verificate con le chiavi pubbliche mediante l’operatore OP\_CHECKMULTISIG in maniera iterativa, cioè la prima firma viene confrontata con tutte le chiavi pubbliche e l’azione si ripete per tutte le firme inserite, come in Figura \ref{fig:stackmultsing03}.
+
+\begin{figure}[H]
+\includegraphics[width=1\columnwidth]{images/script/multisig/3.png}
+\caption{Esecuzione dell’operatore OP\_CHECKMULTISIG per la verifica delle chiavi \cite{learnmeabitcoin:p2ms}}
+\label{fig:stackmultsing03}
+\end{figure}
+
+\subsection{P2SH}
+Lo script {\it pay-to-script-hash \/} venne introdotto nel 2012, per semplificare l’uso degli script in transazioni complesse: infatti molto spesso accade di avere script molto grandi, come uno script P2MS 14:15 che comporta un aumento della complessità dello script di sblocco; la motivazione dell’introduzione dello script P2SH è stata la semplificazione di quest’ultimo, come se fosse un normale pagamento ad un indirizzo Bitcoin.
+Questa nuova tipologia semplifica notevolmente lo script di blocco, perché sarà popolato solo dal suo hash, a discapito però dell’aggiunta di una copia dello script di blocco all’interno dello script di sblocco, ad esempio nel seguente script P2SH:
+
+\lstinputlisting[label=code:p2shnokey, caption={Script P2SH completo.}]{code/script/p2sh-without-key.btcs}
+
+Dove lo script P2SH (Codice \ref{code:p2shnokey}) completo viene composto dal seguente script di sblocco:
+\begin{lstlisting}[language=bitcoinscript, label={code:p2shunlock}, caption={Script P2SH di sblocco.}]
+OP_0 <A Signature> <B Signature> OP_2 <Public key A> <Public key B>
+<Public key C> OP_3 OP_CHECKMULTISIG
+\end{lstlisting}
+
+Il quale conterrà anche lo script di blocco, conosciuto, in questo caso, come script di riscatto ({\it redeemScript\/}), quindi nello script di sblocco si possono distinguere:
+\begin{itemize}
+  \item {\bf <signature>\/}: Composto da <A Signature> <B Signature>.
+  \item {\bf <redeemScript>\/}: Composto da OP\_2 <Public key A> <Public key B> <Public key C> OP\_3 OP\_CHECKMULTISIG.
+\end{itemize}
+
+diversamente, lo script di blocco si semplifica come nell’esempio seguente:
+\begin{lstlisting}[language=bitcoinscript, label={code:p2shlock}, caption={Script P2SH di blocco.}]
+OP_HASH160 <ScriptSig Hash> OP_EQUAL
+\end{lstlisting}
+
+L’esecuzione del Codice \ref{code:p2shnokey} si suddivide in due passaggi:
+
+\begin{enumerate}
+  \item Viene valutato lo script di sblocco come descritto nel capitolo riguardante gli script P2MS.
+  \item Viene verificato l'hash ricavato dallo script di riscatto con l’hash inserito all’interno dello script di blocco.
+\end{enumerate}
+
+Il passo 1 dell’esecuzione consiste nella valutazione dello script di sblocco un normale script P2MS lasciando invariato stato di esecuzione dello stack.
+Mentre il passaggio 2 viene eseguito solo se, l’esecuzione precedente restituisce TRUE dove per script P2MS validi l’esecuzione prosegue con una copia dello stack all’interno di un nuovo stack il quale sarà popolato solo dal redeemScript.
+
+Lo stato del nuovo stack viene popolato con i dati relativi allo script di riscatto come mostrato in Figura \ref{fig:stackp2sh01}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2sh/1.png}
+\end{center}
+\caption{Stato dello stack dopo l’esecuzione dello ScriptSig come script P2MS.}
+\label{fig:stackp2sh01}
+\end{figure}
+
+Viene valutato l’operatore OP\_HASH160 il quale esegue l’hash del redeemScript, lo stato dello stack viene riportato in Figura \ref{fig:stackp2sh02}.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2sh/2.png}
+\end{center}
+\caption{Stato dello stack dopo l’esecuzione dell’operatore OP\_HASH160.}
+\label{fig:stackp2sh02}
+\end{figure}
+
+Come ultimo passaggio viene inserito l’hash atteso contenuto nello script di sblocco, ottenendo lo stato dello stack come in Figura \ref{fig:stackp2sh03}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{images/script/p2sh/3.png}
+\end{center}
+\caption{Stato dello stack dopo l’inserimento dell’hash atteso.}
+\label{fig:stackp2sh03}
+\end{figure}
+
+Infine, eseguendo l’operatore OP\_EQUAL viene verificata l’uguaglianza degli hash; l’esito di tale confronto definisce il futuro della transazione.
+
+Nel implementazione del P2SH è stata aggiunta un’altra importante caratteristica cioè la possibilità di codificare un hash di script come un indirizzo Bitcoin attraverso l’utilizzo della codifica Base58, l’indirizzo ricavato è conosciuto anche come indirizzo P2SH, con l’unica differenza che quest'ultimo inizierà con il numero 3 per convenzione.
+
+Un esempio di indirizzo Bitcoin P2SH:
+
+\begin{lstlisting}[language=bitcoinscript, caption={Indirizzo Bitcoin P2SH.}]
+3EBe7iCt2vhC9gqw9UdeaudjYkbfpq3b8c
+\end{lstlisting}
+
+a differenza dell’indirizzo primitivo Bitcoin:
+
+\begin{lstlisting}[language=bitcoinscript, caption={Indirizzo Bitcoin primitivo.}]
+1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+\end{lstlisting}
+
+Attraverso l’indirizzo Bitcoin calcolato dallo script, si può riscrivere il Codice \ref{code:p2shlock} come segue:
+\begin{lstlisting}[language=bitcoinscript, label={code:p2shlockwithkey}, caption={Script P2SH di blocco con Indirizzo Bitcoin P2SH.}]
+OP_HASH160 <P2SH key> OP_EQUAL
+\end{lstlisting}
+
+Quindi lo script completo diventa:
+
+\lstinputlisting[label=code:p2shkey, caption={Script P2SH completo con indirizzo Bitcoin P2SH.}]{code/script/p2sh-with-key.btcs}
+
+L’esecuzione del Codice \ref{code:p2shkey} il quale contiene un indirizzo Bitcoin P2SH al posto dell hash dello script, non cambia, perché la chiave ricavata dallo script viene decodificata nel suo hash risultante, così da lasciare la sua esecuzione invariata.
+Bitcoin utilizza la convenzione dell'id wallet solo per una semplificazione per l'occhio umano, ma non necessita di queste informazioni per compiere le sue ordinarie operazioni; inoltre gli script P2SH e quindi gli script P2MS (in particolare script P2MS 2:2) vengono utilizzati estensivamente per la creazione e la gestione di canali all’interno di tecnologia {\it Lightning network \/}, che aumentano drasticamente la velocità delle transazioni con Bitcoin, utilizzando un protocollo {\it off-chain \/}.
+
+\subsection{Transazioni null data (OP\_RETURN)}
+La blockchain di Bitcoin e, più in generale, le tecnologie blockchain hanno potenziali usi ben oltre i pagamenti. Molti sviluppatori hanno tentato di utilizzare Bitcoin script, per sfruttare la sicurezza e la resilienza del sistema, per applicazioni quali servizi notarili digitali, certificati azionari e contratti intelligenti. I primi tentativi di utilizzare il linguaggio di script di Bitcoin per questi scopi hanno comportato la creazione di output di transazioni, che registravano dati sulla blockchain; nella versione 0.9 di Bitcoin core del 2014, è stato aggiunto un nuovo tipo di operatore chiamato OP\_RETURN che marca la transazione come non correlata ad un movimento di bitcoin, ma ad un archiviazione di dati. Questo operatore ha permesso ai miner di identificare la transazione e decidere se validarla o meno, considerando il problema che, archiviando una transazione con uno script non valido, oltre a creare un UTXO non spendibile, lo spazio richiesto della blockchain di bitcoin sarebbe aumentato, aumentando quindi anche le commissioni richieste dal miner.
+Per aggirare questo problema, il team di sviluppo decise di limitare la porzione di dati a 80 byte.
+
+\begin{lstlisting}[language=bitcoinscript, label={code:nulldata}, caption={Uso dell'operatore OP\_RETURN.}]
+OP_RETURN <data>
+\end{lstlisting}
+
+Lo script precedente non fa altro che marcare il campo <data> come dati grezzi che non riguardano una transazione, infatti la semantica dell’operatore OP\_RETURN marca la transazione come invalida, quindi i dati non vengono valutati.
+
+\section{Mining}
+\label{sec:miningbitcoin}
+
+Il processo di Mining si avvale dell’algoritmo di Proof of Work, per generare nuovi bitcoin e proteggere la rete da attacchi di malintenzionati, come ad esempio la pubblicazione di un blocco non valido o la modifica di una transazione all’interno di un blocco.
+Bitcoin esegue la validazione delle transazioni in media ogni 10 minuti ed esse vengono considerate valide solo quando il blocco che le contiene viene accodato alla catena ufficiale; ogni transazione può includere all’interno un valore di bitcoin che equivale ad una tassa indirizzata al miner per ricompensa del lavoro svolto, il quale può scegliere di dare precedenza a transazioni con una commissione maggiore di un quantitativo di bitcoin a loro scelta.
+Bitcoin stabilisce un processo di creazione di nuova moneta decrescente e limitato: infatti impone un limite superiore massimo di \(2.1 * 10^(15)\) bitcoin; il valore creato dai miner si dimezza ogni 210.000 blocchi, in media ogni 4 anni.
+La creazione di bitcoin iniziò con un ammontare pari a 50 bitcoin per blocco nel Gennaio 2009 e si dimezzò a 25 bitcoin nel Novembre 2012 stimando così l’emissione completa di tutti i bitcoin disponibili nel 2140; al termine dell’emissione, il guadagno di ogni miner sarà esclusivamente il valore della commissione.
+L’algoritmo di Proof of Work, essendo per sua natura un protocollo di consenso ad alta intensità, nel corso degli anni, con l’aumentare della competitività nel settore del mining di bitcoin, portò ad un aumento esponenziale della potenza di hashing, subendo così un cambiamento radicale della tecnologia utilizzata: si è passati da comuni CPU a componenti appositi per il calcolo della funzione hash del tipo FPGA (mining and field programmable gate array)\footnote{Nel 2014, l'energia consumata dalla rete Bitcoin era pari al consumo di elettricità dell'Irlanda (O'Dwyer e Malone, 2014)}.
+L’aumento della potenza di hashing (Figura \ref{fig:hashrate}) portò anche ad un aumento della difficoltà di estrazione di un blocco conosciuta come difficoltà metrica (Figura \ref{fig:metrix}).
+
+\begin{figure}[H]
+\includegraphics[width=1\columnwidth]{images/hash-rate.png}
+\caption{Rappresenta il grafico della crescita della potenza di hashing in data 28/09/2019. }
+\source{blockchain.com.}
+\label{fig:hashrate}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=1\columnwidth]{images/difficulty.png}
+\caption{Rappresenta il grafico della crescita della difficoltà metrica in data 28/09/2019.}
+\source{blockchain.com.}
+\label{fig:metrix}
+\end{figure}

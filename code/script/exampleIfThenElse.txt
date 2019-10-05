@@ -1,0 +1,6 @@
+condizione
+OP_IF condizione da eseguire per una condizione vera
+ codice
+OP_ELSE da eseguire per una condizione falsa
+codice
+OP_ENDIF da eseguire in entrambi i casi
