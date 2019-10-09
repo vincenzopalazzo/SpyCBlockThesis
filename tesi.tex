@@ -1,5 +1,5 @@
 %CLASSE DOCUMENTO - LINGUA E DIMENSIONE FONT
-\documentclass[12pt]{toptesi}
+\documentclass[11pt]{toptesi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -8,7 +8,7 @@
 \usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{blindtext}
-\usepackage{graphicx,wrapfig}
+\usepackage{graphicx, wrapfig}
 \usepackage{booktabs}
 \usepackage{lmodern}
 \usepackage{varioref}
@@ -17,10 +17,8 @@
 \usepackage{paralist}{\obeyspaces\global\let =\space}
 \usepackage{verbatim}
 \usepackage{subfig}
-\usepackage{tabularx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage{float}
 \usepackage{amssymb}
 \usepackage{multicol}
 \usepackage{multirow}
@@ -36,6 +34,13 @@
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{titlesec}
+\usepackage{booktabs}   % this package promotes good tabular style
+\usepackage{caption}    % for customising caption style
+\usepackage{siunitx}    % for decimal alignment
+\usepackage{dirtytalk}
+\usepackage{lipsum,caption,graphicx}
+%\usepackage{tabularx}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % CONFIGURAZIONE LINK E RIFERIMENTI
@@ -102,6 +107,9 @@
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+%Impostazion centraggio Tabella
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
