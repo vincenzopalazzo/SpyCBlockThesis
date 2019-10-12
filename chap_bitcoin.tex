@@ -17,7 +17,7 @@ Introducendo un esempio per semplificare le definizioni successive, supponiamo i
 
 \begin{itemize}
   \item Alice e Bob sono due utenti che usano attivamente Bitcoin per effettuare i loro pagamenti.
-  \item Vincent è un partecipante della rete di Bitcoin che effettua il Mining (argomento trattato nella Sezione \ref{sec:miningbitcoin}) per proteggere la rete e trarre ricavi in bitcoin.
+  \item Vincent è un partecipante della rete di Bitcoin che partecipa ad essa effettuando il mining (argomento trattato nella Sezione \ref{sec:miningbitcoin}) per proteggere la rete e trarre ricavi in bitcoin.
 \end{itemize}
 Alice ha deciso di inviare 0.00700767 bitcoin a Bob; Alice dopo aver procurato l’indirizzo Bitcoin di Bob che corrisponde a \say{33mMAc6nGyENdKMQTr5SrKoEkwNTeZQUx9} può inviare dei bitcoin a Bob, generando una nuova transazione con il seguente identificativo: \say{ddd587d54b693a9bc9bda2218c6f5e17979f6ac53755c5c1f668f3fa728e472d}.\newline
 Questa nuova transazione consuma una precedente transazione in possesso di Alice chiamata UTXO (unspent transaction output) e crea un nuovo UTXO in possesso di Bob che viene verificata da un componente (nodo) della rete, in questo caso Vincent.
@@ -25,7 +25,7 @@ Questa nuova transazione consuma una precedente transazione in possesso di Alice
 {\centering
 \vspace{15pt}
 \includegraphics[scale=0.35]{images/example_alice_bob_vincent.png}
-\captionof{figure}{Rappresenta la nuova transazione creata da Alice ricercata con un explorer \cite{blockstream:esplora}.\label{fig:examplealicebob}}
+\captionof{figure}{Rappresenta la nuova transazione creata da Alice ricercata attraverso un explorer \cite{blockstream:esplora}.\label{fig:examplealicebob}}
 \vspace{10pt}
 \par}
 
@@ -44,13 +44,13 @@ In Figura \ref{fig:examplealicebob} viene data una rappresentazione del caso d�
   \item 33mMAc6nGyENdKMQTr5SrKoEkwNTeZQUx9: Indirizzo Bitcoin di Bob.
 \end{itemize}
 
-La verifica della nuova transazione di Alice viene effettuata da Vincent il quale inserisce la transazione in un nuovo blocco insieme a tutte le altre pubblicate sulla rete in quel momento (la rete potrebbe avere transazioni diverse dovuto al problema di latenza della rete, problema risolto con la scelta di lavorare con la catena più lunga, argomento trattato nella Sezione \ref{sec:miningbitcoin}).
+La verifica della nuova transazione di Alice viene effettuata da Vincent il quale inserisce la transazione in un nuovo blocco insieme a tutte le altre pubblicate sulla rete in quel momento (la rete potrebbe avere transazioni diverse dovuto al problema di latenza, problema risolto con la scelta di lavorare con la catena più lunga, argomento trattato nella Sezione \ref{sec:miningbitcoin}).
 Nel momento in cui viene pubblicato il blocco il sistema crea una transizione verso Vincent come premio per il lavoro svolto, questa nuova transizione è conosciuta con il nome di transizione coinbase(in Figura \ref{fig:examplecoinbasetxvincent}).
 
 {\centering
 \vspace{15pt}
 \includegraphics[scale=0.35]{images/example_coinbase_vincent.png}
-\captionof{figure}{Rappresenta la transizione coinbase descritta nell’esempio precedente \cite{blockstream:esplora}.\label{fig:examplebobsara}}
+\captionof{figure}{Rappresenta la transizione coinbase descritta nell’esempio precedente \cite{blockstream:esplora}.\label{fig:examplecoinbasetxvincent}}
 \vspace{10pt}
 \par}
 
@@ -67,7 +67,7 @@ Possono verificarsi principalmente due tipi di fallimenti, durante la creazione 
   \item Una transazione valida per il sistema ma non valida per sbloccare UTXO: essa viene accettata dal sistema Bitcoin perché valida ma la transazione non è capace di sbloccare nessun UTXO, ad esempio una transazione che prova a spendere due volte lo stesso UTXO (evento di doppia spesa).
 \end{enumerate}
 
-Bitcoin pertanto descrive le transazioni come “consumabili”, cioè una transazione di input consuma una UTXO e nello stesso istante produce un UTXO ex novo.\newline
+Bitcoin pertanto descrive le transazioni come “consumabili”, cioè una transazione di input consuma un UTXO e nello stesso istante produce un UTXO ex novo.\newline
 Introducendo un esempio in cui Bob ha deciso di inviare parte dei bitcoin ricevuti da Alice a Sara, una volta che Bob possiede l’indirizzo Bitcoin di Sara, cioè \say{3CM8TuY8B3\-sCzVQN3FWYnd5skmzSF3uvWA} crea una nuova transazione di 0.00137927 bitcoin con il seguente identificativo \say{907538047d630d571298096028572\-08705ef3baa4b573e6e845d5a3e6ea\-11464}, raffigurata in Figura \ref{fig:examplebobsara}.
 
 {\centering
@@ -77,11 +77,19 @@ Introducendo un esempio in cui Bob ha deciso di inviare parte dei bitcoin ricevu
 \vspace{10pt}
 \par}
 
-In questo scenario illustriamo il modo in cui Bob utilizza il suo UTXO per creare una nuova transizione verso Sara; come illustrato nella Figura \ref{fid:examplechangeutxo} gli UTXO non sono raggruppati ma quest’ultimi vengono contenuti all’interno di un'aria in cui risiedono tutti gli UTXO: quindi in questo esempio Bob deve fornire una prova che la transizione sia effettivamente sua, inoltre in seguito deve utilizzare un modo per cui Sara (solo lei) sarà in grado di spendere il suo UTXO.\newline
-Bitcoin offre un sistema di blocco delle transazioni di output e un sistema di sblocco per le transazioni di input, questo sistema consiste nel utilizzare script (argomento trattato nella Sezione \ref{bitcoinScriptBitcoin}) i quali utilizzano estensivamente la crittografia con cui è possibile verificare l'appartenenza di un UTXO.
-Nell'esempio in cui Alice crea una nuova transizione per Bob, per rendere la transizione sbloccabile solo da lui, Alice ha inserito all’interno dello script di blocco dell’UTXO la chiave pubblica di Bob.
-Bob per creare una transizione verso Sara deve sbloccare l’UTXO che gli appartiene fornendo all’interno dello script di sblocco (contenuto all’interno la transizione di input) la firma della sua chiave privata e in un secondo momento deve creare un UTXO sbloccabile solo da Sara inserendo all’interno lo script di blocco la chiave pubblica di Sara.
-\newline
+In questo scenario viene illlustrato il modo in cui Bob utilizza il suo UTXO per creare una nuova transizione verso Sara; come illustrato nella Figura \ref{fig:examplechangeutxo} gli UTXO non sono raggruppati ma quest’ultimi vengono contenuti all’interno di un'aria in cui risiedono tutti gli UTXO: quindi in questo esempio Bob deve fornire una prova che la transizione sia effettivamente sua, inoltre in seguito deve utilizzare un modo per cui Sara (solo lei) sarà in grado di spendere il suo UTXO.\newline
+Bitcoin offre un sistema di blocco delle transazioni di output e un sistema di sblocco per le transazioni di input, questo sistema consiste nel utilizzare script (argomento trattato nella Sezione \ref{sec:bitcoinScriptBitcoin}) i quali utilizzano estensivamente la crittografia con cui è possibile verificare la proprietà di quell'UTXO.
+Nell'esempio in cui Alice crea una nuova transizione per Bob, per rendere la transizione sbloccabile solo da lui, Alice ha inserito all’interno dello script di blocco dell’UTXO la chiave pubblica di Bob.\newline
+Bob per creare una transizione verso Sara deve sbloccare l’UTXO che gli appartiene fornendo all’interno dello script di sblocco (contenuto all’interno la transizione di input) la firma della sua chiave privata e in un secondo momento deve creare un UTXO sbloccabile solo da Sara inserendo all’interno lo script di blocco la chiave pubblica di Sara.\newline
+In Figura \ref{fig:lockunlockexample} viene rappresentato il flusso di eventi che descrive il blocco e sblocco di un UTXO.
+
+{\centering
+\vspace{5pt}
+\includegraphics[scale=0.2]{images/DiagramUnlocLockUTXO.png}
+\captionof{figure}{Rappresentazione del evento di blocco e sblocco di un UTXO.\label{fig:lockunlockexample}}
+\vspace{10pt}
+\par}
+
 Bitcoin è il primo tentativo di successo ad introdurre il concetto di transazione come struttura dati che definisce un trasferimento di valore da una o più fonti ad una o più destinazioni.
 
 \begin{table}[H]
@@ -128,7 +136,7 @@ Quasi tutte le transazioni di output sono UTXO riconosciute da tutta la rete Bit
    \end{table}
 
 \begin{itemize}
-  \item {\bf Valore\/}: valore di bitcoin espressi in satoshi che rappresentano una frazione di bitcoin come i centesimi per gli euro, \( 1\: bitcoin = 1*10^8 satoshi \).
+  \item {\bf Valore\/}: valore di bitcoin espressi in satoshi che rappresentano una frazione di bitcoin come i centesimi per gli euro, \( 1\: bitcoin = 1*10^8 \: satoshi \).
   \item {\bf Script di blocco\/}: conosciuto come script {\it public key \/}, contiene le informazioni necessarie per bloccare l’output e non permettere a chiunque di spenderlo.
 \end{itemize}
 
@@ -151,8 +159,7 @@ La struttura delle transazioni di input (Tabella \ref{tab:inputtransaztionbitcoi
 
 \section{Bitcoin Script}
 \label{sec:bitcoinScriptBitcoin}
-
-Gli script all’interno delle transazioni di Bitcoin vengono scritti in Bitcoin Script che è un linguaggio basato su stack e contiene molti operatori.
+Gli script all’interno delle transazioni di Bitcoin vengono scritti in Bitcoin Script che è un linguaggio basato su stack e contiene molti operatori.\newline
 La mancanza di loop e funzionalità di controllo di flusso complesse rende Bitcoin Script molto limitato rispetto a linguaggi moderni come Solidity; questo cataloga Bitcoin Script come un linguaggio di programmazione non Turing completo, e garantisce così l’impossibilità di eseguire loop infiniti oppure fenomeni di code-injection all’interno delle transazioni, che potrebbero causare attacchi DoS (denial-of-service) sulla rete Bitcoin.\newline
 Gli script vengono eseguiti in modalità atomica, cioè senza possedere uno stato pre e post esecuzione. Bitcoin convalida le transazioni eseguendo gli script contenuti al suo interno: in particolare lo script di sblocco e lo script di blocco vengono eseguiti in sequenza e l'input risulta valido solo nel caso in cui lo script di sblocco soddisfi le condizioni dello script di blocco.
 
@@ -193,6 +200,7 @@ Quando lo script viene eseguito lo stack è popolato con i valori dello script d
 
 
 Incontrato l’operatore OP\_DUP, viene eseguita la copia dell’ultimo valore inserito all’interno dello stack, cioè <A pubkey> come in Figura \ref{fig:stackp2pkh02}.
+
 {\centering
 \vspace{15pt}
 \includegraphics[scale=0.35]{images/script/p2pkh/2.png}
@@ -205,7 +213,7 @@ Incontrando l’operatore OP\_HASH160 viene calcolato l’hash dell’ultimo val
 {\centering
 \vspace{15pt}
 \includegraphics[scale=0.35]{images/script/p2pkh/2.png}
-\captionof{figure}{Stato dello stack dopo l’esecuzione dell’operatore OP\_HASH160.\label{fig:stackp2pkh02}}
+\captionof{figure}{Stato dello stack dopo l’esecuzione dell’operatore OP\_HASH160.\label{fig:stackp2pkh03}}
 \vspace{10pt}
 \par}
 
@@ -219,6 +227,7 @@ Viene quindi inserito all’interno dello stack l’hash della chiave pubblica a
 \par}
 
 L ’operatore OP\_EQUALVERIFY a questo punto verifica che le chiavi pubbliche siano uguali; se lo sono, l’esecuzione continua altrimenti, termina con un risultato diverso da TRUE. Se l’esecuzione prosegue, viene valutato l’ultimo OP code cioè OP\_CHECKSIG, che ha il compito di verificare l’appartenenza della firma e della chiave pubblica alla medesima chiave privata A.
+
 \subsection{P2PK}
 Lo script {\it pay-to-public-key \/} è una forma di script più semplice del precedente, perché non viene applicato l’hash alla chiave pubblica e, quindi, l’indirizzo del ricevente è memorizzato nella transazione; per bloccare questo script si necessita solo della firma, il che fa sì che lo stack si semplifichi come segue:
 \begin{lstlisting}[language=bitcoinscript, caption={P2PK Script completo.}]
@@ -229,7 +238,7 @@ Lo script {\it pay-to-public-key \/} è una forma di script più semplice del pr
 Quando il programma viene eseguito, lo stack è popolato con i valori dello script di sblocco come illustrato in Figura \ref{fig:stackp2pk01}.
 
 {\centering
-\vspace{15pt}
+\vspace{10pt}
 \includegraphics[scale=0.35]{images/script/p2pk/1.png}
 \captionof{figure}{Stato dello stack dopo l’inserimento dello scriptSig.\label{fig:stackp2pk01}}
 \vspace{10pt}
@@ -238,13 +247,19 @@ Quando il programma viene eseguito, lo stack è popolato con i valori dello scri
 Nel passo successivo la chiave pubblica viene inserita nello stack, come rappresentato dalla Figura \ref{fig:stackp2pk02}.
 
 {\centering
-\vspace{15pt}
+\vspace{10pt}
 \includegraphics[scale=0.35]{images/script/p2pk/2.png}
 \captionof{figure}{Stato dello stack dopo l’inserimento del <public key>.\label{fig:stackp2pk02}}
 \vspace{10pt}
 \par}
 
-Ora avviene quindi la verifica tra firma e chiave pubblica con l’operatore OP\_CHECKSIG e, se  l’operatore ha come risultato TRUE, allora la transazione è sbloccabile con lo script di sblocco inserito.
+Ora avviene quindi la verifica tra firma e chiave pubblica con l’operatore OP\_CHECKSIG e, se  l’operatore ha come risultato TRUE, allora la transazione è sbloccabile con lo script di sblocco inserito.\newline
+Lo script P2PK oltre ad essere uno script semplice viene considerato dagli sviluppatori un errore di implementazione originale, perché non contiene un indirizzo Bitcoin ma contiene la reale chiave pubblica derivata dall’algoritmo di curva ellittica, motivo per cui nell'agosto 2019 da uno script P2PK non è più possibile ricavare un indirizzo Bitcoin tramite il client ufficiale. in Figura \ref{fig:examplep2pkbuild} viene mostrata la differenza del processo di creazione tra uno script P2PK e uno script P2PKH.
+
+{\centering
+\includegraphics[scale=0.10]{images/proccessBuildP2PK.png}
+\captionof{figure}{Rappresentazione del processo di creazione dello script P2PK e P2PKH\label{fig:examplep2pkbuild}}
+\par}
 
 \subsection{P2MS}
 \label{sec:p2msbitcoin}
@@ -256,7 +271,7 @@ Un esempio di script P2MS 2:3 è il seguente:
 OP_0 <A Signature> <B Signature>
 OP_2 <Public key A> <Public key B> <Public key C> OP_3 OP_CHECKMULTISIG
 \end{lstlisting}
-In questo esempio OP\_0 funge da segnaposto per un bug nell’implementazione di OP\_CHE\-CK\-MULTI\-SIG,, il cui unico scopo è quello di aggirare un bug che è diventato accidentalmente una regola di consenso.
+In questo esempio OP\_0 funge da segnaposto per un bug nell’implementazione di OP\_CHE\-CK\-MULTI\-SIG, il cui unico scopo è quello di aggirare un bug che è diventato accidentalmente una regola di consenso.
 
 Lo stack inizialmente verrà popolato con i valori dello script di sblocco; la presenza dell’operatore OP\_0 implica che lo stack sia vuoto quando lo si incontra. Lo stato dello stack è rappresentato dalla Figura \ref{fig:stackmultsing01}.
 
@@ -276,7 +291,7 @@ L’operatore OP\_2 verifica che nello stack ci siano 2 elementi, successivament
 \vspace{10pt}
 \par}
 
-Infine le firme vengono verificate con le chiavi pubbliche mediante l’operatore OP\_CHECKMULTISIG in maniera iterativa, cioè la prima firma viene confrontata con tutte le chiavi pubbliche e l’azione si ripete per tutte le firme inserite, come in Figura \ref{fig:stackmultsing03}.
+Infine le firme vengono verificate con le chiavi pubbliche mediante l’operatore OP\_CHECK\-MULTI\-SIG in maniera iterativa, cioè la prima firma viene confrontata con tutte le chiavi pubbliche e l’azione si ripete per tutte le firme inserite, come in Figura \ref{fig:stackmultsing03}.
 
 {\centering
 \vspace{15pt}
@@ -287,7 +302,7 @@ Infine le firme vengono verificate con le chiavi pubbliche mediante l’operator
 
 \subsection{P2SH}
 Lo script {\it pay-to-script-hash \/} venne introdotto nel 2012, per semplificare l’uso degli script in transazioni complesse: infatti molto spesso accade di avere script molto grandi, come uno script P2MS 14:15 che comporta un aumento della complessità dello script di sblocco; la motivazione dell’introduzione dello script P2SH è stata la semplificazione di quest’ultimo, come se fosse un normale pagamento ad un indirizzo Bitcoin.
-Questa nuova tipologia semplifica notevolmente lo script di blocco, perché sarà popolato solo dal suo hash, a discapito però dell’aggiunta di una copia dello script di blocco all’interno dello script di sblocco. Si considere, ad esempio il seguente script P2SH:
+Questa nuova tipologia semplifica notevolmente lo script di blocco, perché sarà popolato solo dal suo hash, a discapito però dell’aggiunta di una copia dello script di blocco all’interno dello script di sblocco. Si consideri, ad esempio il seguente script P2SH:
 
 \lstinputlisting[label=code:p2shnokey, caption={Script P2SH completo.}]{code/script/p2sh-without-key.btcs}
 
@@ -370,8 +385,8 @@ Quindi lo script completo diventa:
 
 \lstinputlisting[label=code:p2shkey, caption={Script P2SH completo con indirizzo Bitcoin P2SH.}]{code/script/p2sh-with-key.btcs}
 
-L’esecuzione del Codice \ref{code:p2shkey}, il quale contiene un indirizzo Bitcoin P2SH al posto dell hash dello script, non cambia, perché la chiave ricavata dallo script viene decodificata nel suo hash risultante, così da lasciare la sua esecuzione invariata.
-Bitcoin utilizza la convenzione dell'id wallet solo per una semplificazione per l'occhio umano, ma non necessita di queste informazioni per compiere le sue ordinarie operazioni; inoltre gli script P2SH e quindi gli script P2MS (in particolare script P2MS 2:2) vengono utilizzati estensivamente per la creazione e la gestione di canali all’interno della tecnologia {\it Lightning network \/}, che aumentano drasticamente la velocità delle transazioni con Bitcoin, utilizzando un protocollo {\it off-chain\/}.
+L’esecuzione del Codice \ref{code:p2shkey}, il quale contiene un indirizzo Bitcoin P2SH al posto del hash dello script, non cambia, perché la chiave ricavata dallo script viene decodificata nel suo hash risultante, così da lasciare la sua esecuzione invariata.
+Bitcoin utilizza la convenzione dell'id wallet solo per una semplificazione per l'occhio umano, ma non necessita di queste informazioni per compiere le sue ordinarie operazioni; inoltre gli script P2SH e quindi gli script P2MS (in particolare script P2MS 2:2) vengono utilizzati estensivamente per la creazione e la gestione di canali all’interno della tecnologia {\it Lightning network\/}, che aumentano drasticamente la velocità delle transazioni con Bitcoin, utilizzando un protocollo {\it off-chain\/}.
 
 \subsection{Transazioni null data (OP\_RETURN)}
 La blockchain di Bitcoin e, più in generale, le tecnologie blockchain hanno potenziali usi ben oltre i pagamenti. Molti sviluppatori hanno tentato di utilizzare Bitcoin script, per sfruttare la sicurezza e la resilienza del sistema, per applicazioni quali servizi notarili digitali, certificati azionari e {\it smart contract\/}. I primi tentativi di utilizzare il linguaggio di script di Bitcoin per questi scopi hanno comportato la creazione di output di transazioni, che registravano dati sulla blockchain; nella versione 0.9 di Bitcoin core del 2014, è stato aggiunto un nuovo tipo di operatore chiamato OP\_RETURN che marca la transazione come non correlata ad un movimento di bitcoin, ma ad un archiviazione di dati. Questo operatore ha permesso ai miner di identificare la transazione e decidere se validarla o meno, considerando il problema che, archiviando una transazione con uno script non valido, oltre a creare un UTXO non spendibile, lo spazio richiesto della blockchain di bitcoin sarebbe aumentato, aumentando quindi anche le commissioni richieste dal miner.
@@ -382,7 +397,7 @@ OP_RETURN <data>
 \end{lstlisting}
 
 Lo script precedente non fa altro che marcare il campo <data> come dati grezzi che non riguardano una transazione; infatti la semantica dell’operatore OP\_RETURN marca la transazione come invalida, quindi i dati non vengono valutati.
-\newpage
+
 \section{Mining}
 \label{sec:miningbitcoin}
 
@@ -390,7 +405,7 @@ Il processo di Mining si avvale dell’algoritmo di Proof of Work, per generare 
 Bitcoin esegue la validazione delle transazioni in media ogni 10 minuti ed esse vengono considerate valide solo quando il blocco che le contiene viene accodato alla catena ufficiale; ogni transazione può includere all’interno un valore di bitcoin che equivale ad una tassa indirizzata al miner per ricompensa del lavoro svolto, il quale può scegliere di dare precedenza a transazioni con una commissione maggiore di un quantitativo di bitcoin a loro scelta.\newline
 Bitcoin stabilisce un processo di creazione di nuova moneta decrescente e limitato: infatti impone un limite superiore massimo di \(2.1 * 10^{15} \) bitcoin; il valore creato dai miner si dimezza ogni 210.000 blocchi, in media ogni 4 anni.
 La creazione di bitcoin iniziò con un ammontare pari a 50 bitcoin per blocco nel gennaio 2009 e si dimezzò a 25 bitcoin nel novembre 2012 stimando così l’emissione completa di tutti i bitcoin disponibili nel 2140; al termine dell’emissione, il guadagno di ogni miner sarà esclusivamente il valore della commissione.
-L’utilizzo dell protocollo Proof of Work, che è per sua natura CPU-band, nel corso degli anni, con l’aumentare della competitività nel settore del mining di bitcoin, portò ad un aumento esponenziale della potenza di hashing, subendo così un cambiamento radicale della tecnologia utilizzata: si è passati da comuni CPU a componenti appositi per il calcolo della funzione hash del tipo FPGA ({\it mining and field programmable gate array \/})\footnote{Nel 2014, l'energia consumata dalla rete Bitcoin era pari al consumo di elettricità dell'Irlanda (O'Dwyer e Malone, 2014)}.
+L’utilizzo dell protocollo Proof of Work, che è per sua natura {\it CPU-bound\/}, nel corso degli anni, con l’aumentare della competitività nel settore del mining di bitcoin, portò ad un aumento esponenziale della potenza di hashing, subendo così un cambiamento radicale della tecnologia utilizzata: si è passati da comuni CPU a componenti appositi per il calcolo della funzione hash del tipo FPGA ({\it mining and field programmable gate array \/})\footnote{Nel 2014, l'energia consumata dalla rete Bitcoin era pari al consumo di elettricità dell'Irlanda (O'Dwyer e Malone, 2014)}.
 L’aumento della potenza di hashing (Figura \ref{fig:hashrate}) portò anche ad un aumento della difficoltà di estrazione di un blocco conosciuta come difficoltà metrica (Figura \ref{fig:metrix}).
 
 {\centering

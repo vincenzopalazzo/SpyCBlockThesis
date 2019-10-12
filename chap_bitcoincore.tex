@@ -34,14 +34,14 @@ Così come le transazioni, il blocco viene definito attraverso una struttura dat
 
 \begin{itemize}
   \item {\bf nVersion\/}: Identifica le regole seguite dal blocco; fino ad ora si possono identificare 4 versioni, tutte introdotte attraverso dei soft-fork.
-  \item {\bf hashPrevBlock e hashMerkleRoot\/}: Appartengono ad un tipo di dato non primitivo del C++, ma ad un tipo definito da Bitcoin core. Rappresenta una struttura dati da 32 byte in cui vengono memorizzati l’hash del blocco precedente (in hashPrevBlock) e la radice del Merkle tree (in hashMerkleRoot); queste ultime garantiscono che il blocco non possa in nessun modo essere modificato, senza alterare l’intestazione del blocco.
+  \item {\bf hashPrevBlock e hashMerkleRoot\/}: Appartengono ad un tipo di dato non primitivo del C++, ma ad un tipo definito da Bitcoin core. Rappresenta una struttura dati da 32 byte in cui vengono memorizzati l’hash del blocco precedente (in hashPrevBlock) e la radice del Merkle Tree (in hashMerkleRoot); queste ultime garantiscono che il blocco non possa in nessun modo essere modificato, senza alterare l’intestazione del blocco.
   \item {\bf nTime\/}: Valore che rappresenta un’epoca Unix e indica il momento in cui il miner ha iniziato ad eseguire la Proof of Work per convalidare il blocco.
   \item {\bf nBits\/}: Un intero a 8 byte, che rappresenta il target di difficoltà dell’algoritmo di PoW del blocco.
   \item {\bf nNonce\/}: Valore intero a 8 byte usato per contenere il valore generato dall’algoritmo di PoW.
 \end{itemize}
 
 Il blocco, oltre a contenere l’intestazione, contiene ulteriori informazioni riguardo la sua dimensione e la rete di appartenenza: infatti il client Bitcoin può essere eseguito anche in modalità testnet, in cui vengono testate le nuove versioni del software prima del rilascio ufficiale.
-La struttura finale del blocco, nella version attuale, può essere rappresentata nel modo indicato nella Figura \ref{tab:blockbitcoinc}
+La struttura finale del blocco, nella version attuale, può essere rappresentata nel modo indicato in Figura \ref{tab:blockbitcoinc}
 
 \begin{table}
        \centering\small
@@ -63,22 +63,22 @@ La struttura finale del blocco, nella version attuale, può essere rappresentata
 
 \begin{itemize}
   \setlength\itemsep{1em}
-  \item {\bf magicNumber\/}: Rappresenta una signature per la struttura dati e non è qualcosa di specifico per bitcoin; il numero magico viene usato, infatti, nell’informatica per i file e i protocolli, per semplificare notevolmente il riconoscimento del file o della struttura dati: ad esempio il numero magico per un file png è 89504E470D0A1A0A, mentre il numero magico di bitcoin per la rete principale è rappresentato da 0xD9B4BEF9.
+  \item {\bf magicNumber\/}: Rappresenta una signature per la struttura dati e non è qualcosa di specifico per Bitcoin; il numero magico viene usato, infatti, nell’informatica per i file e i protocolli, per semplificare notevolmente il riconoscimento del file o della struttura dati: ad esempio il numero magico per un file png è 89504E470D0A1A0A, mentre il numero magico di bitcoin per la rete principale è rappresentato da 0xD9B4BEF9.
   \item {\bf numberTx\/}: Il valore rappresenta il numero di transazioni contenute all'interno del blocco e viene serializzato usando un metodo simile alla tecnica di memorizzazione dei record a lunghezza variabile all’interno di un database relazionale; in Bitcoin core viene rappresentato attraverso un tipo di dato che porta il nome di VarInt (intero variabile) e questo valore occupa da 1 a 9 byte di spazio.
   Il client utilizza VarInt all’interno di LevelDB, ma utilizza il tipo di dato CompactSize rilasciato nella versione 0.1.0 di Satoshi per la serializzazione all’interno del file.
 \end{itemize}
 
 \section{Transazioni}
 \label{sec:transazionibitcoincore}
-Come descritto nel capitolo di \ref{sec:transazioniBitcoin}, esse rappresentano l’elemento fulcro del sistema; nel corso degli anni, gli sviluppatori di Bitcoin core hanno dovuto confrontarsi con problemi nell'implementazione originale delle transazioni: Uno di essi è conosciuto come problema di malleabilità: {\it durante il processo di verifica di una transazione era possibile alterare l’id (txId) ed in particolare, la malleabilità della transazione coinvolge le firme nello script di sblocco (scriptSig) e ciò comporta delle irregolarità nel protocollo Bitcoin: \/}
-
+Come descritto nel capitolo di \ref{sec:transazioniBitcoin}, esse rappresentano l’elemento fulcro del sistema; nel corso degli anni, gli sviluppatori di Bitcoin core hanno dovuto confrontarsi con problemi nell’implementazione originale delle transazioni: uno di essi è conosciuto come problema di malleabilità.
+La malleabilità di una transizione consisteva nella possibilità di alterare l’identificativo della transizione (txId) durante il processo di verifica senza invalidarla. La motivazione dell’alterazione era dovuta alla possibilità di modificare le firme nello script di sblocco (scriptSig) senza cambiare il loro significato, quindi per il modo in cui viene calcolato l’hash della transizione, questa alterazione comportava inevitabilmente l’alterazione dell’hash, portando all’interno del protocollo le seguenti problematiche:
 \begin{itemize}
   \item Il mittente non può più riconoscere la sua transazione dopo che essa è stata modificata.
   \item Le transazioni modificate sono effettivamente riconosciute come doppie spese, perché il mittente, non riuscendo più a riconoscere la sua transazione di input creata in precedenza, si ritroverà i bitcoin invariati e potrà spenderli una seconda volta.
   Questo problema non grava sul mittente, ma sull’intero sistema Bitcoin: ad esempio le transazioni che non vengono riconosciute dal mittente saranno sepolte all’interno della blockchain perché mai nessuno sarà in grado di spenderle.
 \end{itemize}
 
-Nel 2016 la community arrivò ad una soluzione tramite un soft-fork, che introdusse notevoli cambiamenti strutturali, risolvendo tutti i problemi relativi alla malleabilità di una transazione. Questo aggiornamento venne chiamato “Segregated witness” e suddivise le transazioni in diverse parti, che possono essere gestite separatamente, sostituì le firme digitali con un segnaposto all’interno delle transazioni spostando le vere firme in una struttura dati differente. Questa soluzione non esclude però la possibilità che una transazione non sia malleabile, ma esclude una modifica dell’hash durante la verifica, poiché i dati utilizzati per il calcolo sono contenuti all’interno di uno spazio protetto; da questo nasce il nome Segregated witness.
+Nel 2016 la community arrivò ad una soluzione tramite un soft-fork, che introdusse notevoli cambiamenti strutturali, risolvendo tutti i problemi relativi alla malleabilità di una transazione. Questo aggiornamento venne chiamato \say{Segregated Witness} e suddivise le transazioni in diverse parti, che possono essere gestite separatamente, sostituì le firme digitali con un segnaposto all’interno delle transazioni spostando le vere firme in una struttura dati differente. Questa soluzione non esclude però la possibilità che una transazione non sia malleabile, ma esclude una modifica dell’hash durante la verifica, poiché i dati utilizzati per il calcolo sono contenuti all’interno di uno spazio protetto; da qui nasce il nome Segregated Witness.
 
 La struttura riportata in Figura \ref{tab:rawtxbitcoinc} rappresenta la struttura delle transazioni:
 
@@ -114,7 +114,7 @@ Le transazioni di input sono definite tramite una struttura rappresentata dalla 
        \centering\small
            \begin{tabular}{cc}
                \toprule
-                 \multicolumn{2}{c}{Transaction input} \\
+                 \multicolumn{2}{c}{TransactionInput} \\
                  \cmidrule(lr){1-2}
                  \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
                \midrule
@@ -127,7 +127,7 @@ Le transazioni di input sono definite tramite una struttura rappresentata dalla 
    \end{table}
 
 \begin{itemize}
-  \item {\bf nSequence\/}:  Il valore viene utilizzato per esprimere il timelock relativo a livello di transazione (Argomento trattato nel capitolo \ref{sec:bitcoinScriptBitcoinCore}).
+  \item {\bf nSequence\/}:  Il valore viene utilizzato per esprimere il timelock relativo a livello di transazione (argomento trattato nel capitolo \ref{sec:bitcoinScriptBitcoinCore}).
   \item {\bf scriptSig\/}: Rappresenta la condizione di sblocco espressa dalla transazione sotto forma di script.
 \end{itemize}
 
@@ -156,7 +156,7 @@ Il tipo di dato Outpoint utilizzato nella transazione di input contiene le infor
 
 La struttura della transazione di output contiene esclusivamente le informazione dello script di blocco e il valore di bitcoin (in satoshi), in Figura \ref{tab:transactionOutput} viene illustrata la struttura dati corrispondente.
 
-\begin{table}
+\begin{table}[H]
        \centering\small
            \begin{tabular}{cc}
                \toprule
@@ -178,7 +178,7 @@ La struttura della transazione di output contiene esclusivamente le informazione
 
 La transazione Witness rappresenta la serializzazione di tutti i dati del testimone, in Figura \ref{tab:witnesstxbitcoinc} viene illustrata la rappresentazione della struttura dati corrispondente.
 
-\begin{table}
+\begin{table}[H]
        \centering\small
            \begin{tabular}{cc}
                \toprule
@@ -229,7 +229,7 @@ Il tipo di dato CScript è un tipo di dato contenente le informazioni necessarie
 L’aggiornamento Segregated Witness comporta un notevole cambiamento anche sulla modalità di spesa degli UTXO; infatti tutti i tipi di transazione visti finora fanno riferimento allo script di sblocco, contenuto all’interno della transazione di input.
 Con il nuovo aggiornamento lo script di sblocco viene spostato all’interno di una struttura al di fuori delle transazioni di input, chiamata \say{Transazione Witness} e mostrata in Tabella \ref{tab:rawtxbitcoinc}.
 I dati relativi alle transazioni witness non contengono le informazioni di una reale transazione, bensì costituiscono uno spazio riservato per esprimere la condizione di sblocco.
-Per sbloccare un UTXO con il Segregated Witness bisogna far riferimento allo script contenuto all’interno delle transazioni Witness, come illustrato in Tabella \ref{tab:witnesstxbitcoinc} (che chiameremo script witness). Questa modifica nella spesa degli UTXO ha costretto Bitcoin script ad un soft fork: ogni script d’ora in poi conterrà un numero di versione all’inizio che permette l’identificazione del tipo di transazione; lo script inizierà con un numero di versione uguale a zero per identificare uno script Witness, rendendo la transazione interpretabile anche da wallet non abilitati al Segregate Witness. Attraverso questa soluzione la transazione risulta essere spendibile da chiunque.
+Per sbloccare un UTXO con il Segregated Witness bisogna far riferimento allo script contenuto all’interno delle transazioni witness, come illustrato in Tabella \ref{tab:witnesstxbitcoinc} (che chiameremo script witness). Questa modifica nella spesa degli UTXO ha costretto Bitcoin script ad un soft fork: ogni script d’ora in poi conterrà un numero di versione all’inizio che permette l’identificazione del tipo di transazione; lo script inizierà con un numero di versione uguale a zero per identificare uno script Witness, rendendo la transazione interpretabile anche da wallet non abilitati al Segregate Witness. Attraverso questa soluzione la transazione risulta essere spendibile da chiunque.
 Gli script P2PKH e P2SH con il testimone segregato si evolvono in P2WPKH e P2WSH
 
 \subsection{P2WPKH}
@@ -318,7 +318,7 @@ Gli script di sblocco terminano entrambi con dei suffissi, cioè 0 e 1. Questi v
 \lstinputlisting[language=bitcoinscript, label=code:exampleifthenelse, caption=Clausola if-then-else in Bitcoin script.]{code/script/exampleIfThenElse.txt}
 
 Bitcoin core supporta anche timelock relativi, i quali sono utili per stabilire vincoli temporali rispetto al tempo di conferma di una transazione sulla blockchain, così da permettere di esprimere un lasso di tempo relativo che dipende (in questo caso) dall’istante in cui la transazione viene confermata.
-Come i timelock assoluti, i timelock relativi vengono espressi sia a livello di script che a livello di transazion;, per fare ciò viene utilizzato il campo nSequence all’interno della transazione di input.
+Come i timelock assoluti, i timelock relativi vengono espressi sia a livello di script che a livello di transazione; per fare ciò viene utilizzato il campo nSequence all’interno della transazione di input.
 Si possono distinguere attualmente due tipi di timelock relativi:
 
 \begin{itemize}
@@ -331,7 +331,7 @@ Si possono distinguere attualmente due tipi di timelock relativi:
 I timelock relativi possono essere impostati su ogni input di una transazione; l’introduzione in corso d’opera di questa nuova funzionalità senza produrre un hard-fork è stata resa possibile dall’esistenza del campo nSequence contenuto nella transazione di input, originariamente destinato ad una funzione (mai correttamente implementata) che consentiva la modifica della transazione durante la fase di creazione e propagazione di quest’ultima, cioè:
 
 \begin{itemize}
-  \item nSequence != 0xFFFFFFFF: La transazione poteva subire modifiche (transazione non finalizzata), quindi essa veniva mantenuta in un'area di memoria in cui tutte le transazioni pubblicate ed in attesa di essere verificate risiedono, conosciuta anche sotto il nome di {\it mempool \/}. Fin quando la transazione conteneva un valore diverso da 0xFFFFFFFF, essa non veniva presa in considerazione dai miner.
+  \item nSequence != 0xFFFFFFFF: La transazione poteva subire modifiche (transazione non finalizzata), quindi essa veniva mantenuta in un'area di memoria in cui tutte le transazioni pubblicate ed in attesa di essere verificate risiedono, conosciuta anche sotto il nome di {\it mempool\/}. Fin quando la transazione conteneva un valore diverso da 0xFFFFFFFF, essa non veniva presa in considerazione dai miner.
   \item nSequence = 0xFFFFFFFF: La transazione veniva considerata come “finalizzata” e quindi presa in considerazione dati miner.
 \end{itemize}
 
