@@ -1,11 +1,10 @@
 \chapter{Bitcoin core}
 \label{chap:bitcoin core}
 
-\section{Introduzione}
-\label{sec:introduzionebitcoincore}
+\section{Introduzione}\label{sec:introduzionebitcoincore}
 
 Bitcoin core è il successore della versione rilasciata da Satoshi Nakamoto ora conosciuta come “satoshi client”; attualmente è il client di riferimento del protocollo Bitcoin.
-Bitcoin core è un progetto open-source sviluppato in C++ il suo codice sorgente risiede attualmente su Github sotto licenza MIT; Bitcoin core viene sviluppato da una comunità aperta di volontari; esso costituisce una riscrittura quasi completa della versione 0.1.0 del client rilasciato da Satoshi Nakamoto.
+Bitcoin core è un progetto open-source scritto in C++, il cui codice sorgente risiede attualmente su Github sotto licenza MIT e viene sviluppato da una comunità aperta di volontari; esso costituisce una riscrittura quasi completa della versione 0.1.0 del client rilasciato da Satoshi Nakamoto.
 
 \section{Blocchi}
 \label{sec:blocchibitcoincore}
@@ -14,19 +13,25 @@ Così come le transazioni, il blocco viene definito attraverso una struttura dat
 
 \begin{table}
        \centering\small
-           \begin{tabular}{cc}
-               \toprule
-                 \multicolumn{2}{c}{BlockHeader} \\
-                 \cmidrule(lr){1-2}
-                 \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
-               \midrule
+           \begin{tabular}{|c|c|}
+               \hline
+                 \multicolumn{2}{|c|}{\textbf{BlockHeader}} \\
+                 %\cmidrule(lr){1-2}
+                 \hline
+                 \multicolumn{1}{|c|}{Type} & \multicolumn{1}{c|}{Name} \\
+               \hline \hline
                $int32\_t$ & nVersion   \\
+               \hline
                $uint256$ & hashPrevBlock \\
+                \hline
                $uint256$ & hashMerkleRoot \\
+                \hline
                $uint32\_t$ & nTime \\
+                \hline
                $uint32\_t$ & nBits \\
+                \hline
                $uint32\_t$ & nNonce \\
-               \bottomrule
+               \hline
        \end{tabular}
        \caption{Struttura di un block header in Bitcoin core.\label{tab:blockheaderbitcoinc}}
    \end{table}
@@ -34,29 +39,34 @@ Così come le transazioni, il blocco viene definito attraverso una struttura dat
 
 \begin{itemize}
   \item {\bf nVersion\/}: Identifica le regole seguite dal blocco; fino ad ora si possono identificare 4 versioni, tutte introdotte attraverso dei soft-fork.
-  \item {\bf hashPrevBlock e hashMerkleRoot\/}: Appartengono ad un tipo di dato non primitivo del C++, ma ad un tipo definito da Bitcoin core. Rappresenta una struttura dati da 32 byte in cui vengono memorizzati l’hash del blocco precedente (in hashPrevBlock) e la radice del Merkle Tree (in hashMerkleRoot); queste ultime garantiscono che il blocco non possa in nessun modo essere modificato, senza alterare l’intestazione del blocco.
+  \item {\bf hashPrevBlock e hashMerkleRoot\/}: Appartengono ad un tipo di dato non primitivo del C++, ma ad un tipo definito da Bitcoin core. Rappresentano una struttura dati da 32 byte in cui vengono memorizzati l’hash del blocco precedente (in {\tt{hashPrevBlock}}) e la radice del Merkle Tree (in {\tt{hashMerkleRoot}}); queste ultime garantiscono che il blocco non possa in nessun modo essere modificato, senza alterare l’intestazione del blocco.
   \item {\bf nTime\/}: Valore che rappresenta un’epoca Unix e indica il momento in cui il miner ha iniziato ad eseguire la Proof of Work per convalidare il blocco.
   \item {\bf nBits\/}: Un intero a 8 byte, che rappresenta il target di difficoltà dell’algoritmo di PoW del blocco.
   \item {\bf nNonce\/}: Valore intero a 8 byte usato per contenere il valore generato dall’algoritmo di PoW.
 \end{itemize}
 
 Il blocco, oltre a contenere l’intestazione, contiene ulteriori informazioni riguardo la sua dimensione e la rete di appartenenza: infatti il client Bitcoin può essere eseguito anche in modalità testnet, in cui vengono testate le nuove versioni del software prima del rilascio ufficiale.
-La struttura finale del blocco, nella version attuale, può essere rappresentata nel modo indicato in Figura \ref{tab:blockbitcoinc}
+La struttura finale del blocco, nella version attuale, può essere rappresentata nel modo indicato in Tabella \ref{tab:blockbitcoinc}
 
 \begin{table}
        \centering\small
-           \begin{tabular}{cc}
-               \toprule
-                 \multicolumn{2}{c}{Block} \\
-                 \cmidrule(lr){1-2}
-                 \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
-               \midrule
+           \begin{tabular}{|c|c|}
+               \hline
+                 \multicolumn{2}{|c|}{\textbf{Block}} \\
+                 %\cmidrule(lr){1-2}
+                 \hline
+                 \multicolumn{1}{|c|}{Type} & \multicolumn{1}{c|}{Name} \\
+               \hline \hline
                $int32\_t$ & magicNumber   \\
+               \hline
                $int32\_t$ & blockSize \\
+               \hline
                BlockHeader & blockHeader \\
+               \hline
                CompactSize & numberTx \\
+               \hline
                vector<RawTransaction> & transactions \\
-               \bottomrule
+               \hline
        \end{tabular}
        \caption{Struttura di un blocco in Bitcoin core.\label{tab:blockbitcoinc}}
    \end{table}
@@ -70,8 +80,8 @@ La struttura finale del blocco, nella version attuale, può essere rappresentata
 
 \section{Transazioni}
 \label{sec:transazionibitcoincore}
-Come descritto nel capitolo di \ref{sec:transazioniBitcoin}, esse rappresentano l’elemento fulcro del sistema; nel corso degli anni, gli sviluppatori di Bitcoin core hanno dovuto confrontarsi con problemi nell’implementazione originale delle transazioni: uno di essi è conosciuto come problema di malleabilità.
-La malleabilità di una transizione consisteva nella possibilità di alterare l’identificativo della transizione (txId) durante il processo di verifica senza invalidarla. La motivazione dell’alterazione era dovuta alla possibilità di modificare le firme nello script di sblocco (scriptSig) senza cambiare il loro significato, quindi per il modo in cui viene calcolato l’hash della transizione, questa alterazione comportava inevitabilmente l’alterazione dell’hash, portando all’interno del protocollo le seguenti problematiche:
+Come descritto nel Capitolo di \ref{sec:transazioniBitcoin}, esse rappresentano l’elemento fulcro del sistema; nel corso degli anni, gli sviluppatori di Bitcoin core hanno dovuto confrontarsi con problemi nell’implementazione originale delle transazioni: uno di essi è conosciuto come problema di malleabilità.
+La malleabilità di una transizione consisteva nella possibilità di alterare l’identificativo della transizione (txId) durante il processo di verifica senza invalidarla. La motivazione dell’alterazione era dovuta alla possibilità di modificare le firme nello script di sblocco (scriptSig) senza cambiare il loro significato; quindi per il modo in cui viene calcolato l’hash della transizione, questa alterazione comportava inevitabilmente l’alterazione dell’hash, portando all’interno del protocollo le seguenti problematiche:
 \begin{itemize}
   \item Il mittente non può più riconoscere la sua transazione dopo che essa è stata modificata.
   \item Le transazioni modificate sono effettivamente riconosciute come doppie spese, perché il mittente, non riuscendo più a riconoscere la sua transazione di input creata in precedenza, si ritroverà i bitcoin invariati e potrà spenderli una seconda volta.
@@ -84,21 +94,29 @@ La struttura riportata in Figura \ref{tab:rawtxbitcoinc} rappresenta la struttur
 
 \begin{table}
        \centering\small
-           \begin{tabular}{cc}
-               \toprule
-                 \multicolumn{2}{c}{RawTransaction} \\
-                 \cmidrule(lr){1-2}
-                 \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
-               \midrule
+           \begin{tabular}{|c|c|}
+               \hline
+                 \multicolumn{2}{|c|}{\textbf{RawTransaction}} \\
+                 %\cmidrule(lr){1-2}
+                 \hline
+                 \multicolumn{1}{|c|}{Type} & \multicolumn{1}{c|}{Name} \\
+               \hline \hline
                $int32\_t$ & version   \\
+               \hline
                $uint8\_t$ & marker \\
+               \hline
                $uint8\_t$ & flag \\
+               \hline
                CompactSize & numberTxIn \\
+               \hline
                vector<TransactionInput> & transactionsInput \\
+               \hline
                CompactSize & numberTxOut \\
+               \hline
                vector<TransactionOutput> & transactionsOutput \\
+               \hline
                vector<TransactionWitness> & transactionsWitness \\
-               \bottomrule
+               \hline
        \end{tabular}
        \caption{Struttura della transazione dopo l’aggiornamento al Segregated witness.\label{tab:rawtxbitcoinc}}
    \end{table}
@@ -112,39 +130,44 @@ Le transazioni di input sono definite tramite una struttura rappresentata dalla 
 
 \begin{table}
        \centering\small
-           \begin{tabular}{cc}
-               \toprule
-                 \multicolumn{2}{c}{TransactionInput} \\
-                 \cmidrule(lr){1-2}
-                 \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
-               \midrule
+           \begin{tabular}{|c|c|}
+               \hline
+                 \multicolumn{2}{|c|}{\textbf{TransactionInput}} \\
+                % \cmidrule(lr){1-2}
+                \hline \hline
+                 \multicolumn{1}{|c|}{Type} & \multicolumn{1}{c|}{Name} \\
+               \hline
                Outpoint & outpoint   \\
+               \hline
                CScript & scriptSig \\
+               \hline
                $uint32\_t$ & nSequence \\
-               \bottomrule
+               \hline
        \end{tabular}
-       \caption{Rappresenta la struttura della transazione input all’interno di Bitcoin core.\label{tab:inputtxbitcoinc}}
+       \caption{La struttura della transazione input all’interno di Bitcoin core.\label{tab:inputtxbitcoinc}}
    \end{table}
 
 \begin{itemize}
-  \item {\bf nSequence\/}:  Il valore viene utilizzato per esprimere il timelock relativo a livello di transazione (argomento trattato nel capitolo \ref{sec:bitcoinScriptBitcoinCore}).
+  \item {\bf nSequence\/}:  Il valore viene utilizzato per esprimere il timelock relativo a livello di transazione (argomento trattato nel Capitolo \ref{sec:bitcoinScriptBitcoinCore}).
   \item {\bf scriptSig\/}: Rappresenta la condizione di sblocco espressa dalla transazione sotto forma di script.
 \end{itemize}
 
-Il tipo di dato Outpoint utilizzato nella transazione di input contiene le informazioni necessarie per identificare la transazione di output contenuta in una transazione precedente. La Tabella \ref{tab:outpointbitcoinc} descrive la struttura.
+Il tipo di dato Outpoint utilizzato nella transazione di input contiene le informazioni necessarie per identificare la transazione di output contenuta in una transazione precedente. La Tabella \ref{tab:outpointbitcoinc} ne descrive la struttura.
 
 
 \begin{table}
        \centering\small
-           \begin{tabular}{cc}
-               \toprule
-                 \multicolumn{2}{c}{Outpoint} \\
-                 \cmidrule(lr){1-2}
-                 \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
-               \midrule
+           \begin{tabular}{|c|c|}
+               \hline
+                 \multicolumn{2}{|c|}{\textbf{Outpoint}} \\
+                % \cmidrule(lr){1-2}
+                \hline \hline
+                 \multicolumn{1}{|c|}{Type} & \multicolumn{1}{c|}{Name} \\
+               \hline
                $uint256$ & hash   \\
+               \hline
                $uint32\_t$ & index \\
-               \bottomrule
+              \hline
        \end{tabular}
        \caption{Struttura del tipo di dato Outpoint di Bitcoin core.\label{tab:outpointbitcoinc}}
    \end{table}
@@ -154,21 +177,23 @@ Il tipo di dato Outpoint utilizzato nella transazione di input contiene le infor
   \item {\bf index\/}: Il valore indica l’indice della lista in cui è memorizzato l’UTXO nella transazione precedente.
 \end{itemize}
 
-La struttura della transazione di output contiene esclusivamente le informazione dello script di blocco e il valore di bitcoin (in satoshi), in Figura \ref{tab:transactionOutput} viene illustrata la struttura dati corrispondente.
+La struttura della transazione di output contiene esclusivamente le informazione dello script di blocco e il valore di bitcoin (in satoshi); in Tabella \ref{tab:transactionOutput} viene illustrata la struttura dati corrispondente.
 
 \begin{table}[H]
        \centering\small
-           \begin{tabular}{cc}
-               \toprule
-                 \multicolumn{2}{c}{TransactionOutput} \\
-                 \cmidrule(lr){1-2}
-                 \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
-               \midrule
+           \begin{tabular}{|c|c|}
+               \hline
+                 \multicolumn{2}{|c|}{\textbf{TransactionOutput}} \\
+                % \cmidrule(lr){1-2}
+                \hline \hline
+                 \multicolumn{1}{|c|}{Type} & \multicolumn{1}{c|}{Name} \\
+               \hline
                $int64\_t$ & nValue   \\
+               \hline
                CScript & scriptPubKey \\
-               \bottomrule
+               \hline
        \end{tabular}
-       \caption{Rappresenta la struttura della transazione di output di Bitcoin core.\label{tab:transactionOutput}}
+       \caption{La struttura della transazione di output di Bitcoin core.\label{tab:transactionOutput}}
    \end{table}
 
 \begin{itemize}
@@ -176,21 +201,23 @@ La struttura della transazione di output contiene esclusivamente le informazione
   \item {\bf scriptPubKey\/}: Rappresenta la condizione di blocco espressa dalla transazione sotto forma di script.
 \end{itemize}
 
-La transazione Witness rappresenta la serializzazione di tutti i dati del testimone, in Figura \ref{tab:witnesstxbitcoinc} viene illustrata la rappresentazione della struttura dati corrispondente.
+La transazione Witness rappresenta la serializzazione di tutti i dati del testimone; in Tabella \ref{tab:witnesstxbitcoinc} viene illustrata la  struttura dati corrispondente.
 
 \begin{table}[H]
        \centering\small
-           \begin{tabular}{cc}
-               \toprule
-                 \multicolumn{2}{c}{TransactionWitness} \\
-                 \cmidrule(lr){1-2}
-                 \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
-               \midrule
+           \begin{tabular}{|c|c|}
+               \hline
+                 \multicolumn{2}{|c|}{\textbf{TransactionWitness}} \\
+                 %\cmidrule(lr){1-2}
+                 \hline
+                 \multicolumn{1}{|c|}{Type} & \multicolumn{1}{c|}{Name} \\
+               \hline \hline
                CompactSize & stackSize   \\
+               \hline
                CScript & stack \\
-               \bottomrule
+               \hline
        \end{tabular}
-       \caption{Rappresenta la struttura delle serializzazione dei dati del testimone; in Bitcoin core questa struttura è chiamata CScriptWitness.\label{tab:witnesstxbitcoinc}}
+       \caption{La struttura della serializzazione dei dati del testimone; in Bitcoin core questa struttura è chiamata CScriptWitness.\label{tab:witnesstxbitcoinc}}
    \end{table}
 
 \begin{itemize}
@@ -199,37 +226,39 @@ La transazione Witness rappresenta la serializzazione di tutti i dati del testim
 \end{itemize}
 \leavevmode
 \newline
-Il tipo di dato CScript è un tipo di dato contenente le informazioni necessarie per lo script; la Figura \ref{tab:scriptbitcoinc} ne rappresenta la struttura.
+Il tipo di dato CScript è un tipo di dato contenente le informazioni necessarie per lo script; la Tabella \ref{tab:scriptbitcoinc} ne descrive la struttura.
 
 
 \begin{table}
        \centering\small
-           \begin{tabular}{cc}
-               \toprule
-                 \multicolumn{2}{c}{CScript} \\
-                 \cmidrule(lr){1-2}
-                 \multicolumn{1}{c}{Type} & \multicolumn{1}{c}{Name} \\
-               \midrule
+           \begin{tabular}{|c|c|}
+               \hline
+                 \multicolumn{2}{|c|}{\textbf{CScript}} \\
+                 %\cmidrule(lr){1-2}
+                 \hline
+                 \multicolumn{1}{|c|}{Type} & \multicolumn{1}{c|}{Name} \\
+               \hline \hline
                CompactSize & scriptSize   \\
+               \hline
                vector<unsigned char> & script \\
-               \bottomrule
+               \hline
        \end{tabular}
        \caption{Struttura del tipi di dato CScript di Bitcoin core.\label{tab:scriptbitcoinc}}
    \end{table}
 
 \begin{itemize}
-  \item {\bf scriptSize\/}: Rappresenta la lunghezza in byte dello script, rappresentato tramite il tipo di dato CompactSize.
+  \item {\bf scriptSize\/}: Rappresenta la lunghezza in byte dello script, espressa tramite il tipo di dato CompactSize.
   \item {\bf script\/}: Rappresenta il vettore di byte dello script.
 \end{itemize}
 \leavevmode
-\newpage
+%\newpage
 \section{Bitcoin script}
 \label{sec:bitcoinScriptBitcoinCore}
 
 L’aggiornamento Segregated Witness comporta un notevole cambiamento anche sulla modalità di spesa degli UTXO; infatti tutti i tipi di transazione visti finora fanno riferimento allo script di sblocco, contenuto all’interno della transazione di input.
 Con il nuovo aggiornamento lo script di sblocco viene spostato all’interno di una struttura al di fuori delle transazioni di input, chiamata \say{Transazione Witness} e mostrata in Tabella \ref{tab:rawtxbitcoinc}.
 I dati relativi alle transazioni witness non contengono le informazioni di una reale transazione, bensì costituiscono uno spazio riservato per esprimere la condizione di sblocco.
-Per sbloccare un UTXO con il Segregated Witness bisogna far riferimento allo script contenuto all’interno delle transazioni witness, come illustrato in Tabella \ref{tab:witnesstxbitcoinc} (che chiameremo script witness). Questa modifica nella spesa degli UTXO ha costretto Bitcoin script ad un soft fork: ogni script d’ora in poi conterrà un numero di versione all’inizio che permette l’identificazione del tipo di transazione; lo script inizierà con un numero di versione uguale a zero per identificare uno script Witness, rendendo la transazione interpretabile anche da wallet non abilitati al Segregate Witness. Attraverso questa soluzione la transazione risulta essere spendibile da chiunque.
+Per sbloccare un UTXO con il Segregated Witness bisogna far riferimento allo script contenuto all’interno delle transazioni witness, come illustrato in Tabella \ref{tab:witnesstxbitcoinc} (che chiameremo script witness). Questa modifica nella spesa degli UTXO ha costretto Bitcoin script ad un soft fork: ogni script d’ora in poi conterrà un numero di versione all’inizio che permette l’identificazione del tipo di transazione; lo script inizierà con un numero di versione uguale a zero per identificare uno script Witness, rendendo la transazione interpretabile anche da wallet non abilitati al Segregated Witness. Attraverso questa soluzione la transazione risulta essere spendibile da chiunque.
 Gli script P2PKH e P2SH con il testimone segregato si evolvono in P2WPKH e P2WSH
 
 \subsection{P2WPKH}
@@ -248,12 +277,12 @@ Un esempio reale:
 
 \subsection{P2WSH}
 
-Lo script pay-to-witness-script-hash, come lo script P2WPKH, semplifica notevolmente il predecessore e lo sostituisce interamente; un esempio di script P2WSH può essere il seguente:
+Lo script \emph{pay-to-witness-script-hash}, come lo script P2WPKH, semplifica notevolmente il predecessore e lo sostituisce interamente; un esempio di script P2WSH può essere il seguente:
 \begin{lstlisting}[language=bitcoinscript, label={code:examplep2wsh}, caption={Esempio di uno script P2WSH.}]
 0 a9b7b38d972cabc7961dbfbcb841ad4508d133c47ba87457b4a0e8aae86dbb89
 \end{lstlisting}
 Esso è molto simile allo script P2WPKH, ma con l’unica differenza della dimensione del programma di controllo impostata a 32 byte; la dimensione del programma di controllo è l’unico modo per differenziare le due tipologie di script.
-La coesistenza delle transazioni tradizionali e delle transazioni con testimone segregato introduce  un problema nella comunicazione tra wallet con versioni differenti, il quale è risolto dalla possibilità di costruire un indirizzo P2SH a partire da uno script witness; inoltre, come per gli script P2SH, è possibile codificare lo script witness in un indirizzo bitcoin utilizzando una codifica Base32 con checksum, rispetto alla codifica Base58 per gli indirizzi Bitcoin tradizionali; quest’ultimo sarà simile al seguente.
+La coesistenza delle transazioni tradizionali e delle transazioni con testimone segregato introduce  un problema nella comunicazione tra wallet con versioni differenti, il quale è risolto dalla possibilità di costruire un indirizzo P2SH a partire da uno script witness; inoltre, come per gli script P2SH, è possibile codificare lo script witness in un indirizzo bitcoin utilizzando una codifica Base32 con checksum, rispetto alla codifica Base58 per gli indirizzi Bitcoin tradizionali; quest’ultimo sarà simile ai seguenti indirizzi.
 
 Per la rete Mainet:
 \begin{lstlisting}[language=bitcoinscript, label={code:examplep2wsh}, caption={Address base32 della rete mainet.}]
@@ -266,17 +295,20 @@ tb1qknj2fafudjfaa9nesf7rypc0hu38p04yp5ks6g
 Questi nuovi indirizzi vengono utilizzati estensivamente dalle tecnologie Lightning network; inoltre, essi introducono notevoli benefici per le funzioni del Bitcoin.
 
 \subsection{Transazioni non standard}
-Definire solo sette tipi di script tramite Bitcoin script potrebbe essere restrittivo, infatti negli anni il linguaggio ha subito notevoli evoluzioni con cui ad oggi si possono ottenere script complessi che eseguono operazioni non banali, queste evoluzione hanno sopratutto reso possibile lo sviluppo di tecnologie che lavorano a stretto contatto con la tecnologia Bitcoin; e che puntano a migliorare alcune parti del protocollo che rendono Bitcoin inadatto per alcune applicazioni del mondo reale. Ad esempio, la velocità delle transazione risulta essere un punto debole di Bitcoin a causa dell’algoritmo di PoW; questo limite viene aggirato con la proposta di un layer addizionale conosciuto come Lightning Network, il quale usa una caratteristica di Bitcoin script conosciuta come timelock relativo (introdotto nel paragrafo \ref{sec:relativetimelock}) con cui si può utilizzare Bitcoin offchain.
+Definire solo sette tipi di script tramite Bitcoin script potrebbe risultare restrittivo; infatti negli anni il linguaggio ha subito notevoli evoluzioni grazie alle quali si possono ottenere script complessi che eseguono operazioni non banali. Queste evoluzioni hanno sopratutto reso possibile lo sviluppo di tecnologie che lavorano a stretto contatto con la tecnologia Bitcoin e che puntano a migliorare le parti del protocollo che rendono Bitcoin inadatto per alcune applicazioni del mondo reale. Ad esempio, la velocità delle transazione risulta essere un punto debole di Bitcoin a causa dell’algoritmo di PoW; questo limite viene aggirato con la proposta di un layer addizionale, conosciuto come Lightning Network, il quale usa una caratteristica di Bitcoin script conosciuta come timelock relativo (introdotto nel Paragrafo \ref{sec:relativetimelock}) con cui si può utilizzare Bitcoin offchain.
+
 In Figura \ref{fig:velocitytx} viene illustrato il confronto delle transazioni per secondo (tps) tra Bitcoin e la tecnologia Lightning Network.
 
 {\centering
 \includegraphics[scale=0.35]{images/Lightning-Network-study.png}
-\captionof{figure}{Confronto tra le tecnologie Lightning network e Bitcoin che illustra le transazioni per secondo (tps) possibili con esse \cite{satalight:lightningstudy}.\label{fig:velocitytx}}
+\captionof{figure}{Confronto tra le tecnologie Lightning network e Bitcoin: transazioni per secondo (tps)  \cite{satalight:lightningstudy}.\label{fig:velocitytx}}
 \par}
 
 \subsubsection{Timelock}
 
-I timelock vengono introdotti nel 2016 e sono usati per esprimere restrizioni sulla modalità di spesa di UTXO al fine di consentire lo sblocco di questi ultimi solo dopo un certo evento. Questa definizione non è nuova nella tecnologia Bitcoin perché con il campo nLockTime della transazione è possibile esprimere una restrizione sulla modalità di spesa di una transazione (argomento trattato nel capitolo \ref{sec:transazioniBitcoin}); questo tipo di restrizione soffre di un problema illustrato nel seguente esempio tratto dal libro \cite{bitcoinbook}:
+I timelock vengono introdotti nel 2016 e sono usati per esprimere restrizioni sulla modalità di spesa di UTXO al fine di consentire lo sblocco di questi ultimi solo dopo un certo evento. Questa definizione non è nuova nella tecnologia Bitcoin perché con il campo {\tt{nLockTime}} della transazione è possibile esprimere una restrizione sulla modalità di spesa di una transazione (argomento trattato nel Capitolo \ref{sec:transazioniBitcoin}); questo tipo di restrizione soffre di un problema illustrato nel seguente esempio (tratto dal libro \cite{bitcoinbook}).
+
+\begin{example}
 
 Supponiamo che Alice firmi una transazione spedendo uno dei suoi UTXO all'indirizzo di Bob impostando la transazione con un nLocktime proiettato nel futuro di 3 mesi.
 Con questa transazione Alice e Bob sanno che:
@@ -289,15 +321,18 @@ Però:
   \item Alice può creare un'altra transazione, spendendo due volte gli stessi input senza un locktime. Pertanto, Alice può spendere lo stesso UTXO prima che siano trascorsi i 3 mesi.
   \item Bob non ha alcuna garanzia che Alice non lo farà.
 \end{itemize}
-Il concetto di timelock introduce un nuovo operatore in Bitcoin Script che prende il nome di OP\_CHECKLOCKTIMEVERIFY (CLTV); questo operatore risolve il problema illustrato nell’esempio precedente poiché blocca la  transazione a livello di script (utilizzando lo script di sblocco), ma l’operatore CLTV non punta a sostituire completamente il lavoro svolto dalla proprietà nLocktime; invece esso lavora in associazione con quest’ultimo il cui valore deve essere maggiore o uguale al valore inserito nello script per rendere la transazione valida; se questa condizione viene a mancare il sistema rifiuterà la transazione.
-Sia nLockTime che CLTV sono tecniche di locking assolute in quanto specificano un quanto di tempo assoluto, con le quali non è possibile esprimere lassi di tempo relativi come, ad esempio, esprimere un lasso di tempo valido a partire dalla conferma della transazione (problema risolto dal timelock relativo, affrontato nella Sezione \ref{sec:relativetimelock}).
+\end{example}
+
+Il concetto di timelock introduce un nuovo operatore in Bitcoin Script che prende il nome di OP\_CHECKLOCKTIMEVERIFY (CLTV); questo operatore risolve il problema illustrato nell’esempio precedente poiché blocca la  transazione a livello di script (utilizzando lo script di sblocco), ma l’operatore CLTV non punta a sostituire completamente il lavoro svolto dalla proprietà nLocktime; invece esso lavora in associazione con quest’ultima il cui valore deve essere maggiore o uguale al valore inserito nello script per rendere la transazione valida; se questa condizione viene a mancare, il sistema rifiuterà la transazione.
+
+Sia nLockTime che CLTV sono tecniche di locking assolute in quanto specificano un quanto di tempo assoluto; con esse, quindi, non è possibile esprimere lassi di tempo relativi come, ad esempio, esprimere un lasso di tempo valido a partire dalla conferma della transazione (problema risolto dal timelock relativo, affrontato nella Sezione \ref{sec:relativetimelock}).
 Un esempio di script di blocco complesso estrapolato dal \cite{bitcoinbip:bip68}:
 
 \lstinputlisting[language=bitcoinscript, label=code:complexscript, caption=Script di Blocco che esprime una multipla condizione di spesa utilizzando OP\_CHECKLOCKTIMEVERIFY.]{code/script/examplebip68.btcs}
 
 L’UTXO creato con il precedente script di blocco può essere sbloccato in due modi:
 \begin{itemize}
-  \item In qualsiasi momento con da A e B con il seguente script:
+  \item In qualsiasi momento  da A e B con il seguente script:
   \begin{lstlisting}[language=bitcoinscript]
    0 <A signature> <B signature> 0
   \end{lstlisting}
@@ -318,7 +353,7 @@ Gli script di sblocco terminano entrambi con dei suffissi, cioè 0 e 1. Questi v
 \lstinputlisting[language=bitcoinscript, label=code:exampleifthenelse, caption=Clausola if-then-else in Bitcoin script.]{code/script/exampleIfThenElse.txt}
 
 Bitcoin core supporta anche timelock relativi, i quali sono utili per stabilire vincoli temporali rispetto al tempo di conferma di una transazione sulla blockchain, così da permettere di esprimere un lasso di tempo relativo che dipende (in questo caso) dall’istante in cui la transazione viene confermata.
-Come i timelock assoluti, i timelock relativi vengono espressi sia a livello di script che a livello di transazione; per fare ciò viene utilizzato il campo nSequence all’interno della transazione di input.
+Come i timelock assoluti, i timelock relativi vengono espressi sia a livello di script che a livello di transazione; per fare ciò viene utilizzato il campo {\tt{nSequence}} all’interno della transazione di input.
 Si possono distinguere attualmente due tipi di timelock relativi:
 
 \begin{itemize}
@@ -339,22 +374,21 @@ Questo tipo di timelock comporta alcune modifiche alle regole di consenso, le qu
 
 \subsubsection{Timelock relativo basato su OP\_CHECKSEQUENCEVERIFY}
 
-Come nel timelock assoluto anche per il timelock relativo è stato introdotto un nuovo operatore in Bitcoin script, l’operatore prende il nome
-OP\_CHECK\-SEQUENCE\-VERIFY (CSV) e lavora in associazione con il campo nSequence, questo operatore verifica la distanza dal tempo in cui è stata accettata UTXO  fino al momento di valutazione dell'operatore CSV. Vediamo un esempio estrapolato dalla demo di {\it miniscript \/} illustrato nel Codice \ref{code:complexscriptnominiscritp}:
+Come nel timelock assoluto, anche per il timelock relativo è stato introdotto un nuovo operatore in Bitcoin script.  Tale operatore prende il nome
+OP\_CHECK\-SEQUENCE\-VERIFY (CSV) e lavora in associazione con il campo nSequence: esso verifica la distanza dal tempo in cui è stata accettata UTXO  fino al momento di valutazione dell'operatore CSV. Vediamo un esempio estrapolato dalla demo di {\it miniscript \/} illustrato nel Codice \ref{code:complexscriptnominiscritp}:
 
-\lstinputlisting[language=bitcoinscript, label=code:complexscriptnominiscritp, caption=Rappresentazione di uno script complesso che utilizza l’operatore OP\_CHECK\-SEQUENCE\-VERIFY.]{code/script/exampleComplexNoMiniscript.btcs}
+\lstinputlisting[language=bitcoinscript, label=code:complexscriptnominiscritp, caption=Uno script complesso che utilizza l’operatore OP\_CHECK\-SEQUENCE\-VERIFY.]{code/script/exampleComplexNoMiniscript.btcs}
 
-L’esempio illustra come bloccare un input con uno script che esprime una condizione 3:3 e solo dopo 90 giorni può essere sbloccato con una combinazione 2:3.
-L’evoluzione di Bitcoin script oltre ad aumentare i campi di applicazione di Bitcoin aumenta drasticamente anche la difficoltà di scrittura degli script complessi che possono ora essere definiti come {\it Smart contract\/}; infatti la scrittura di Smart contract e la gestione del ciclo di vita di esso risulta essere complesso.
-Per risolvere questi problema nell'agosto del 2019 è stato rilasciato il codice sorgente di un linguaggio per rappresentare Bitcoin script in modo strutturato, chiamato {\it miniscript \/}.
+L’esempio illustra come bloccare un input con uno script che esprime una condizione 3:3 e che solo dopo 90 giorni può essere sbloccato con una combinazione 2:3.
+L’evoluzione di Bitcoin script, oltre ad aumentare i campi di applicazione di Bitcoin, aumenta drasticamente anche la difficoltà di scrittura degli script complessi che possono ora essere definiti come {\it Smart contract\/}; infatti la scrittura di Smart contract e la gestione del ciclo di vita di esso risulta essere complesso.
+Per risolvere questi problema nell'agosto del 2019 è stato rilasciato il codice sorgente di un linguaggio per rappresentare Bitcoin script in modo strutturato, chiamato \emph{miniscript}.
 
 \subsubsection{Miniscript}
 
-Miniscript è un linguaggio implementato da Pieter Wuille cofondatore di Blockstream e attuale sviluppatore Bitcoin core.
-Miniscript viene implementato in C++ ed è stato sviluppato per rappresentare un sottinsieme di Bitcoin script in modo strutturato.
-Miniscript è una proposta di miglioramento di Bitcoin core per semplificare la scrittura di smart contract. Ad esempio il Codice \ref{code:complexscriptnominiscritp} può essere riscritto tramite il Codice \ref{code:complexscriptminiscritp} utilizzando miniscript:
+Miniscript è un linguaggio implementato da Pieter Wuille, cofondatore di Blockstream e attuale sviluppatore Bitcoin core, con l'obiettivo di semplificare la scrittura di smart contract.
+Miniscript è implementato in C++ ed è stato sviluppato per rappresentare un sottinsieme di Bitcoin script in modo strutturato. Ad esempio il Codice \ref{code:complexscriptnominiscritp} può essere riscritto tramite il Codice \ref{code:complexscriptminiscritp} utilizzando miniscript:
 
-\begin{lstlisting}[language=miniscript, label={code:complexscriptminiscritp}, caption={Rappresenta un esempio di utilizzo di miniscript.}]
+\begin{lstlisting}[language=miniscript, label={code:complexscriptminiscritp}, caption={Un esempio di utilizzo di miniscript.}]
 thresh(3, pk(key_1), pk(key_2), pk(key_3), older(12960))
 \end{lstlisting}
 

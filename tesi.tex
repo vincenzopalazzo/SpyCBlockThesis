@@ -39,9 +39,14 @@
 \usepackage{siunitx}    % for decimal alignment
 \usepackage{dirtytalk}
 \usepackage{lipsum,caption,graphicx}
+%\usepackage{theorems}
 %\usepackage{tabularx}
+\usepackage{amsthm} % Mi dava problemi il package theorems, ho risolto con questo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{example}{Esempio}[section]
 
 % CONFIGURAZIONE LINK E RIFERIMENTI
 \hypersetup{%
@@ -162,13 +167,13 @@
 % CORSO DI LAUREA - DICITURA (MANTENERE LO SPAZIO) - CANCELLARE O DECOMMENTARE
 %\CorsoDiLaureaIn{Master of Science in }
 % CORSO DI LAUREA - NOME
-\corsodilaurea{Scienze e tecnologie informatiche}
+\corsodilaurea{Scienze e Tecnologie Informatiche}
 
 % TIPOLOGIA TESI
 \TesiDiLaurea{Tesi di Laurea Triennale}
 
 % TITOLO
-\titolo{Estrazione d'informazioni dalla blockchain di BitCoin}
+\titolo{Estrazione di informazioni dalla blockchain di BitCoin}
 
 % SOTTOTITOLO
 %\sottotitolo{Un trattato di toccante urgenza}
