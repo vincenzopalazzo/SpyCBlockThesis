@@ -16,6 +16,7 @@ Le transazioni di Bitcoin sono concettualmente differenti.
 
 
 \begin{example}
+\label{example:aliceBobFirst}
 Consideriamo il seguente scenario con i seguenti personaggi:
 
 \begin{itemize}
@@ -39,7 +40,7 @@ Come illustrato in Figura \ref{fig:examplealicebob}, l'operazione di Alice provo
 
   \item 33mMAc6nGyENdKMQTr5SrKoEkwNTeZQUx9 (indirizzo Bitcoin di Bob);
 
-  \item bc1qlctv5xhgw0yalp2vs47u342pegqm5r843c64dv (indirizzo Bitcoin di Alice): poiché gli UTXO sono indivisibili, essi devono venire consumati interamente.  Nel momento in cui si genera una nuova transazione viene scelto l’UTXO più adatto con un valore di bitcoin uguale al valore da inviare a Bob; se questo non esiste, si seleziona l'UTXO \emph{best fit},  con la conseguenza che il wallet genererà una nuova transazione verso se stesso per recuperare i bitcoin rimanenti. Questo processo è illustrato in Figura \ref{fig:examplechangeutxo}.
+  \item bc1qlctv5xhgw0yalp2vs47u342pegqm5r843c64dv (indirizzo Bitcoin di Alice): poiché gli UTXO sono indivisibili, essi devono venire consumati interamente.  Nel momento in cui si genera una nuova transazione viene scelto l’UTXO più adatto con un valore di bitcoin uguale al valore da inviare a Bob; se questo non esiste, si seleziona l'UTXO \emph{best fit},  con la conseguenza che il wallet genererà una nuova transazione (conosciuta come \emph{exchange transaction}) verso se stesso per recuperare i bitcoin rimanenti. Questo processo è illustrato in Figura \ref{fig:examplechangeutxo}.
 
 
 %  la motivazione della generazione di un UTXO verso Alice, che in questo esempio ha generato una nuova transazione per inviare bitcoin a Bob, è il seguente:  gli UTXO di Alice non vengono mischiati e messi insieme ma bensì gli UTXO sono unità indivisibili e vengono mantenuti separatamente come illustrato in Figura \ref{fig:examplechangeutxo}.
@@ -79,13 +80,10 @@ Possono verificarsi principalmente due tipi di fallimenti durante la creazione d
   \item Una transazione non è valida per il sistema Bitcoin; in questo caso esso viene inoltrata alla rete come una transazione valida, ma essa verrà rigettata dal primo nodo completo\footnote{Per nodo completo viene inteso un nodo che possiede l’intera copia della blockchain ed è abilitato per la validazione di transazioni; esso viene utilizzato comunemente dai miner.} utile. Un esempio di transazione non valida è una transazione che contiene zero input ed un output.
   \item Una transazione valida per il sistema ma non valida per sbloccare UTXO: essa viene accettata dal sistema Bitcoin perché valida, ma la transazione non è capace di sbloccare nessun UTXO. Un esempio è costituito da  una transazione che prova a spendere due volte lo stesso UTXO (evento di doppia spesa).
 \end{enumerate}
-
-Bitcoin pertanto descrive le transazioni come “consumabili”, cioè una transazione di input consuma un UTXO e nello stesso istante produce un UTXO ex novo.
-
+Bitcoin pertanto descrive le transazioni come \say{consumabili}, cioè una transazione di input consuma un UTXO e nello stesso istante produce un UTXO ex novo.
 \begin{example}
-
 Consideriamo nuovament l'esempio precedente  e supponiamo che Bob abbia deciso di inviare parte dei bitcoin ricevuti da Alice a Sara. Una volta ottenuto l’indirizzo Bitcoin di Sara, cioè \say{3CM8TuY8B3\-sCzVQN3FWYnd5skmzSF3uvWA}, per effettuare il trasferimento Bob  crea una nuova transazione di 0.00137927 bitcoin con il seguente identificativo \say{907538047d630d571298096028572\-08705ef3baa4b573e6e845d5a3e6ea\-11464}, raffigurata in Figura \ref{fig:examplebobsara}.
-
+%Credo che sia colpa di questa immagine per lo spazio precedente.
 {\centering
 \vspace{15pt}
 \includegraphics[scale=0.35]{images/example_bob_sara.png}
