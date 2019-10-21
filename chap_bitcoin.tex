@@ -83,7 +83,7 @@ Possono verificarsi principalmente due tipi di fallimenti durante la creazione d
 Bitcoin pertanto descrive le transazioni come \say{consumabili}, cioè una transazione di input consuma un UTXO e nello stesso istante produce un UTXO ex novo.
 \begin{example}
 Consideriamo nuovament l'esempio precedente  e supponiamo che Bob abbia deciso di inviare parte dei bitcoin ricevuti da Alice a Sara. Una volta ottenuto l’indirizzo Bitcoin di Sara, cioè \say{3CM8TuY8B3\-sCzVQN3FWYnd5skmzSF3uvWA}, per effettuare il trasferimento Bob  crea una nuova transazione di 0.00137927 bitcoin con il seguente identificativo \say{907538047d630d571298096028572\-08705ef3baa4b573e6e845d5a3e6ea\-11464}, raffigurata in Figura \ref{fig:examplebobsara}.
-%Credo che sia colpa di questa immagine per lo spazio precedente.
+
 {\centering
 \vspace{15pt}
 \includegraphics[scale=0.35]{images/example_bob_sara.png}
@@ -135,8 +135,8 @@ La struttura della transazione (Tabella \ref{tab:rawtransactionbitcoin}) contien
   \item {\bf LockTime\/}: definisce il primo istante in cui la transazione viene considerata valida e può essere trasmessa sulla rete Bitcoin; è rappresentato attraverso un valore intero compreso tra 0 e 500 milioni, assumendo  significati diversi in base al valore assegnato, cioè:
   \begin{itemize}
     \item \(LockTime = 0 \): la transazione viene propagata ed eseguita all’istante di creazione.
-    \item \( LockTime \in (0, 500 milioni] \): il valore viene interpretato come un’altezza di blocco, cioè la transazione sarà valida solo dopo essere stato pubblicato il blocco con altezza uguale al valore di lock time.
-    \item \(LockTime > 500 milioni \): il valore viene interpretato come timestamp Unix e quindi la transazione sarà valida solo dopo la data rappresentata dal valore di lock time.
+    \item \( LockTime \in (0, 500\; milioni]\): il valore viene interpretato come un’altezza di blocco, cioè la transazione sarà valida solo dopo essere stato pubblicato il blocco con altezza uguale al valore di lock time.
+    \item \(LockTime > 500\; milioni\): il valore viene interpretato come timestamp Unix e quindi la transazione sarà valida solo dopo la data rappresentata dal valore di lock time.
   \end{itemize}
 \end{itemize}
 
