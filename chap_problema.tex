@@ -1,58 +1,66 @@
-\chapter{Problema}
-\label{chap:problema}
+\chapter{Problema}\label{chap:problema}
 
 \section{Introduzione} \label{sec:problemaIntroduzione}
-Bitcoin è a tutti gli effetti una criptovaluta pseudo-anonima, questa sua caratteristica all’inizio ha suscitato particolare interesse all’interno del \emph{Dark Web}; diventando nel 2011 la moneta principale utilizzata per attività come il riciclaggio di denaro, incluse molte attività nel mercato nero. \\
-Il concetto di distributed ledger associato all’utilizzo estensivo di Bitcoin per attività illecite, ha dato vita a numerosi studi di analisi forense per tracciare il flusso del denaro. \\
-Il \emph{tracking} del flusso di bitcoin nella maggior parte dei casi viene effettuato tramite la creazione di grafi con cui eseguire le opportune analisi. \\
-I grafi più comuni utilizzati sono i grafi di transazioni e i grafi degli address.
+
+Bitcoin è a tutti gli effetti una criptovaluta pseudo-anonima. Fin dalla sua introduzione, questa  caratteristica  ha suscitato particolare interesse all’interno del \emph{Dark Web}; ciò ha reso i bitcoin, a partire dal 2011,  lo strumento di pagamento elettronico principale  per attività correlate al mercato nero di droghe, farmaci e armi, nonché uno dei principali strumenti per il riciclaggio di denaro.\\
+Il concetto di distributed ledger, associato all’utilizzo estensivo di Bitcoin per attività illecite, ha dato vita a numerosi studi di analisi forense per tracciare il flusso dei bitcoin. Queste analisi vengono di solito   effettuate a partire da rapresentazioni a grafo della blockchain di Bitcoin.\\
+I grafi più comunemente utilizzati sono il \emph{grafo delle transazioni} e il \emph{grafo degli address}.
 
 \section{Grafo delle transazioni} \label{sec:grafoDelleTransazioniProblema}
-Attraverso l’introduzione dei concetti basilari della tecnologia Bitcoin (Capitolo \ref{chap:bitcoin}) la creazione di questo grafo risulta quasi intuitiva, infatti si può ricostruire il flusso delle transazioni utilizzando il backlink contenuto all’interno delle transazioni di input.
-Riesaminando l’Esempio \ref{example:aliceBobFirst}, possiamo costruire un grafo delle transazioni coinvolte nello scambio di bitcoin tra Alice e Bob: quando abbiamo esaminato la nuova transazione prodotta da Alice e indirizzata a Bob con l’id \say{ddd587d\-54b693\-a9bc9bda\-2218c6f5e17\-979f6ac53755\-c5c1f668f3fa\-728e472d} abbiamo osservato che all’interno della transazione di input era contenuto un id di transazione appartenente ad un precendete UTXO in possesso di Alice che ricordiamo essere: \say{a57c2a4\-27dfa\-591b1243\-343c8413\-c249faac\-3e5df2fe\-4fa1fc93dca\-3d904f3c7}. \\ %Abbiamo messo accapo
-In Figura \ref{fig:graphtxproblem} viene rappresentato il grafo risultante.
 
-{\centering
-\vspace{5pt}
+Il grafo delle transazioni è un grafo diretto i cui nodi rappresentano transazioni e i cui archi denotano il consumo di transazioni da parte di altre transazioni. Come illustrato nel Capitolo \ref{chap:bitcoin}, questo grafo può essere costruito sfruttando i backlink contenuti all’interno delle transazioni di input.
+
+\begin{example}
+
+Consideriamo nuovamente l’Esempio \ref{example:aliceBobFirst}, nel quale Alice vuole trasferire 0.00700767 bitcoin a Bob. Esaminando la nuova  transazione prodotta da Alice e indirizzata a Bob con l’id \say{ddd587d\-54b693\-a9bc9bda\-2218c6f5e17\-979f6ac53755\-c5c1f668f3fa\-728e472d}, possiamo osservare che all’interno della transazione di input era contenuto un id di transazione appartenente ad un precendete UTXO in possesso di Alice (\say{a57c2a4\-27dfa\-591b1243\-343c8413\-c249faac\-3e5df2fe\-4fa1fc93dca\-3d904f3c7}). Conseguentemente, il frammento di grafo corrispondente a questo scambio di bitcoin, mostrato in Figura \ref{fig:graphtxproblem}, contiene due nodi, il primo dei quali corrisponde all'UTXO di Alice, mentre il secondo alla transazione di Alice verso Bob.
+
+\begin{figure}
+\centering
 \includegraphics[scale=0.35]{images/exampleWithGraph/aliceBoxTx.png}
-\captionof{figure}{Rappresentazione sotto forma di grafo della transazione tra Alice e Bob descritta nell’Esempio \ref{example:aliceBobFirst}.\label{fig:graphtxproblem}}
-\vspace{10pt}
-\par}
+\caption{Frammento del grafo delle transazioni relativo alla  transazione tra Alice e Bob descritta nell’Esempio \ref{example:aliceBobFirst}.\label{fig:graphtxproblem}}
+\end{figure}
+
+\end{example}
 
 \section{Grafo degli address} \label{sec:grafoDegliAddressProblema}
-La creazione di questa tipologia di grafo è molto meno intuitiva, perché come visto nel Capitolo \ref{chap:bitcoin}, la tecnologia non utilizza nessun riferimento a wallet o persone, ma basterebbe una chiave privata con la rispettiva chiave pubblica per interagire con l’intero sistema. \\
-Gli address generati attraverso la chiave pubblica sono contenuti all’interno dello script di blocco in modo da rendere la transazione sbloccabile solo dal proprietario dell’address. \\
-Come descritto nella Sezione \ref{sec:bitcoinScriptBitcoin}, gli address possono essere originati anche da uno script tipo P2SH, P2WPKH e P2WSH; ciò rende la creazione del grafo degli address molto insidiosa, perché gli address ricavati dagli script (se utilizzati correttamente) sono univoci e quindi rappresenterebbero un’identità diversa all’interno del grafo, anche se molti di questi potrebbero appartenere allo stesso wallet. \\
-Come illustrato nell’Esempio \ref{example:aliceBobFirst} Alice genera una nuova transazione consumando un suo UTXO con un valore maggiore o uguale del valore di bitcoin necessario; nell'esempio viene utilizzato un UTXO con un quantitativo maggiore, comportando così la generazione di una exchange transaction. \\
-Questo tipo di transazione porta alle seguenti riflessioni:
+
+Il grafo degli address è un grafo diretto i cui nodi sono address e i cui archi rappresentano flussi di bitcoin da un address ad un altro, indotti direttamente o indirettamente da transazioni Bitcoin.
+
+La creazione di questa tipologia di grafi è molto meno intuitiva, poiché, come visto nel Capitolo \ref{chap:bitcoin}, le transazioni non contengono alcun riferimento esplicito a wallet o persone, sfruttando, invece, chiavi private e corrispondenti chiavi pubbliche. Gli address generati attraverso la chiave pubblica sono contenuti all’interno dello script di blocco in modo da rendere la transazione sbloccabile solo dal proprietario dell’address. \\
+Come descritto nella Sezione \ref{sec:bitcoinScriptBitcoin}, gli address possono essere originati anche da uno script tipo P2SH, P2WPKH e P2WSH; ciò rende la creazione del grafo degli address molto insidiosa, perché gli address ricavati dagli script (se utilizzati correttamente) sono univoci e quindi rappresenterebbero un’identità diversa all’interno del grafo, anche se molti di questi potrebbero appartenere in realtà allo stesso wallet.
+
+\begin{example}
+Consideriamo nuovamente l’Esempio \ref{example:aliceBobFirst}. In tale esempio  Alice genera una nuova transazione consumando un suo UTXO con un valore maggiore o uguale alla quantità  di bitcoin che desidera trasferire; nell'esempio viene utilizzato un UTXO con un quantitativo maggiore, il che comporta così la generazione di una exchange transaction per riaccreditare la somma eccedente attraverso un nuovo UTXO.
+
+Modellare questo semplice trasferimento può portare a due probelamtiche.
 
 \begin{itemize}
-  \item L’exchange transaction potrebbe contenere un address differente, in questo specifico caso la transazione contiene un address ricavato da uno script Witness (che potrebbe essere ricavato dalla medesima chiave pubblica o da chiavi pubbliche distinte contenute all’interno del wallet).
+  \item L’exchange transaction potrebbe contenere un address differente: in questo specifico caso la transazione contiene un address ricavato da uno script Witness (che potrebbe essere ricavato dalla medesima chiave pubblica o da chiavi pubbliche distinte contenute all’interno del wallet).
 
-  \item L'exchange transaction potrebbe contenere uno script P2PKH e quindi un indirizzo primitivo, ma quest’ultimo potrebbe essere differente dall’address di origine. Questo lascerebbe pensare che i bitcoin si siano diretti verso un nuovo proprietario.
-  Nella maggior parte dei casi è solo una tecnica per aumentare la privacy utilizzata dai wallet.
-  Ad oggi molti dei wallet utilizzati contengono un set di chiavi private che permette loro di generare un address diverso ad ogni nuova operazione.
+  \item L'exchange transaction potrebbe contenere uno script P2PKH e quindi un indirizzo primitivo, ma quest’ultimo potrebbe essere differente dall’address di origine. Questo lascerebbe pensare che i bitcoin  siano diretti verso un nuovo proprietario, mentre nella maggior parte dei casi è solo una tecnica per aumentare la privacy utilizzata dagli wallet.
+Infatti, molti  wallet comunemente utilizzati contengono un set di chiavi private che permette loro di generare un address diverso ad ogni nuova operazione.
 \end{itemize}
 
-La creazione del grafo contiene quindi una serie di problematiche riguardante gli address, che possiamo riassumere in:
+\end{example}
 
-\begin{itemize}
-  \item Il destinatario potrebbe usare indirizzi originati da script (come un address P2SH) rendendo così difficile associare l’appartenenza allo stesso wallet di più address; oppure l’address potrebbe camuffare uno script P2MS N:M con destinatari distinti. \\
-  In Figura \ref{fig:alicebobgraphaddress} viene rappresentato il grafo di address coinvolti nell’Esempio \ref{example:aliceBobFirst}, dove l’address \say{33mMAc6nGyENdKMQTr5SrKoEkwNTeZQUx9} rappresenta una particolare tipologia di indirizzo utilizzato da Bob, infatti l’address viene ricavato da uno script P2WSH che a sua volta camuffa uno script P2MS. \\
+La creazione del grafo degli address comporta quindi una serie di problematiche riguardanti gli address, che possono rivelarsi molto significative.
+
+\paragraph*{Indirizzi originati da script}  Il destinatario potrebbe usare indirizzi originati da script (come un address P2SH) rendendo così difficile associare l’appartenenza allo stesso wallet di più address; in alternativa,  l’address potrebbe camuffare uno script P2MS N:M con destinatari distinti. \\
+  In Figura \ref{fig:alicebobgraphaddress} viene rappresentato il grafo di address coinvolti nell’Esempio \ref{example:aliceBobFirst}, dove l’address \say{33mMAc6nGyENdKMQTr5SrKoEkwNTeZQUx9} rappresenta una particolare tipologia di indirizzo utilizzato da Bob; infatti l’address viene ricavato da uno script P2WSH che a sua volta camuffa uno script P2MS. \\
   Bob ha infatti utilizzato uno script P2MS con due address differenti al suo interno, appartenenti allo stesso wallet. \\
-  Gli address che iniziano per \say{bc1q} appartengono al medesimo wallet di Alice; in cui è presente un exchange transaction (Il modo in cui viene ricavato l’address dalla transazione di input verrà illustrato successivamente).
+  Gli address che iniziano per \say{bc1q} appartengono al medesimo wallet di Alice; i nodi corrispondenti sono collegati attraverso un arco corrispondente ad una exchange transaction.
 
-  {\centering
-  \vspace{15pt}
-  \includegraphics[scale=0.43]{images/exampleWithGraph/exchange-transaction-alice-bob.png}
-  \captionof{figure}{Rappresentazione del grafo di address coinvolti nella transazione illustrata nell’Esempio \ref{example:aliceBobFirst}.\label{fig:alicebobgraphaddress}}
-  \vspace{10pt}
-  \par}
+\begin{figure}
+\centering
+\includegraphics[scale=0.43]{images/exampleWithGraph/exchange-transaction-alice-bob.png}
+  \caption{Frammento del grafo di address corrispondente alla transazione illustrata nell’Esempio \ref{example:aliceBobFirst}.\label{fig:alicebobgraphaddress}}
+\end{figure}
 
-  \item La generazione delle exchange transaction contiene, nella maggior parte dei casi, un address ricavato da una chiave pubblica diversa, appartenente allo stesso wallet.
-  \begin{example} \label{example:newalicebobaddress}
-   Si consideri un nuovo scenario dove Alice spedisce dei bitcoin a Bob ed entrambi i partecipanti utilizzano address primitivi:  Alice invia all’indirizzo di Bob 0.00336527 bitcoin, generando una nuova transazione con il seguente id \say{8b22a9\-d19ee58ee1b\-5283632f70\-fbeceaf13\-948dbc3d\-48ea22c02\-1a1d82\-e1f06} verso l’address di Bob \say{1CPD7DqguruujwvfaegKsV6ewiFvSZTiB3}.
-    Il wallet di Alice utilizza un suo UTXO per per effettuare la spedizione di bitcoin con un valore maggiore del necessario, quindi il wallet è costretto a generare un exchange transaction per dividere UTXO. \\
+\paragraph*{Address ricavati da chiavi pubbliche diverse} La generazione delle exchange transaction contiene, nella maggior parte dei casi, un address ricavato da una chiave pubblica diversa, appartenente allo stesso wallet, come illustrato nel seguente esempio.
+
+\begin{example} \label{example:newalicebobaddress}
+   Si consideri un nuovo scenario dove Alice spedisce dei bitcoin a Bob ed entrambi i partecipanti utilizzano address primitivi:  Alice invia all’indirizzo di Bob 0.00336527 bitcoin, generando una nuova transazione con il seguente id \say{8b22a9\-d19ee58ee1b\-5283632f70\-fbeceaf13\-948dbc3d\-48ea22c02\-1a1d82\-e1f06} verso l’address di Bob \say{1CP\-D7Dqgu\-ruujwvfa\-egKsV6ew\-iFvSZTiB3}.
+    Il wallet di Alice utilizza un suo UTXO per per effettuare la spedizione di bitcoin con un valore maggiore del necessario, quindi il wallet è costretto a generare una exchange transaction per dividere UTXO. \\
     L’UTXO di Alice con un valore di bitcoin pari a 0.00682055 bitcoin si frammenta in due nuove transazioni:
 
     \begin{itemize}
@@ -60,45 +68,50 @@ La creazione del grafo contiene quindi una serie di problematiche riguardante gl
       \item L’exchange transaction verso il wallet di Alice del valore di 0.00341851 bitcoin.
     \end{itemize}
 
-    La Figura \ref{fig:newalicebobaddress} rappresenta il grafo risultante degli address coinvolti.
-    {\centering
-    \vspace{15pt}
+La Figura \ref{fig:newalicebobaddress} rappresenta il grafo risultante degli address coinvolti.
+
+\begin{figure}
+\centering
     \includegraphics[scale=0.43]{images/exampleWithGraph/example-p2pkh-exchange-transaction.png}
-    \captionof{figure}{Rappresentazione del grafo degli address coinvolti nella transazione dell’esempio \ref{example:newalicebobaddress}.\label{fig:newalicebobaddress}}
-    \vspace{10pt}
-    \par}
+    \caption{Frammento  del grafo degli address coinvolti nella transazione dell’esempio \ref{example:newalicebobaddress}.\label{fig:newalicebobaddress}}
+\end{figure}
 
     In Figura \ref{fig:newalicebobaddress} si possono osservare tre address distinti originati da chiavi pubbliche distinte, dove però i proprietari sono solo Alice e Bob:
     \begin{itemize}
-      \item Gli address di Alice sono: \say{1KE\-dN2XMu\-S2b8xVc\-HqjgJN\-7wwztT\-pPB1N3}, che rappresenta l’address di orgine; \\
-      \say{1JP5F\-mXVUCB\-CUhubME\-oDmowpv\-Qprchy\-P3q} che rappresenta l’address a cui viene indirizzata l’exchange transaction. Entrambi gli address appartengono al wallet di Alice ma originate da chiavi pubbliche diverse.
+      \item Gli address di Alice sono:
+      \begin{enumerate}
+      \item \say{1KE\-dN2XMu\-S2b8xVc\-HqjgJN\-7wwztT\-pPB1N3}, che rappresenta l’address di orgine;
+
+      \item \say{1JP5F\-mXVUCB\-CUhubME\-oDmowpv\-Qprchy\-P3q} che rappresenta l’address a cui viene indirizzata l’exchange transaction. Entrambi gli address appartengono al wallet di Alice, ma sono originati da chiavi pubbliche diverse.
+      \end{enumerate}
       \item L’address di Bob inviato ad Alice per eseguire la spedizione di Bitcoin: \say{1CPD7Dq\-guruujwvf\-aegKsV6ew\-iFvSZTiB3}.
     \end{itemize}
   \end{example}
-\end{itemize}
-Inoltre all’origine di Bitcoin, non tutti i wallet contenevano un set di chiavi private e questo comportava la creazone del exchange transactions verso il medesimo address.
-\begin{example}
+
+Nelle prime versioni di Bitcoin, non tutti i wallet contenevano un set di chiavi private e questo comportava la creazione di exchange transaction verso il medesimo address, come mostrato nell'esempio \ref{ex:sameaddr}.
+
+\begin{example}\label{ex:sameaddr}
+
   Prendiamo in esame la transazione con il seguente id \say{15bf\-8b35c\-9210efe7e448\-c5fc6b69b47b3a8\-cac9c148c7cc\-57c65f266\-384d9b8} in cui possiamo osservare la presenza dell’address \say{1EinmJDn\-33yFPGafKu\-Cw2guUqPSMaNKo5v} sia in output che in input.
   La Figura \ref{fig:exchangeaddressrecicle} rappresenta la transazione ricercata attraverso un esploratore blockchain.
 
-  {\centering
-  \vspace{15pt}
+\begin{figure}
+\centering
   \includegraphics[scale=0.35]{images/exampleWithGraph/exchange-tx-with-same-address.png}
-  \captionof{figure}{Rappresenta un exchange transaction verso lo stesso indirizzo di origine\cite{blockstream:esplora}.\label{fig:exchangeaddressrecicle}}
-  \vspace{5pt}
-  \par}
+  \caption{Una exchange transaction verso lo stesso indirizzo di origine\cite{blockstream:esplora}.\label{fig:exchangeaddressrecicle}}
+\end{figure}
 
-  In questo caso il flusso di bitcoin è chiaro, La Figura \ref{fig:graphAddresssameaddresschange} rappresenta il grafo di address coinvolti nella transazione.
+  In questo caso il flusso di bitcoin è chiaro e il corrispondente grafo degli address è mostrato  nella Figura \ref{fig:graphAddresssameaddresschange}.
 
-    {\centering
-  \vspace{15pt}
+\begin{figure}
+\centering
   \includegraphics[scale=0.48]{images/exampleWithGraph/exchange-tx-with-same-address-graph.png}
-  \captionof{figure}{Rappresenta il grafo risultante degli address coinvolti nella transazione con id 15bf8\-b35c9210\-efe7e448c5fc\-6b69b47b3a\-8cac9c14\-8c7cc57c6\-5f26638\-4d9b8.\label{fig:graphAddresssameaddresschange}}
-  \vspace{10pt}
-  \par}
+  \caption{Il grafo degli address coinvolti nella transazione con id 15bf8\-b35c9210\-efe7e448c5fc\-6b69b47b3a\-8cac9c14\-8c7cc57c6\-5f26638\-4d9b8.\label{fig:graphAddresssameaddresschange}}
+\end{figure}
 \end{example}
-La costruzione del grafo oltre ad essere insidiosa per i problemi relativi alla frammentazione degli address, costringe ad accedere alle transazioni di output contenute all’interno delle transazioni, il cui riferimento risiede nelle transazioni di input della nuova transazione, per prelevare l’address di origine.
-La Figura \ref{fig:processgetorigin} Illustra il procedimento per ottenere l’address di origine dell’Esempio \ref{example:aliceBobFirst}.
+
+La costruzione del grafo degli address, oltre ad essere insidiosa per i problemi relativi alla frammentazione degli address, costringe ad accedere alle transazioni di output contenute all’interno delle transazioni, il cui riferimento risiede nelle transazioni di input della nuova transazione, per prelevare l’address di origine.
+La Figura \ref{fig:processgetorigin} illustra il procedimento per ottenere l’address di origine dell’Esempio \ref{example:aliceBobFirst}.
 
 {\vspace{15pt}
 \includegraphics[scale=0.25]{images/howFindTheAddressTo.png}
