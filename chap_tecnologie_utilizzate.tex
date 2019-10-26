@@ -1,0 +1,43 @@
+\chapter{Tecnologie Utilizzate}\label{chap:tecnologieUtilizzate}
+
+\section{Bitcoin-Cryptography-Library} \label{sec:cryptographyBitcoinLib}
+
+La libreria Bitcoin-Cryptography-Library ha permesso di importare la crittografia di base utilizzata in Bitcoin, la libreria è stata sviluppata in C++11 ed in Java dallo sviluppatore Nayuki, la libreria risiede su Github sotto licenza MIT ed è progettata principalmente per microcontrollori ad 8 bit (Arduino, Atmel megaAVR/ATmega, etc.) con il supporto anche per dispositivi con architetture x86, x86-64 e 32-bit ARM.
+
+\section{RapidJSON} \label{sec:rapidjsonLib}
+
+La libreria RapidJSON ha permesso la decodifica in formato serializzato delle informazioni lette dal parser consentendo di creare una versione JSON della blockchain; è scritta in C++ dal team di sviluppo Tencent, viene rilasciata su Github sotto licenza BSD.
+Con l’utilizzo della libreria siamo riusciti ad introdurre all’interno del parser una deserializzazione quasi real time di ogni blocco.
+
+
+\section{Bitcoin-api-cpp} \label{sec:bitcoinApiLib}
+
+La libreria bitcoin-api-cpp implementa un wrapper per il framework RPC di Bitcoin-core, risiede su Github sotto licenza MIT e viene implementata in C++ dallo sviluppatore Krzysztof Okupski.
+Con l'utilizzo di questa liberia siamo riusciti ad'interfacciarci con il nodo Bitcoin per deserializzare le informazioni relative allo script di blocco.
+
+\section{SpyCBlockRPC} \label{sec:spycblockrpcLib}
+
+Questa libreria rappresenta un sottomodulo della soluzione proposta, sviluppato per disaccoppiare l'implementazione del parser dal nodo Bitcoin-core.
+La libreria risiede su Github sotto licenza Apache License 2.0, sviluppata in C++.
+
+\section{JSON-RPC 1.0} \label{sec:jsonrpchttp}
+
+Bitcoin-core offre un framwork RPC (Remote Procedure Call) basato sul protocollo HTTP per consentire di utilizzare servizi offerti dal nodo Bitcoin, tipo: esaminare lo stato della blockchain oppure effettuare la crezione di transazioni in formato esadecimale.
+Abbiamo utilizzato questo servizio offerto da Bitcoin-core per l'estrazione dell'address dallo script di blocco; inoltre ci ha consentito di ricavare i dati della transazionie precedente contenuta all'interno della transazione di input attualmente esaminata senza l'implementazione di una cache, questo però deteriora la velocità della soluzione proposta.
+
+\section{Zlib} \label{sec:zlib}
+
+La libreria zlib è una famosa libreria di compressione open surce, sviluppata da Jean loup Gailly e Mark Adler in C; raggiungendo uno standard RFC nel maggio 1996.
+Viene inclusa all'interno la version 1.1 del Java Development Kit.
+La libreria viene utilizzata per ridurre lo spazio richiesto dalle informazioni prodotte riguardanti i grafi, essendo uno standard possiede numerose implementazioni in vari linguaggi questo semplifica anche la fase di caricamento delle informazioni prodotte utilizzando linguaggi diversi dal C/C++.
+
+\section{Bitcoin core library} \label{sec:bitcoinCoreLib}
+
+Sono state utilizzate alcune parti del codice sorgente di Bitcoin core per diminuire il quantitativo di test da produrre e sopratutto diminuire il numero di errori possibili durante il parsing dei dati.\\
+Le librerie estratte sono:
+\begin{itemize}
+  \item La libreria \say{serialize.h} con le relative dipendenze con cui è stato possibile serializzare/deserializzare ogni singolo tipo di dato nel formato corretto, ad esempio: le informazioni vengono deserializzate in \emph{little andian} e solo alcuni tipi di dati tipo l'hash viene deserializzato in \emph{big endian}.
+  \item La libreria \say{endian.h} con le relative dipendenze con cui è stato possibile gestire rappresentazione dei dati in formato little endian e big endian.
+  \item La libreria \say{uint256.h} con le relative dipendenze con cui è stato implementato il tipo di dato per rappresentare gli hash.
+\end{itemize}
+Tutte le librerie utilizzate ed estratte da Bitcoin core sono rilasciate sotto licenza MIT.
