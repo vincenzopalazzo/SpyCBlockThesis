@@ -1,2 +1,21 @@
 \chapter{Appendice}
-\label{app:a}
+\label{app:appendixCode}
+
+
+\section{Decodifica Transazione con Segregated Witness} \label{sec:decodeTransactionCode}
+
+\lstinputlisting[language=Python, label=code:decodeTransaction, caption=Porzione di codice estrapolato da \cite{parser:blocktools} che riporta il metodo di deserializzazione della transazione dopo l'aggiornamto al Segregated Witness.]{code/decodeTransaction.py}
+
+%fragmentJSONSerializationTransaction.json
+\section{Frammento di codice estratto dalla serializzazione in JSON di SpyCBlock} \label{sec:genesiBlockTxJSON}
+
+\lstinputlisting[language=JSON, label=code:genesiBlockTxJSON, caption=Frammento della serializzazione in JSON del blocco di genesi riguardante la prima transazione all'interno la blockchain di Bitcoin.]{code/fragmentJSONSerializationTransaction.json}
+
+%serializationTestWithShaTx.cpp
+\section{Processo per la creazione dell'hash rappresentato in un test di unità} \label{sec:genesiBlockTxJSON}
+
+\lstinputlisting[language=C++, label=code:processBuilHashTx, caption=Processo di creazione dell'hash della transazione estratto dai test di unità di SpayCBlock.]{code/serializationTestWithShaTx.cpp}
+
+\section{Processo per la creazione dell'address primitivo da una chiave pubblica} \label{sec:buildAddressFromPubKey}
+
+\lstinputlisting[language=C++, label=code:processBuilHashTx, caption=Processo per la creazione dell'address primitivo da una chiave pubblica \cite{parser:bitcoinscript}.]{code/buildAddressToPublicKey.cpp}

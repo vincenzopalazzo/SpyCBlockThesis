@@ -42,11 +42,16 @@
 %\usepackage{theorems}
 %\usepackage{tabularx}
 \usepackage{amsthm} % Mi dava problemi il package theorems, ho risolto con questo.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \theoremstyle{definition}
 \newtheorem{example}{Esempio}[section]
+
+\definecolor{cosmogreen}{RGB}{61, 176, 23}
+\definecolor{cosmoorange}{RGB}{255, 117, 24}
+\definecolor{cosmoblue}{RGB}{25, 103, 190}
+\definecolor{cosmored}{RGB}{255, 0, 57}
+\definecolor{cosmoblack}{RGB}{55, 58, 60}
 
 % CONFIGURAZIONE LINK E RIFERIMENTI
 \hypersetup{%
@@ -54,53 +59,107 @@
     bookmarksopen,
     pdfstartview={FitH},
     colorlinks,
-    linkcolor={black}, %COLORE DEI RIFERIMENTI AL TESTO
-    citecolor={blue}, %COLORE DEI RIFERIMENTI ALLE CITAZIONI
-    urlcolor={blue} %COLORI DEGLI URL
+    linkcolor={cosmoblack}, %COLORE DEI RIFERIMENTI AL TESTO
+    citecolor={cosmoblue}, %COLORE DEI RIFERIMENTI ALLE CITAZIONI
+    urlcolor={cosmoblue} %COLORI DEGLI URL
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % CONFIGURAZIONE LISTATI/CODICE
-\definecolor{commentgreen}{RGB}{2,112,10}
-\definecolor{eminence}{RGB}{108,48,130}
-\definecolor{weborange}{RGB}{255,165,0}
-\definecolor{frenchplum}{RGB}{129,20,83}
 
-\lstset {
-    language=C++,
-    frame=tb,
-    tabsize=4,
-    showstringspaces=false,
-    numbers=left,
-    %upquote=true,
-    commentstyle=\color{commentgreen},
-    keywordstyle=\color{eminence},
-    stringstyle=\color{red},
-    basicstyle=\small\ttfamily, % basic font setting
-    emph={int,char,double,float,unsigned,void,bool},
-    emphstyle={\color{blue}},
-    escapechar=\&,
-    % keyword highlighting
-    classoffset=1, % starting new class
-    otherkeywords={>,<,.,;,-,!,=,~},
-    morekeywords={>,<,.,;,-,!,=,~},
-    keywordstyle=\color{weborange},
-    classoffset=0,
-    captionpos=b,
-    breaklines=true
+
+\lstset{frame=tb,
+  keywords = {EXPECT_EQ, TEST, std::string, Bytes}
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{cosmoblack},
+  keywordstyle=\color{cosmoblue},
+  commentstyle=\color{cosmoorange},
+  stringstyle=\color{cosmogreen},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\lstset{frame=tb,
+  keywords = {__init__}
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{cosmoblack},
+  keywordstyle=\color{cosmoblue},
+  commentstyle=\color{cosmoorange},
+  stringstyle=\color{cosmogreen},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
 }
 
 % definizione BITCOIN script
 \lstdefinelanguage{bitcoinscript}{
     alsodigit = {-},
     keywords = {OP_DUP,OP_HASH160,OP_EQUALVERIFY,OP_CHECKSIG, OP_CHECKMULTISIG,
-                OP_0, OP_2, OP_3, OP_EQUAL},
+                OP_0, OP_2, OP_3, OP_EQUAL, OP_RETURN, OP_IF, OP_CHECKLOCKTIMEVERIFY,
+                OP_DROP, OP_CHECKSIGVERIFY, OP_ELSE, OP_ENDIF, OP_CHECKMULTISIG, OP_ELSE,
+                OP_ENDIF, OP_SWAP, OP_ADD, OP_VERIFY, OP_PUSHDATA1},
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=left,
+    numberstyle=\tiny\color{cosmoblack},
+    keywordstyle=\color{cosmoblue},
+    commentstyle=\color{cosmoorange},
+    stringstyle=\color{cosmogreen},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
 }
 
 %Definizione MINISCRIPT
 \lstdefinelanguage{miniscript}{
     keywords = {thresh,pk,older},
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=left,
+    numberstyle=\tiny\color{cosmoblack},
+    keywordstyle=\color{cosmoblue},
+    commentstyle=\color{cosmoorange},
+    stringstyle=\color{cosmogreen},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+\lstdefinelanguage{JSON}{
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=left,
+    numberstyle=\tiny\color{cosmoblack},
+    keywordstyle=\color{cosmoblue},
+    commentstyle=\color{cosmoorange},
+    stringstyle=\color{cosmogreen},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
 }
 
 \setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
@@ -282,21 +341,8 @@ Piacere, sommario.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% INDICI - ELIMINARE GLI INDICI NON NECESSARI
-
 % INDICE GENERALE
 \tableofcontents
-
-% INDICE DELLE FIGURE
-\listoffigures
-
-% INDICE DELLE TABELLE
-\listoftables
-
-% INDICE DEI CODICI
-\listofcodes
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mainmatter
 
@@ -313,6 +359,19 @@ Piacere, sommario.
 \appendix
 % INCLUSIONE APPENDICI - - PERSONALIZZARE - TENERE COERENTE CON LISTA IN ALTO
 \include{app_a}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% INDICI - ELIMINARE GLI INDICI NON NECESSARI
+
+% INDICE DELLE FIGURE
+\listoffigures
+
+% INDICE DELLE TABELLE
+\listoftables
+
+% INDICE DEI CODICI
+\listofcodes
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
