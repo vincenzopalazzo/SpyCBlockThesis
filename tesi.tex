@@ -1,5 +1,5 @@
 %CLASSE DOCUMENTO - LINGUA E DIMENSIONE FONT
-\documentclass[11pt]{toptesi}
+\documentclass[11pt, a4paper, titlepage]{toptesi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -42,6 +42,8 @@
 %\usepackage{theorems}
 %\usepackage{tabularx}
 \usepackage{amsthm} % Mi dava problemi il package theorems, ho risolto con questo.
+\usepackage[swapnames]{frontespizio}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \theoremstyle{definition}
@@ -202,71 +204,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% INFORMAZIONI PDF - PERSONALIZZARE
-\pdfinfo{%
-  /Title    (Estrazione di dati dalla blockchain di BitCoin)
-  /Author   (Vincenzo Palazzo)
-  /Subject  (Un trattato di toccante urgenza)
-  /Keywords (LaTeXi Estrazione di dati dalla blockchain di BitCoin Università degli studi della Basilicata)
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% FRONTESPIZIO - PERSONALIZZARE
-% ELIMINATE LE VOCI CHE NON VI SERVONO
-
-% UNIVERSITA - NOME
-\ateneo{università degli studi della Basilicata}
-
-% FACOLTA - DICITURA - CANCELLARE O DECOMMENTARE
-%\FacoltaDi{Faculty of}
-% FACOLTA - NOME
-%\facolta{Ingegneria Informatica}
-
-% CORSO DI LAUREA - DICITURA (MANTENERE LO SPAZIO) - CANCELLARE O DECOMMENTARE
-%\CorsoDiLaureaIn{Master of Science in }
-% CORSO DI LAUREA - NOME
-\corsodilaurea{Scienze e Tecnologie Informatiche}
-
-% TIPOLOGIA TESI
-\TesiDiLaurea{Tesi di Laurea Triennale}
-
-% TITOLO
-\titolo{Estrazione di informazioni dalla blockchain di BitCoin}
-
-% SOTTOTITOLO
-%\sottotitolo{Un trattato di toccante urgenza}
-
-% RELATORE/I - DICITURA - CANCELLARE SE UN SOLO RELATORE
-%\AdvisorName{Relatori}
-% RELATORE - PROF. NOME E COGNOME
-\relatore{Dott.\ Carlo Sartiani}
-% RELATORE AGGIUNTIVO - PROF NOME E COGNOME
-% SE SI HA SOLO UN RELATORE ELIMINARE INSIEME AD AdvisorName
-%\secondorelatore{prof.\ Neo Cortex}
-
-% TUTORE AZIENDALE - TITOLO NOME E COGNOME
-%\tutoreaziendale{Ing. Carlino Cane}
-% TUTORE AZIENDALE - DICITURA//AZIENDA
-%\NomeTutoreAziendale{Tutore Aziendale\\FeelGood Inc}
-
-% CANDIDATO - DICITURA (MANTENERE I DUE PUNTI) - CANCELLARE O DECOMMENTARE
-%\CandidateName{Candidate:}
-
-% CANDIDATO - NOME E COGNOME
-\candidato{Vincenzo Palazzo}
-% CANDIDATA - ELIMINARE O SOSTITUIRE CON IL PRECEDENTE
-%\candidata{Tinasa de Tinasis}
-% SECONDO CANDIDATO - ELIMINARE O DECOMMENTARE
-%secondocandidato{Bombo de Bombis}
-%secondacandidata{Bomba de Bombis}
-
-% LOGO UNIVERSITA
-\logosede{images/unibas-logo}
-
-% DATA - MESE ANNO
-\sedutadilaurea{12 dicembre 2019}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % LISTA DEI CAPITOLI DA INCLUDERE - PERSONALIZZARE
@@ -291,7 +228,25 @@ app_a,%
 % INIZIO DOCUMENTO
 \begin{document}
 
-\frontespizio
+\begin{frontespizio}
+\Margini{2.5cm}{3cm}{2.5cm}{3.5cm}
+\Preambolo{\renewcommand{\fronttitlefont}{\fontsize{24}{32}\bfseries}}% questo era proprio sbagliato (agisci su 32 se vuoi modificare lo spazio interlinea
+\Preambolo{\renewcommand{\frontpretitlefont}{\fontsize{14}{14}\scshape}}
+\Preambolo{\renewcommand{\frontinstitutionfont}{\fontsize{17}{17}\scshape}}
+\Preambolo{\renewcommand{\frontdivisionfont}{\fontsize{12}{40}\normalfont}}% modifica il 40 finché trovi quello che desideri
+\Preambolo{\renewcommand{\frontfixednamesfont}{\fontsize{12}{12}\normalfont}}
+\Preambolo{\renewcommand{\frontnamesfont}{\fontsize{12}{12}\bfseries\vspace{5cm}}}
+\Logo[3cm]{images/unibas-logo.png}
+\Istituzione {Università degli studi della Basilicata}
+\Divisione {Scuola di Ingegneria}
+\vspace{2mm}
+\Corso [Laurea Triennale]{Scienze e tecnologie informatiche}
+\Titoletto {Tesi di Basi di dati}
+\Titolo {Estrazione d'informazioni dalla \\blockchain di Bitcoin​}
+\Candidato {Palazzo Vincenzo}
+\Relatore {Dott.\\Carlo Sartiani}
+\Annoaccademico {2018-2019}
+\end{frontespizio}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -329,12 +284,6 @@ Citatemi dicendo che sono stato citato male.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% RINGRAZIAMENTI - PERSONALIZZARE
-\ringraziamenti
-Grazie a Grazia, Graziella e la sorella.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % ABSTRACT - PERSONALIZZARE
 \sommario
 Piacere, sommario.
@@ -355,6 +304,11 @@ Piacere, sommario.
 \include{chap_soluzione_proposta}
 \include{chap_tecnologie_utilizzate}
 \include{chap_conclusioni}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% RINGRAZIAMENTI - PERSONALIZZARE
+\ringraziamenti
+Grazie a Grazia, Graziella e la sorella.
 
 \appendix
 % INCLUSIONE APPENDICI - - PERSONALIZZARE - TENERE COERENTE CON LISTA IN ALTO

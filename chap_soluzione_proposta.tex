@@ -110,12 +110,11 @@ SpyCBlock effettua la serializazione 1 a 1, cioè per ogni file \say{blk0000.dat
 \section{Grafo degli address} \label{sec:solGraphAddress}
 
 In seguito alla costruzione del grafo delle transazioni, ci siamo concentrati sulla costruzione del grafo degli address, come descritto nella Sezione \ref{sec:grafoDegliAddressProblema} la costruzione del grafo introduce ad alcune problematiche che costringono a rivedere il modo in cui si ricavano i dati durante il parsing delle informazioni.\\
-Infatti gli address sono contenuti solo all'interno dello script di sblocco di una transazione e come illustrato nelle Sezioni \ref{sec:bitcoinScriptBitcoin} e \ref{sec:bitcoinScriptBitcoinCore} lo script di sblocco contiene informazioni riguardanti le condizioni per cui un UTXO può essere sbloccato e quindi esso non possiede nessun riferimento all'indirizzo di origine.
-Per accedere allo script di blocco della precedente transazione, il cui identificativo (hash) risiede all'interno della transazione di input appartenente alla transazione attualmente analizzata bisogna memorizzare la cronologia delle transazioni decodificate e ricostruire un meccanismo per la gestione degl'UTXO, simile al meccanismo usato da Bitcoin-core: cioè adibire un metodo di memorizzazione che consente di prelevare una transazione precedentemente analizzata con costo O(1) oppure lineare O(N).\\
+Infatti gli address sono contenuti solo all'interno dello script di blocco di una transazione e come illustrato nelle Sezioni \ref{sec:bitcoinScriptBitcoin} e \ref{sec:bitcoinScriptBitcoinCore} lo script di sblocco contiene informazioni riguardanti le condizioni per cui un UTXO può essere sbloccato e quindi esso non possiede nessun riferimento all'indirizzo di origine.
+Per accedere allo script di blocco della precedente transazione, il cui identificativo (hash) risiede all'interno della transazione di input appartenente alla transazione attualmente analizzata bisogna memorizzare la cronologia delle transazioni decodificate e ricostruire un meccanismo per la gestione degl'UTXO, simile al meccanismo usato da Bitcoin-core: cioè adibire un metodo di memorizzazione che consente di prelevare una transazione precedentemente analizzata con costo O(1) oppure con un costo lineare O(N).\\
 Inoltre al momento della stesura del documento il parser non possiede nessun meccanismo di analisi degli script; perchè essi con il passare del tempo sono diventati molto complessi, e come visto nella Sezione \ref{sec:noStrandardScript} vengono introdotti metalinguaggi (tipo miniscript) per la facilitare la scrittura di \say{script no standard}; questo introduce ad una problematica che porta alla necessità di studiare in modo accurato gli script per ricavare attraverso l'analisi di essi maggiori informazioni che consentono di effettuare una catalogazione più accurata.
- \begin{example}
-   Prendendo in considerazione l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} coinvolto in numerose truffe e illustrato all'interno dell'articolo \cite{biva:article} dove possiamo notare che l'address è originato da uno script, perchè esso utilizza la convenzione del numero 3 come prima cifra.
-   Questo address essendo ricavato da uno script potrebbe contenere più address primitivi al suo interno, quindi rappresentare uno script P2MS oppure una address ricavato da uno script no standard; un esempio di script no standard è illustrato attraverso il Codice \ref{code:complexscript}.\\
+ \begin{example}\label{ex:probleGraphAddress}
+   Prendendo in considerazione l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} coinvolto in numerose truffe e illustrato all'interno dell'articolo \cite{biva:article} dove possiamo notare che l'address è originato da uno script, perchè esso utilizza la convenzione del numero 3 come prima cifra; quest'ultimo potrebbe contenere più address primitivi al suo interno e quindi rappresentare uno script P2MS oppure potrebbe rappresentare un'address ricavato da uno script no standard, un esempio di script no standard è illustrato attraverso il Codice \ref{code:complexscript}.\\
    Gli address originati da script costringono ad un analisi più approfondita per ricavare maggiori informazioni sulla loro vera identità; come illustrato nella Sezione \ref{sec:p2shBitcoin} lo script P2SH è il primo esempio di script ad introdurre la possibilità di generare un'address non primitivo, in seguito si aggingono anche P2WSH, P2WPKH e gli script no standard.\\
    Inoltre possiamo osservare dalla Sezione \ref{sec:p2shBitcoin} il processo di verifica per uno script P2SH; dove per sbloccare un UTXO bloccato attraverso uno script P2SH bisogna fornire oltre alle firme delle chiavi private anche lo script P2MS (reedmeScript) da cui è stato originato l'hash inserito all'interno dello script di blocco; questo costringe ad analizzare oltre lo script di blocco anche lo script di sblocco.\\
    Considerando la transazione con identificativo \say{82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21} bloccata attraverso lo script da cui è originato l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} possiamo osservare che essa viene \say{consumata} dalla transazione con il seguente identificativo \say{457\-b5bde2\-35dcf08\-de41597\-68c4f7\-abcb96\-97e1\-760a\-13e6\-caa15a\-7a2d8\-c909\-78}, quest'ultima all'interno dello script di sblocco contiene le informazioni necessarie per lo sblocco della transazione bloccata dall'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom}.
@@ -124,11 +123,11 @@ Inoltre al momento della stesura del documento il parser non possiede nessun mec
       OP_HASH160 735d4de855597997b21588cc78ca2db696be1c5d OP_EQUAL
    \end{lstlisting}
    Lo script capace di sbloccare la transazione bloccata con lo script precedente è contenuta all'interno della transazione con il seguente identificativo \say{457\-b5bde2\-35dcf08\-de41597\-68c4f7\-abcb96\-97e1\-760a\-13e6\-caa15a\-7a2d8\-c909\-78}; il Codice \ref{code:scritpSigScam} illustra lo script di sblocco.
-     \begin{lstlisting}[language=bitcoinscript, label={code:scritpSigScam}, caption={Script con cui è possibile eseguire con successo lo scrip illustrato nel Codice \ref{code:scriptPubKeyScam}.}]
-      OP_0 304402203638fc4c33f325d1c62c8feb4979d91300723f4766686e89de7380b269eecc760
-        2206d65886d69ccedc33de8f2840f27295b53dd9f9fd637b970664385b47c128da901
-        3045022100e8910b2162c08ec560d5737d09d361c07f90bfe58ee4e66a4fbebe246ea2b32c0220
-        7fb1fc6296213b11ecb2eef3a375c8509776f75880ad5372417b55215fcdf74f01
+     \begin{lstlisting}[language=bitcoinscript, label={code:scritpSigScam}, caption={Script con cui è possibile eseguire con successo lo script illustrato attraverso il Codice \ref{code:scriptPubKeyScam}.}]
+      OP_0 304402203638fc4c33f325d1c62c8feb4979d91300723f4766686e89de7380b269eec
+        c7602206d65886d69ccedc33de8f2840f27295b53dd9f9fd637b970664385b47c128da901
+        3045022100e8910b2162c08ec560d5737d09d361c07f90bfe58ee4e66a4fbebe246ea2b32c
+        02207fb1fc6296213b11ecb2eef3a375c8509776f75880ad5372417b55215fcdf74f01
       OP_PUSHDATA1 522103385adff37fd3d0a620ebc4e9866e81dda8ba8616e5ebcae899c7f51899267
         ae721034c08511718f947d1a3e152195c5e2756588e3e0c2c7730927eb6647af494210721033d
         a9f8938a5b947a723df21b73fbd3985b719249324d2c705acfb97d63a5df9e53ae
@@ -143,7 +142,7 @@ Inoltre al momento della stesura del documento il parser non possiede nessun mec
       \item \say{034c\-0851\-1718f947\-d1a3e152\-195c5e2756\-588e3e0c2c\-7730927\-eb6647a\-f494\-2107}.
       \item \say{033\-da9f8\-938a5b9\-47a723df\-21b73fbd3\-985b719249\-324d2c70\-5acfb97d\-63a5\-df9e}.
     \end{itemize}
-    Queste chiavi pubbliche rappresentato identità differenti appartenenti allo stesso wallet oppure a wallet differenti, utilizzando il codice descritto nella Sezione \ref{sec:buildAddressFromPubKey} possiamo ricavare un address primitivo dalle chiavi pubblica, ottenendo i seguenti address.
+    Queste chiavi pubbliche rappresentato identità differenti appartenenti allo stesso wallet oppure a wallet differenti, utilizzando il codice descritto nella Sezione \ref{sec:buildAddressFromPubKey} possiamo ricavare un address primitivo dalle chiavi pubbliche, ottenendo i seguenti address.
     \begin{itemize}
       \item \say{14r7XjPtqVijLRhY9BkGAtDqVDp4txsK1X}.
       \item \say{1GryVw5pfa8a1Sc69PXywGLRDZJWc1C6wT}.
@@ -154,6 +153,23 @@ Inoltre al momento della stesura del documento il parser non possiede nessun mec
     La creazione del grafo di address deve poter rappresentare il reale flusso di bitcoin tra address; ad esempio nel esempio appena descritto dove l'address  \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} viene catalogato come address convolto in truffe ma analizzando attendamente lo script da cui è originato l'address si riesce a osservare che gli address coinvolti nella truffa sono 3.
     Non effettuando quest'ultima analisi, ogni singolo address potrebbe operare singolarmente all'interno della blockchain di Bitcoin passando inosservato agli algoritmi di analisi.
  \end{example}
+
+ Attraverso l'Esempio \ref{ex:probleGraphAddress} possiamo notare due tipi di grafi di address che si possono costruire utilizzando le informazioni estratte dalla blockchain di Bitcoin, cioè:
+ \begin{itemize}
+   \item Il grafo naturale di address, utilizzando solo le informazioni contenute all'interno delgli script di blocco, ad esempio il frammento di grafo descritto dalla transazione illustrata nell'esempio \ref{ex:probleGraphAddress} con il seguente identificativo \say{82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21} rappresentato dalla Figura \ref{fig:addGrapjNatural}
+   \begin{figure}[H]
+   \centering
+   \includegraphics[scale=0.35]{images/exampleWithGraph/naturalAddressGrahScamTx.png}
+   \caption{Frammento del grafo naturale degli address descritto dalla transazione con identificativo 82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21.\label{fig:addGrapjNatural}}
+   \end{figure}
+   Il grafo risulta essere una soluzione superficiale, perchè le chiavi pubbliche che fanno parte dello script da cui è ottenuto l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} potrebbero essere riutilizzate singolarmente all'interno della blockchain di Bitcoin passando inosservate agli algoritmi di analisi.
+   \item Il grafo degli address ottenuto con un analisi degl'indirizzi originati da script, un esempio tratto dalla porzione di grafo illustrato nella Figura \ref{fig:addGrapjNatural} in cui è stata condotta un analisi sullo script \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} è illustrato nella Figura \ref{fig:addGraphAnalisis}
+   \begin{figure}[H]
+   \centering
+   \includegraphics[scale=0.35]{images/exampleWithGraph/decode-address-graph-scam.png}
+   \caption{Frammento del grafo degli address ottenuto attraverso un analisi dell'address 3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom.\label{fig:addGraphAnalisis}}
+   \end{figure}
+ \end{itemize}
 
 
 \section{DEMO} \label{sec:solDemo}
