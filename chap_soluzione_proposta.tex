@@ -14,53 +14,61 @@ La rapida crescita della blockchain porta alle seguenti problematiche:
 
 \begin{itemize}
   \item L'estrazione dei dati dalla blockchain di Bitcoin richiede un software scalabile per permettere in qualsiasi condizione di utilizzo l'estrazione dei dati.
-  \item L'organizzazione dei dati estratti della blockchain deve essere versatile per consentire analisi differenti; così da non costringere una seconda scansione a seconda del tipo di analisi da effettuare.
+  \item L'organizzazione dei dati estratti della blockchain deve essere versatile per consentire analisi differenti, in modo tale da non richiedere una seconda scansione a seconda del tipo di analisi da effettuare.
 \end{itemize}
 
 \section{SpyCBlock} \label{sec:spycblock}
 
-SpyCBlock rappresenta la soluzione proposta per l'estrazione di dati dalla blockchain di Bitcoin in modo scalabile, con cui viene effettua la creazione dei due principali grafi per l'analisi forense, inoltre produce in formato JSON (JavaScript Object Notation) una deserializzazione completa delle blockchain con l'aggiunta di informazioni addizionali, infatti come descritto nel Capitolo \ref{chap:bitcoin} i blocchi e le transazioni contengono solo gli identificativi dei loro predecessori, costringendo il parser in fase di deserializzazione a ricostruire l'hash della transazione e del rispettivo blocco preso in analisi; questo è stato reso possibile dalla libreria descritta nel Capitolo \ref{sec:cryptographyBitcoinLib}.\\
-SpyCBlock rappresenta un prototipo di un software di analisi accademico, sviluppato interamente in C++14, risiede su Github sotto licenza Apache License 2.0, esso è implementazione di un parser delle informazioni serializzate dal nodo Bitcoin; utilizzando le librerie descritte nella Sezione \ref{sec:bitcoinCoreLib}.\\
-Il software è stato implementato utilizzando una metodologia Agile, infatti lo sviluppo di SpyCBlock e lo studio della tecnologia Bitcoin sono avvenute in parallelo, questo ha permesso di convalidare tutte le nozioni studiate sulla tecnologia, basando l'intero ciclo di sviluppo sulla produzione di test di unità (9 batterie di test, per un totale di 46 test di unità).\\
-I dati decodificati del singolo blocco vengono verificati all'interno dei test di unità utilizzando dati prototti attraverso l'utilizzo di altri parser, tipo \cite{parser:blocktools} e attraverso i dati esposti dagli explorer, tipo \cite{blockstream:esplora} e \cite{blockchain:explorer}.\\
+SpyCBlock rappresenta la soluzione proposta per l'estrazione di dati dalla blockchain di Bitcoin in modo scalabile. Attraverso SpyCBlock viene effettua la creazione dei due principali grafi per l'analisi forense; SpyCBlock, inoltre, produce in formato JSON (JavaScript Object Notation) una deserializzazione completa delle blockchain, arricchita con informazioni addizionali; infatti, come descritto nel Capitolo \ref{chap:bitcoin} i blocchi e le transazioni contengono solo gli identificativi dei loro predecessori, il che costringe il parser in fase di deserializzazione a ricostruire l'hash della transazione e del rispettivo blocco preso in analisi; questo è stato reso possibile dalla libreria \say{Bitcoin-Cryptography-Library} descritta nel Capitolo \ref{sec:cryptographyBitcoinLib}.\\
+SpyCBlock rappresenta un prototipo di un software di analisi accademico, sviluppato interamente in C++14 e risiede su Github sotto licenza Apache License 2.0. Esso è l'implementazione di un parser delle informazioni serializzate dal nodo Bitcoin e utilizza le librerie di Bitcoin-core, descritte nella Sezione \ref{sec:bitcoinCoreLib}.\\
+Il software è stato implementato utilizzando una metodologia agile; infatti lo sviluppo di SpyCBlock e lo studio della tecnologia Bitcoin sono avvenute in parallelo. Questo ha permesso di convalidare tutte le nozioni studiate sulla tecnologia, basando l'intero ciclo di sviluppo sulla produzione di test di unità (9 batterie di test, per un totale di 46 test di unità).\\
+I dati decodificati del singolo blocco vengono verificati all'interno dei test di unità utilizzando dati prototti attraverso l'utilizzo di altri parser, Blocktools \cite{parser:blocktools}, e attraverso i dati esposti dagli explorer, come Explora \cite{blockstream:esplora} e Blockchain explorer\cite{blockchain:explorer}.\\
+Inoltre il parser è costituito da un sottomodulo per consentire la costruzione del grafo di address, utilizzando il nodo Bitcoin-core per effettuare la decodifica degli script.
+
+\section{SpyCBlockRPC} \label{sec:spycblockrpc}
+
+SpyCBlockRPC è un sottomodulo di SpyCBlock descritto nella Sezione \ref{sec:spycblock}; esso viene sviluppato in C++11 e risiede su Github sotto licenza Apache License 2.0.\\
+SpyCBlockRPC rappresenta l'implementazione di un wrapper della libreria bitcoin-api-cpp descritta nella Sezione \ref{sec:bitcoinApiLib} che consente di effettuare interi casi d'uso costituiti da più comandi RPC di Bitcoin-core.
+L'utilizzo di questo sottomodulo permette al parser di rimanere disaccoppiato dalla libreria bitcoin-cpp-api e dal framework RPC; inoltre il sottomodulo fornisce un'interfaccia comnume per la serializzazione di qualsiasi tipo di grafo che si voglia costruire usando le informazioni della blockchain.\\
+SpyCBlock utilizza l'interfaccia comune offerta da SpyCBlockRPC per implementare la serializzazione del grafo di transazioni ed inoltre utilizza l'implementazione offerta dal sottomodulo SpyCBlockRPC per serializzare il grafo degli address.
 
 \section{Serializzazione della blockchain in formato JSON} \label{sec:spycblock}
 
-Prima di effettuare la creazione dei grafi, descritti nelle sezioni successive, abbiamo dovuto affrontare varie problematiche incorse durante la fase di decodifica delle informazioni, infatti l'aggiornamento al Segregated Witness (descritto nella Sezione \ref{sec:transazionibitcoincore}) ha introdotto alcune modifice anche nel modo in cui viene serializzata una transazione; questo costringe il parser a utilizzare a seconda del tipo di transazione metodi diversi di deserializzazione.
+Prima di effettuare la creazione dei grafi, descritti nelle sezioni successive, abbiamo dovuto affrontare varie problematiche che si sono presentate durante la fase di decodifica delle informazioni. Infatti, l'aggiornamento al Segregated Witness (descritto nella Sezione \ref{sec:transazionibitcoincore}) ha introdotto alcune modifiche anche nel modo in cui viene serializzata una transazione; questo costringe il parser a utilizzare, a seconda del tipo di transazione, metodi diversi di deserializzazione.
 L'aggiornamento al Segregated Witness ha introdutto tre nuove informazioni all'interno delle transazioni, che sono:
 \begin{itemize}
-  \item La proprietà flagh.
+  \item La proprietà flag.
   \item La proprietà Marker.
-  \item Se le due propietà precedenti sono rispettivamente 0 e 1 allora all'interno della transazione esisterà una lista di Script Witness, descritti nel Paragrafo \ref{sec:transazionibitcoincore} in cui vengono denominati \say{TransactionWitness}.
+  \item Se le due propietà precedenti sono rispettivamente 0 e 1 allora all'interno della transazione esisterà una lista di Script Witness, descritti nella Sezione \ref{sec:transazionibitcoincore}, in cui vengono denominati \say{TransactionWitness}.
 \end{itemize}
 
-Il Frammento di codice descritto nella Sezione \ref{sec:decodeTransactionCode} rappresenta il codice con cui è possibile deserializzare una transazione dopo l'aggiornamento al Segregated Witness (viene usato Python per brevità).\\
-I problemi relativi alla deserializzazione dei dati aggiunta all'enorme quantità di dati da deserializzare\footnote{ad oggi in data \today  l'attuale dimensione della blockchain di Bitcoin è pari a 270 Gb} ha richiesto la progettazione di un metodo di testing automatico sull'intera blockchain oppure su un parte specifica.
-Questo ha richiesto di convertire le informazioni deserializzate dal parser in un formato file universale per eseguire il caricamento di queste informazioni con qualsiasi linguaggio.\\
-Il formato file utilizzato per la codifica delle informazioni è il formato JSON (JavaScript Object Notation) e la libreria descritta nella Sezione \ref{sec:rapidjsonLib} ha reso possibile la serializzazione delle informazioni lette dal parser in maniera istantanea, cioè ogni blocco decodificato veniva serializzato in JSON istantaneamente con la conseguenza di un utilizzo di memoria RAM irrisorio.\\
-L'adozione del formato JSON per l'organizzazione dei dati porta i seguenti benefici:
+Il Frammento di codice descritto nell'Appendice \ref{sec:decodeTransactionCode} rappresenta il codice con cui è possibile deserializzare una transazione dopo l'aggiornamento al Segregated Witness (viene usato Python per brevità).\\
+I problemi relativi alla deserializzazione dei dati, combinati con la grande quantità di dati da deserializzare\footnote{In data \today la dimensione della blockchain di Bitcoin è pari a 270 Gb.}, hanno richiesto la progettazione di un metodo di testing automatico sull'intera blockchain oppure su un parte specifica.
+Questo ha richiesto di convertire le informazioni deserializzate dal parser in un formato universale per eseguire l'elaborazione di queste informazioni con qualsiasi linguaggio.\\
+Il formato file utilizzato per la codifica delle informazioni è il formato JSON (JavaScript Object Notation) e la libreria \say{Rapidjson} descritta nella Sezione \ref{sec:rapidjsonLib} ha reso possibile la serializzazione delle informazioni lette dal parser in maniera streaming: ogni blocco decodificato viene serializzato in JSON immediatamente con la conseguenza di un utilizzo di memoria RAM irrisorio.\\
+L'adozione del formato JSON per l'organizzazione dei dati ha portato i seguenti benefici:
 \begin{itemize}
   \item I dati serializzati in JSON possono essere testati in maniera automatizzata attraverso l'uso di API esterne oppure attraverso il framework RPC di Bitcoin-core descritto nella Sezione \ref{sec:jsonrpchttp}.
-  \item I dati serializzati in JSON possono essere testati a vari livelli di precisone, ad esempio: Un eventuale errore di deserializzazione in un determinato punto della blockchain può essere individuato facilmente e osservato attraverso il suo rispettivo formato JSON.
-  Questo evita l'uso del debugger per errori introdotti in fase di sviluppo dal programmatore e facilmente individuabile se i dati sono convertiti in un formato comprensibile per l'uomo.
-  \item La rappresentazione JSON dell'intera blockchain offre anche la possibilità di eseguire ulteriori tipi di analisi all'interno della blockchain di Bitcoin, ad esempio attraverso l'utilizzo di una demo di analisi descritta nella Sezione \ref{sec:solDemo} è possibile utilizzare i dati in formato JSON per un analisi sui tipi di Script utilizzati all'interno della blockchain.
+  \item I dati serializzati in JSON possono essere testati a vari livelli di precisone. A titolo di esempio, un eventuale errore di deserializzazione in un determinato punto della blockchain può essere individuato facilmente e osservato attraverso il suo corrispettivo in formato JSON.
+  Questo evita l'uso del debugger per errori introdotti in fase di sviluppo dal programmatore, perchè essi sono facilmente individuabili se i dati sono convertiti in un formato comprensibile per l'uomo.
+  \item La rappresentazione JSON dell'intera blockchain offre anche la possibilità di eseguire ulteriori tipi di analisi all'interno della blockchain di Bitcoin; ad esempio attraverso l'utilizzo di una sempice applicazione di analisi descritta nella Sezione \ref{sec:solDemo}, è possibile sfruttare i dati in formato JSON per un analisi sui tipi di script utilizzati all'interno della blockchain.
   In Figura \ref{fig:chartOPRETURN} viene riportato un grafico che rappresenta l'utilizzo estensivo dell'operatore OP\_RETURN (descritto nella Sezione \ref{sub:sectionNUllaDataScript}) e quindi l'utilizzo della blockchain di Bitcoin per l'archiviazione di dati.
 \end{itemize}
 
 {\centering
 \vspace{15pt}
 \includegraphics[scale=0.5]{images/OP_RETUTN_chart.png}
-\captionof{figure}{Frammento di grafico estrapolato dalla demo \ref{sec:solDemo} dove viene rappresentato l'utilizzo del operatore OP\_RETURN all'interno degli script di blocco.\label{fig:chartOPRETURN}}
+\captionof{figure}{Frammento di grafico estrapolato dall'applicazione della Sezione \ref{sec:solDemo} dove viene rappresentato l'utilizzo del operatore OP\_RETURN all'interno degli script di blocco.\label{fig:chartOPRETURN}}
 \vspace{10pt}
 \par}
 
 
 \section{Grafo delle transazioni} \label{sec:solGraphTX}
 
-Dopo un accurata convalida dei dati deserializzati dal parser, abbiamo eseguito una nuova iterazione all'interno del ciclo di sviluppo del software, aggiungendo all'interno del parser la possibilità di serializzare i dati letti come arco di un grafo orientato.\\
-Ogni transazione infatti genera un arco (u, v) in cui il nodo di origine (u) è rappresentato dall'hash della transazione attualmente analizzata e il nodo di arrivo (v) viene rappresentato dall'hash della transazione precedente, contenuta all'interno del tipo di dato \say{Outpoint} nella transazione di input (illustrato nella Sezione \ref{sec:transazionibitcoincore}).\\
+Dopo un accurata convalida dei dati deserializzati dal parser, abbiamo eseguito una nuova iterazione all'interno del ciclo di sviluppo del software, aggiungendo all'interno del parser la possibilità di serializzare i dati letti come nodi e archi di un grafo orientato.\\
+Ogni transazione, infatti, genera un arco (u, v) in cui il nodo di origine (u) rappresenta l'hash della transazione attualmente analizzata e il nodo di arrivo (v) rappresenta l'hash della transazione precedente, contenuta all'interno del tipo di dato \say{Outpoint} nella transazione di input (illustrato nella Sezione \ref{sec:transazionibitcoincore}).\\
 Come descritto nella Sezione \ref{sec:grafoDelleTransazioniProblema} la creazione del grafo delle transazioni risulta abbastanza intuitiva, ma la strutture dati della blockchain di Bitcoin costringe il parser al calcolo dell'hash della transazione attualmente analizzata perchè esso non viene incluso; per fare questo il parser riconverte in memoria i dati nel formato di serializzazione originario.
-In seguito alla riconversione con l'utilizzo della libreria \ref{sec:cryptographyBitcoinLib} viene eseguito il doppio SHA256 dei bit riguardanti le informazioni in formato esadecimale, in cui ogni tipo della struttura viene prima convertito nel formato little-endian.\\
+In seguito alla riconversione con l'utilizzo della libreria Bitcoin-Cryptography-Library descritta nella Sezione \ref{sec:cryptographyBitcoinLib}, viene eseguito il doppio SHA256 dei bit riguardanti le informazioni in formato esadecimale, in cui ogni tipo della struttura viene prima convertito nel formato little-endian.\\
 
 \begin{example}
 
@@ -73,17 +81,16 @@ Prendiamo in considerazione la transazione coinbase del blocco di genesi\footnot
 \vspace{10pt}
 \par}
 
-Analizzando i dati estratti dal parser possiamo notare che gli explorer non mostrano molte delle informazioni contenute all'interno delle transazioni, utilizzando il frammento di serializzazione JSON descritto nella Sezione \ref{sec:genesiBlockTxJSON} in cui viene raffigurata la prima transazione nella blockchain di Bitcoin, possiamo notare tutte le informazioni realemnte contenute nella struttara di una transazione.
-Per effettuare il calcolo dell'hash della transazione il parser riconverte ogni tipo di dato nel formato little-endian e infine converte il valore nel corrispettivo esadecimale, la porzione di Codice C++ \ref{code:typehexTxCpp} riporta il valore convertito con il processo descritto in predecenza.
+Analizzando i dati estratti dal parser possiamo notare che gli explorer non mostrano molte delle informazioni contenute all'interno delle transazioni; utilizzando invece il frammento di serializzazione JSON descritto nell'Appendice \ref{sec:genesiBlockTxJSON} in cui viene raffigurata la prima transazione nella blockchain di Bitcoin, possiamo notare tutte le informazioni realemnte contenute nella struttara di una transazione.
+Per effettuare il calcolo dell'hash della transazione il parser riconverte ogni tipo di dato nel formato little-endian e infine converte il valore nel corrispettivo esadecimale. La porzione di Codice \ref{code:typehexTxCpp} riporta il valore convertito con il processo descritto in predecenza.
 
-\lstinputlisting[language=C++, label=code:typehexTxCpp, caption=Frammento di codice C++ che rappresenta il valore esadecimale di ogni dipo di dato della transazione.]{code/coinBaseTxGenesisBlockHex.cpp}
+\lstinputlisting[language=C++, label=code:typehexTxCpp, caption=Frammento di codice che rappresenta il valore esadecimale di ogni dipo di dato della transazione.]{code/coinBaseTxGenesisBlockHex.cpp}
 
-Infine il codice \ref{code:processBuilHashTx} riporta un test di unità del progetto SpyCBlock in cui si effettua il processo di creazione dell'hash completo.
+Infine il codice in Appendice \ref{code:processBuilHashTx} riporta un test di unità del progetto SpyCBlock in cui si effettua il processo di creazione dell'hash completo.
 
-
-Dopo aver ottenuto l'identificativo della transazione il parser procede nella serializzazione della transazione come un arco (u, v) aggiungendo delle informazioni addizionali all'arco, tipo: l'altezza del blocco calcolato durante il parsing, quest'ultimo corrisponde alla sua posizione nella catena della blockchain.
+Dopo aver ottenuto l'identificativo della transazione il parser procede nella serializzazione della transazione come un arco (u, v), aggiungendo delle informazioni addizionali all'arco, quali: l'altezza del blocco calcolato durante il parsing, quest'ultimo corrisponde alla sua posizione nella catena della blockchain.
 Inserendo il valore calcolato come informazione dell'arco si evita di inserire l'hash del blocco in cui risiede la transazione, questo implica un notevole risparmio di spazio delle informazioni serializzate; inoltre vengono inseriti anche i valori corrispondendi al numero di bitcoin spediti e il valore nLockTime.\\
-La serializzazione delle informazioni avviene in streaming, cioè ogni blocco letto viene immediatamente convertico nel file contenente tutte le informazioni delle transazioni, ottenendo un formato come quello rappresentato dal Codice \ref{code:archExampleTxGrapg}.\\
+La serializzazione delle informazioni avviene in streaming, cioè ogni blocco letto viene immediatamente convertito nel file contenente tutte le informazioni delle transazioni, ottenendo un formato come quello rappresentato dal Codice \ref{code:archExampleTxGrapg}.\\
 
 \lstinputlisting[label=code:archExampleTxGrapg, caption=Informazioni della transazione in Figura \ref{fig:txGenesisBlock} decodificata nel'arco corrispondente.]{code/exampleArch.txt}
 
@@ -114,7 +121,8 @@ Infatti gli address sono contenuti solo all'interno dello script di blocco di un
 Per accedere allo script di blocco della precedente transazione, il cui identificativo (hash) risiede all'interno della transazione di input appartenente alla transazione attualmente analizzata bisogna memorizzare la cronologia delle transazioni decodificate e ricostruire un meccanismo per la gestione degl'UTXO, simile al meccanismo usato da Bitcoin-core: cioè adibire un metodo di memorizzazione che consente di prelevare una transazione precedentemente analizzata con costo O(1) oppure con un costo lineare O(N).\\
 Inoltre al momento della stesura del documento il parser non possiede nessun meccanismo di analisi degli script; perchè essi con il passare del tempo sono diventati molto complessi, e come visto nella Sezione \ref{sec:noStrandardScript} vengono introdotti metalinguaggi (tipo miniscript) per la facilitare la scrittura di \say{script no standard}; questo introduce ad una problematica che porta alla necessità di studiare in modo accurato gli script per ricavare attraverso l'analisi di essi maggiori informazioni che consentono di effettuare una catalogazione più accurata.
  \begin{example}\label{ex:probleGraphAddress}
-   Prendendo in considerazione l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} coinvolto in numerose truffe e illustrato all'interno dell'articolo \cite{biva:article} dove possiamo notare che l'address è originato da uno script, perchè esso utilizza la convenzione del numero 3 come prima cifra; quest'ultimo potrebbe contenere più address primitivi al suo interno e quindi rappresentare uno script P2MS oppure potrebbe rappresentare un'address ricavato da uno script no standard, un esempio di script no standard è illustrato attraverso il Codice \ref{code:complexscript}.\\
+   Prendendo in considerazione l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} coinvolto in numerose truffe e illustrato all'interno dell'articolo \cite{DBLP:conf/icdm/OggierPD18} dove possiamo notare che l'address viene originato da uno script: perchè esso utilizza la convenzione del numero 3 come prima cifra.
+   Quest'ultimo potrebbe contenere più address primitivi al suo interno e quindi rappresentare uno script P2MS oppure potrebbe rappresentare un'address ricavato da uno script no standard: un esempio di script no standard è illustrato attraverso il Codice \ref{code:complexscript}.\\
    Gli address originati da script costringono ad un analisi più approfondita per ricavare maggiori informazioni sulla loro vera identità; come illustrato nella Sezione \ref{sec:p2shBitcoin} lo script P2SH è il primo esempio di script ad introdurre la possibilità di generare un'address non primitivo, in seguito si aggingono anche P2WSH, P2WPKH e gli script no standard.\\
    Inoltre possiamo osservare dalla Sezione \ref{sec:p2shBitcoin} il processo di verifica per uno script P2SH; dove per sbloccare un UTXO bloccato attraverso uno script P2SH bisogna fornire oltre alle firme delle chiavi private anche lo script P2MS (reedmeScript) da cui è stato originato l'hash inserito all'interno dello script di blocco; questo costringe ad analizzare oltre lo script di blocco anche lo script di sblocco.\\
    Considerando la transazione con identificativo \say{82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21} bloccata attraverso lo script da cui è originato l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} possiamo osservare che essa viene \say{consumata} dalla transazione con il seguente identificativo \say{457\-b5bde2\-35dcf08\-de41597\-68c4f7\-abcb96\-97e1\-760a\-13e6\-caa15a\-7a2d8\-c909\-78}, quest'ultima all'interno dello script di sblocco contiene le informazioni necessarie per lo sblocco della transazione bloccata dall'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom}.
