@@ -5,7 +5,7 @@
 
 \section{BlockSci} \label{sec:riferimentiStorici}
 
-BlockSci \cite{blocksci:article} è un sistema open source, scritto in C++, per l'analisi di blockchain basate sull'organizzazione dati di Bitcoin. Sviluppato dall'Università di Princeton, BlockSci estrae i dati dalla blockchain di BitCoin attraverso l'utilizzo del framework RPC di BitCoin e di un parser per l'analisi delle informazioni serializzate dal nodo Bitcoin; i dati estratti vengono salvati in flat-file e interrogati attraverso SQLite.
+BlockSci \cite{DBLP:journals/corr/abs-1709-02489} è un sistema open source, scritto in C++, per l'analisi di blockchain basate sull'organizzazione dati di Bitcoin. Sviluppato dall'Università di Princeton, BlockSci estrae i dati dalla blockchain di Bitcoin attraverso l'utilizzo del framework RPC di Bitcoin e di un parser per l'analisi delle informazioni serializzate dal nodo Bitcoin; i dati estratti vengono salvati in flat-file e interrogati attraverso SQLite.
 BlockSci, inoltre, offre un sofisticato sistema per l'analisi dei dati estratti con cui si ha la possibilità di implementare e applicare algoritmi di analisi sulla rete Bitcoin.
 
 In questa sezione ci concentreremo  solo sul modulo relativo al parser e sull'organizzazione delle informazioni estratte. Il parser di BlockSci legge le informazioni della blockchain sequenzialmente e, durante la lettura, applica  una serie di ottimizzazioni per il corretto funzionamento del modulo di analisi.
@@ -33,10 +33,10 @@ Il risultato della scansione sequenziale dei blocchi è un grafo delle transazio
                128 bits each & ﻿Inputs \\
                \hline
        \end{tabular}
-       \caption{Struttura delle transazioni in BlockSci per la costruzione del grafo delle transazioni \cite{blocksci:article}.\label{tab:blockSciSerialization}}
+       \caption{Struttura delle transazioni in BlockSci per la costruzione del grafo delle transazioni \cite{DBLP:journals/corr/abs-1709-02489}.\label{tab:blockSciSerialization}}
    \end{table}
 
-In  \cite{blocksci:article} Kalodner et al. descrivono i risultati di alcuni test relativi all'efficienza del parser; in tali test, il parser ha impiegato all'incirca 11 ore per effettuare l'estrazione dei dati dalla blockchain di Bitcoin\footnote{Tali risultati fanno riferimento alla dimensione della blockchain assunta nell'agosto del 2017: 478,559 blocchi e 140 GB di spazio totale.}; aumentando la dimensione della memeoria allocata a BlockSci si possono ottenere prestazioni migliori.
+In  \cite{DBLP:journals/corr/abs-1709-02489} Kalodner et al. descrivono i risultati di alcuni test relativi all'efficienza del parser; in tali test, il parser ha impiegato all'incirca 11 ore per effettuare l'estrazione dei dati dalla blockchain di Bitcoin\footnote{Tali risultati fanno riferimento alla dimensione della blockchain assunta nell'agosto del 2017: 478,559 blocchi e 140 GB di spazio totale.}; aumentando la dimensione della memeoria allocata a BlockSci si possono ottenere prestazioni migliori.
 
 \section{BiVA} \label{sec:biva}
 
@@ -53,12 +53,12 @@ Una porzione di grafo prodotto attraverso BiVA è rappresentata in Figura \ref{f
 
 \section{Bitcoin Transaction Visualization} \label{sec:bitcoinTransactionVis}
 
-Uno studio condotto dall'Universita di Saskatchewan e pubblicato nel articolo \cite{BitcoinBlockchainTransactionsVisualization:article} descrive la creazione di un grafo di transazioni localizzato attraverso l'utilizzo delle API di \url{https://blockchain.com}.\\
-L'utilizzo di queste API ha permesso di localizzare le transazioni attraverso la sua posizione geografica grazie all'IP messo a disposione della servizio per ogni transazione (quando questo ip è esposto).\\
-La demo per la dimostrazione di questo studio viene sviluppata attraverso tecnologie web con un uso estensivo di JQuery, La Figura \ref{fig:bitcoinTransactionVis} ne rappresenta un esempio.
+Uno studio condotto dall'Universita di Saskatchewan e pubblicato nel articolo \cite{inproceedings}, descrive la creazione di un grafo di transazioni, localizzato attraverso l'utilizzo delle API di \url{https://blockchain.com}.\\
+L'utilizzo di queste API, ha permesso di localizzare le transazioni, attraverso la sua posizione geografica, grazie all'IP messo a disposizione per ogni transazione. Infatti \url{https://blockchain.com} arricchisce le informazioni estratte dalla blockchain di Bitcoin, aggiungendo informazioni circa il luogo di origine della transazione; quando quest'informazione, non è presente verrà utilizzata la posizione dell'Universita di Saskatchewan.
+La demo per la dimostrazione di questo studio viene sviluppata attraverso tecnologie web, con un'uso estensivo di JQuery. La Figura \ref{fig:bitcoinTransactionVis} ne rappresenta un esempio.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{images/vs_article.pdf}
-\caption{Frammento del grafo di transazioni prodotto attraverso la demo pubblicata nell'articolo \cite{BitcoinBlockchainTransactionsVisualization:article}.\label{fig:bitcoinTransactionVis}}
+\caption{Frammento del grafo di transazioni prodotto attraverso la demo pubblicata nell'articolo \cite{inproceedings}.\label{fig:bitcoinTransactionVis}}
 \end{figure}

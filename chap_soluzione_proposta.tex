@@ -29,7 +29,7 @@ Inoltre il parser è costituito da un sottomodulo per consentire la costruzione 
 
 SpyCBlockRPC è un sottomodulo di SpyCBlock descritto nella Sezione \ref{sec:spycblock}; esso viene sviluppato in C++11 e risiede su Github sotto licenza Apache License 2.0.\\
 SpyCBlockRPC rappresenta l'implementazione di un wrapper della libreria bitcoin-api-cpp descritta nella Sezione \ref{sec:bitcoinApiLib} che consente di effettuare interi casi d'uso costituiti da più comandi RPC di Bitcoin-core.
-L'utilizzo di questo sottomodulo permette al parser di rimanere disaccoppiato dalla libreria bitcoin-cpp-api e dal framework RPC; inoltre il sottomodulo fornisce un'interfaccia comnume per la serializzazione di qualsiasi tipo di grafo che si voglia costruire usando le informazioni della blockchain.\\
+L'utilizzo di questo sottomodulo permette al parser di rimanere disaccoppiato dalla libreria bitcoin-cpp-api e dal framework RPC; inoltre il sottomodulo fornisce un'interfaccia comune per la serializzazione di qualsiasi tipo di grafo che si voglia costruire usando le informazioni della blockchain.\\
 SpyCBlock utilizza l'interfaccia comune offerta da SpyCBlockRPC per implementare la serializzazione del grafo di transazioni ed inoltre utilizza l'implementazione offerta dal sottomodulo SpyCBlockRPC per serializzare il grafo degli address.
 
 \section{Serializzazione della blockchain in formato JSON} \label{sec:spycblock}
@@ -50,7 +50,7 @@ L'adozione del formato JSON per l'organizzazione dei dati ha portato i seguenti 
 \begin{itemize}
   \item I dati serializzati in JSON possono essere testati in maniera automatizzata attraverso l'uso di API esterne oppure attraverso il framework RPC di Bitcoin-core descritto nella Sezione \ref{sec:jsonrpchttp}.
   \item I dati serializzati in JSON possono essere testati a vari livelli di precisone. A titolo di esempio, un eventuale errore di deserializzazione in un determinato punto della blockchain può essere individuato facilmente e osservato attraverso il suo corrispettivo in formato JSON.
-  Questo evita l'uso del debugger per errori introdotti in fase di sviluppo dal programmatore, perchè essi sono facilmente individuabili se i dati sono convertiti in un formato comprensibile per l'uomo.
+  Questo evita l'uso del debugger per errori introdotti in fase di sviluppo dal programmatore, perché essi sono facilmente individuabili se i dati sono convertiti in un formato comprensibile per l'uomo.
   \item La rappresentazione JSON dell'intera blockchain offre anche la possibilità di eseguire ulteriori tipi di analisi all'interno della blockchain di Bitcoin; ad esempio attraverso l'utilizzo di una sempice applicazione di analisi descritta nella Sezione \ref{sec:solDemo}, è possibile sfruttare i dati in formato JSON per un analisi sui tipi di script utilizzati all'interno della blockchain.
   In Figura \ref{fig:chartOPRETURN} viene riportato un grafico che rappresenta l'utilizzo estensivo dell'operatore OP\_RETURN (descritto nella Sezione \ref{sub:sectionNUllaDataScript}) e quindi l'utilizzo della blockchain di Bitcoin per l'archiviazione di dati.
 \end{itemize}
@@ -58,7 +58,7 @@ L'adozione del formato JSON per l'organizzazione dei dati ha portato i seguenti 
 {\centering
 \vspace{15pt}
 \includegraphics[scale=0.5]{images/OP_RETUTN_chart.png}
-\captionof{figure}{Frammento di grafico estrapolato dall'applicazione della Sezione \ref{sec:solDemo} dove viene rappresentato l'utilizzo del operatore OP\_RETURN all'interno degli script di blocco.\label{fig:chartOPRETURN}}
+\captionof{figure}{Frammento di grafico estrapolato dall'applicazione della Sezione \ref{sec:AnalyticsPyBlock} dove viene rappresentato l'utilizzo del operatore OP\_RETURN all'interno degli script di blocco.\label{fig:chartOPRETURN}}
 \vspace{10pt}
 \par}
 
@@ -67,7 +67,7 @@ L'adozione del formato JSON per l'organizzazione dei dati ha portato i seguenti 
 
 Dopo un accurata convalida dei dati deserializzati dal parser, abbiamo eseguito una nuova iterazione all'interno del ciclo di sviluppo del software, aggiungendo all'interno del parser la possibilità di serializzare i dati letti come nodi e archi di un grafo orientato.\\
 Ogni transazione, infatti, genera un arco (u, v) in cui il nodo di origine (u) rappresenta l'hash della transazione attualmente analizzata e il nodo di arrivo (v) rappresenta l'hash della transazione precedente, contenuta all'interno del tipo di dato \say{Outpoint} nella transazione di input (illustrato nella Sezione \ref{sec:transazionibitcoincore}).\\
-Come descritto nella Sezione \ref{sec:grafoDelleTransazioniProblema} la creazione del grafo delle transazioni risulta abbastanza intuitiva, ma la strutture dati della blockchain di Bitcoin costringe il parser al calcolo dell'hash della transazione attualmente analizzata perchè esso non viene incluso; per fare questo il parser riconverte in memoria i dati nel formato di serializzazione originario.
+Come descritto nella Sezione \ref{sec:grafoDelleTransazioniProblema} la creazione del grafo delle transazioni risulta abbastanza intuitiva, ma la strutture dati della blockchain di Bitcoin costringe il parser al calcolo dell'hash della transazione attualmente analizzata perché esso non viene incluso; per fare questo il parser riconverte in memoria i dati nel formato di serializzazione originario.
 In seguito alla riconversione con l'utilizzo della libreria Bitcoin-Cryptography-Library descritta nella Sezione \ref{sec:cryptographyBitcoinLib}, viene eseguito il doppio SHA256 dei bit riguardanti le informazioni in formato esadecimale, in cui ogni tipo della struttura viene prima convertito nel formato little-endian.\\
 
 \begin{example}
@@ -96,13 +96,13 @@ La serializzazione delle informazioni avviene in streaming, cioè ogni blocco le
 
 \end{example}
 
-Attraverso la serializzazione delle transazioni con formato appena descritto è possibile facilmente realizzare un applicativo web per la visualizzazione del grafo utilizzando la libreria javascript descritta nella Sezione \ref{}; ottenendo cosi una porzione di grafo descritta dalla Figura \ref{fig:visgraphTx}, in cui si può notare l'enorme quantità di transazioni conentute in una piccola parte di blockchain (50 Mb di 270 Gb) che rende difficile il rendering di esse.
+Attraverso la serializzazione delle transazioni con il formato appena descritto è possibile facilmente realizzare un applicativo web per la visualizzazione del grafo utilizzando la libreria javascript descritta nella Sezione \ref{sec:ngraph}; ottenendo cosi una porzione di grafo descritta dalla Figura \ref{fig:visgraphTx}, in cui si può notare l'enorme quantità di transazioni conentute in una piccola parte di blockchain (50 Mb di 270 Gb) che rende difficile il rendering di esse.
 Attraverso alcuni zoom effettuati si può notare l'esistenza di piccole comunità di nodi che scambiano bitcoin; in particolare possiamo notare dallo zoom \say{B} dei nodi che fanno parte di transazioni M:1.
 \newpage
 {\centering
 \vspace{15pt}
-\includegraphics[width=80mm, scale=0.5]{images/demo/graph_tx_demo_presentation.png}
-\captionof{figure}{Rappresentazione di una porzione di grafo delle transazioni attraverso la demo descritta nella Sezione \ref{sec:solDemo}.\label{fig:visgraphTx}}
+\includegraphics[scale=1.2]{images/demo/graph_tx_demo_presentation.png}
+\captionof{figure}{Rappresentazione di una porzione di grafo delle transazioni attraverso la demo descritta nella Sezione \ref{sec:SpyJSBlocks}.\label{fig:visgraphTx}}
 \vspace{10pt}
 \par}
 
@@ -116,21 +116,21 @@ SpyCBlock effettua la serializazione 1 a 1, cioè per ogni file \say{blk0000.dat
 
 \section{Grafo degli address} \label{sec:solGraphAddress}
 
-In seguito alla costruzione del grafo delle transazioni, ci siamo concentrati sulla costruzione del grafo degli address, come descritto nella Sezione \ref{sec:grafoDegliAddressProblema} la costruzione del grafo introduce ad alcune problematiche che costringono a rivedere il modo in cui si ricavano i dati durante il parsing delle informazioni.\\
-Infatti gli address sono contenuti solo all'interno dello script di blocco di una transazione e come illustrato nelle Sezioni \ref{sec:bitcoinScriptBitcoin} e \ref{sec:bitcoinScriptBitcoinCore} lo script di sblocco contiene informazioni riguardanti le condizioni per cui un UTXO può essere sbloccato e quindi esso non possiede nessun riferimento all'indirizzo di origine.
-Per accedere allo script di blocco della precedente transazione, il cui identificativo (hash) risiede all'interno della transazione di input appartenente alla transazione attualmente analizzata bisogna memorizzare la cronologia delle transazioni decodificate e ricostruire un meccanismo per la gestione degl'UTXO, simile al meccanismo usato da Bitcoin-core: cioè adibire un metodo di memorizzazione che consente di prelevare una transazione precedentemente analizzata con costo O(1) oppure con un costo lineare O(N).\\
-Inoltre al momento della stesura del documento il parser non possiede nessun meccanismo di analisi degli script; perchè essi con il passare del tempo sono diventati molto complessi, e come visto nella Sezione \ref{sec:noStrandardScript} vengono introdotti metalinguaggi (tipo miniscript) per la facilitare la scrittura di \say{script no standard}; questo introduce ad una problematica che porta alla necessità di studiare in modo accurato gli script per ricavare attraverso l'analisi di essi maggiori informazioni che consentono di effettuare una catalogazione più accurata.
+In seguito alla costruzione del grafo delle transazioni, ci siamo concentrati sulla costruzione del grafo degli address e come descritto nella Sezione \ref{sec:grafoDegliAddressProblema}, la costruzione del grafo introduce ad alcune problematiche che costringono a rivedere il modo in cui si ricavano i dati durante il parsing delle informazioni.\\
+Gli address sono infatti contenuti all'interno dello script di blocco di una transazione, come illustrato nelle Sezioni \ref{sec:bitcoinScriptBitcoin} e \ref{sec:bitcoinScriptBitcoinCore}, lo script di sblocco contiene solo le informazioni riguardanti le condizioni per cui un UTXO può essere sbloccato, non possedendo nessun riferimento dell'indirizzo di origine.
+Per accedere allo script di blocco della precedente transazione, il cui identificativo(hash) risiede all'interno della transazione di input, appartenente alla transazione attualmente analizzata, bisogna memorizzare la cronologia delle transazioni decodificate e ricostruire un meccanismo per la gestione degl'UTXO, simile al meccanismo usato da Bitcoin-core: fornire un metodo di memorizzazione, che consente di prelevare una transazione precedentemente analizzata con costo O(1) oppure con un costo logaritmico O(N log(N)).\\
+Al momento della stesura del documento, il parser non possiede nessun meccanismo di analisi degli script; essi con il passare del tempo sono diventati molto complessi e come illustrato nella Sezione \ref{sec:noStrandardScript} vengono introdotti metalinguaggi(come miniscript) per facilitare la scrittura di script \say{no standard}. Questo introduce ad una problematica che porta alla necessità di studiare in modo approfondito gli script per ottenere da essi maggiori informazioni.
  \begin{example}\label{ex:probleGraphAddress}
-   Prendendo in considerazione l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} coinvolto in numerose truffe e illustrato all'interno dell'articolo \cite{DBLP:conf/icdm/OggierPD18} dove possiamo notare che l'address viene originato da uno script: perchè esso utilizza la convenzione del numero 3 come prima cifra.
-   Quest'ultimo potrebbe contenere più address primitivi al suo interno e quindi rappresentare uno script P2MS oppure potrebbe rappresentare un'address ricavato da uno script no standard: un esempio di script no standard è illustrato attraverso il Codice \ref{code:complexscript}.\\
-   Gli address originati da script costringono ad un analisi più approfondita per ricavare maggiori informazioni sulla loro vera identità; come illustrato nella Sezione \ref{sec:p2shBitcoin} lo script P2SH è il primo esempio di script ad introdurre la possibilità di generare un'address non primitivo, in seguito si aggingono anche P2WSH, P2WPKH e gli script no standard.\\
-   Inoltre possiamo osservare dalla Sezione \ref{sec:p2shBitcoin} il processo di verifica per uno script P2SH; dove per sbloccare un UTXO bloccato attraverso uno script P2SH bisogna fornire oltre alle firme delle chiavi private anche lo script P2MS (reedmeScript) da cui è stato originato l'hash inserito all'interno dello script di blocco; questo costringe ad analizzare oltre lo script di blocco anche lo script di sblocco.\\
-   Considerando la transazione con identificativo \say{82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21} bloccata attraverso lo script da cui è originato l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} possiamo osservare che essa viene \say{consumata} dalla transazione con il seguente identificativo \say{457\-b5bde2\-35dcf08\-de41597\-68c4f7\-abcb96\-97e1\-760a\-13e6\-caa15a\-7a2d8\-c909\-78}, quest'ultima all'interno dello script di sblocco contiene le informazioni necessarie per lo sblocco della transazione bloccata dall'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom}.
-   Lo script di blocco da cui è originato l'address viene illustrato attraverso il Codice \ref{code:scriptPubKeyScam} dove possiamo osservare che il corrispettivo script appartiene alla cerchia di script standard ed in particolare è uno script P2MS.
+   Si prenda in considerazione l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} coinvolto in numerose truffe e illustrato all'interno dell'articolo \cite{DBLP:conf/icdm/OggierPD18} in cui possiamo notare che l'address è originato da uno script(perché esso utilizza la convenzione del numero 3 come prima cifra).
+   Quest'ultimo potrebbe contenere più address primitivi al suo interno e quindi rappresentare uno script P2MS oppure potrebbe rappresentare un address ricavato da uno script \say{no standard}. Un esempio di \say{script no standard} è illustrato attraverso il Codice \ref{code:complexscript}.\\
+   Gli address originati da script, costringono ad un'analisi più approfondita per ottenere maggiori informazioni sulla loro vera identità; come illustrato nella Sezione \ref{sec:p2shBitcoin} lo script P2SH è il primo esempio di script ad introdurre la possibilità di generare un address non primitivo, in seguito si aggiungono anche P2WSH, P2WPKH e gli script \say{no standard}.\\
+   Come possiamo osservare dalla Sezione \ref{sec:p2shBitcoin}, il processo di verifica di uno script P2SH, costringe ad inserire all'interno dello script di sblocco anche lo script P2MS conosciuto come script di riscatto; quest'informazione comporta l'analisi dello script di sblocco oltre allo script di blocco.\\
+   Considerando la transazione con l'identificativo \say{82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21} bloccata attraverso lo script da cui è originato l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} possiamo osservare che la transazione viene \say{consumata} da una nuova transazione con il seguente identificativo \say{457\-b5bde2\-35dcf08\-de41597\-68c4f7\-abcb96\-97e1\-760a\-13e6\-caa15a\-7a2d8\-c909\-78}. Quest'ultima all'interno dello script di sblocco contiene le informazioni necessarie per lo sblocco della transazione bloccata dall'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom}.\\
+   Attraverso il Codice \ref{code:scriptPubKeyScam} possiamo osservare lo script di blocco da cui è originato l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom}, dove possiamo osservare la condizione di sblocco di uno script P2SH in cui il valore \say{735d4de855597997b21588cc78ca2db696be1c5d} rappresenta HASH160 dello script P2MS.
    \begin{lstlisting}[language=bitcoinscript, label={code:scriptPubKeyScam}, caption={Script da cui è originato l'address preso in esempio.}]
       OP_HASH160 735d4de855597997b21588cc78ca2db696be1c5d OP_EQUAL
    \end{lstlisting}
-   Lo script capace di sbloccare la transazione bloccata con lo script precedente è contenuta all'interno della transazione con il seguente identificativo \say{457\-b5bde2\-35dcf08\-de41597\-68c4f7\-abcb96\-97e1\-760a\-13e6\-caa15a\-7a2d8\-c909\-78}; il Codice \ref{code:scritpSigScam} illustra lo script di sblocco.
+   La condizione necessaria per sbloccare la transazione bloccata con lo script precedente è contenuta all'interno della transazione con il seguente identificativo \say{457\-b5bde2\-35dcf08\-de41597\-68c4f7\-abcb96\-97e1\-760a\-13e6\-caa15a\-7a2d8\-c909\-78}. Il Codice \ref{code:scritpSigScam} riporta l'intero script di sblocco.
      \begin{lstlisting}[language=bitcoinscript, label={code:scritpSigScam}, caption={Script con cui è possibile eseguire con successo lo script illustrato attraverso il Codice \ref{code:scriptPubKeyScam}.}]
       OP_0 304402203638fc4c33f325d1c62c8feb4979d91300723f4766686e89de7380b269eec
         c7602206d65886d69ccedc33de8f2840f27295b53dd9f9fd637b970664385b47c128da901
@@ -140,7 +140,7 @@ Inoltre al momento della stesura del documento il parser non possiede nessun mec
         ae721034c08511718f947d1a3e152195c5e2756588e3e0c2c7730927eb6647af494210721033d
         a9f8938a5b947a723df21b73fbd3985b719249324d2c705acfb97d63a5df9e53ae
      \end{lstlisting}
-     Da cui possiamo estrarre lo script di ricatto contenuto dopo l'operatore OP\_PUSHDATA1, illustrato nel Codice \ref{code:p2msScam}.
+     Dal precedente script possiamo estrarre lo script di ricatto contenuto dopo l'operatore OP\_PUSHDATA1, il Codice \ref{code:p2msScam} illustra lo script nel formato decodificato.
      \begin{lstlisting}[language=bitcoinscript, label={code:p2msScam}, caption={Readme Script contenuto all'interno dello script di sblocco \ref{code:scritpSigScam}.}]
       OP_2 03385adff37fd3d0a620ebc4e9866e81dda8ba8616e5ebcae899c7f51899267ae7 034c08511718f947d1a3e152195c5e2756588e3e0c2c7730927eb6647af4942107 033da9f8938a5b947a723df21b73fbd3985b719249324d2c705acfb97d63a5df9e OP_3 OP_CHECKMULTISIG
     \end{lstlisting}
@@ -150,34 +150,93 @@ Inoltre al momento della stesura del documento il parser non possiede nessun mec
       \item \say{034c\-0851\-1718f947\-d1a3e152\-195c5e2756\-588e3e0c2c\-7730927\-eb6647a\-f494\-2107}.
       \item \say{033\-da9f8\-938a5b9\-47a723df\-21b73fbd3\-985b719249\-324d2c70\-5acfb97d\-63a5\-df9e}.
     \end{itemize}
-    Queste chiavi pubbliche rappresentato identità differenti appartenenti allo stesso wallet oppure a wallet differenti, utilizzando il codice descritto nella Sezione \ref{sec:buildAddressFromPubKey} possiamo ricavare un address primitivo dalle chiavi pubbliche, ottenendo i seguenti address.
+    Le precedenti chiavi pubbliche rappresentano identità differenti appartenenti allo stesso wallet oppure a wallet differenti, utilizzando il codice descritto nell'Appendice \ref{sec:buildAddressFromPubKey}, possiamo ricavare un address primitivo dalle precedenti chiavi pubbliche, ottenendo i seguenti address:
     \begin{itemize}
-      \item \say{14r7XjPtqVijLRhY9BkGAtDqVDp4txsK1X}.
-      \item \say{1GryVw5pfa8a1Sc69PXywGLRDZJWc1C6wT}.
+      \item \say{14r7XjPtqVijLRhY9BkGAtDqVDp4txsK1X};
+      \item \say{1GryVw5pfa8a1Sc69PXywGLRDZJWc1C6wT};
       \item \say{1G9VBMkqDzPmYxnFMkNxWGmfuQz1CHSYP6}.
     \end{itemize}
 
-    Questo esempio illustra la necessità di analizzare approfontitamente gli address originati da script perchè essi sono sempre più diffusi all'interno della blockchain di Bitcoin e con essi si ottiene un maggiore livello di privacy.
-    La creazione del grafo di address deve poter rappresentare il reale flusso di bitcoin tra address; ad esempio nel esempio appena descritto dove l'address  \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} viene catalogato come address convolto in truffe ma analizzando attendamente lo script da cui è originato l'address si riesce a osservare che gli address coinvolti nella truffa sono 3.
+    Questo esempio mostra la necessità di analizzare attentamente gli address non primitivi, con i rispettivi script, perché potrebbero contenere informazioni rilevanti per la costruzione del grafo di address in quanto quest'ultimo deve poter rappresentare il reale flusso di bitcoin tra gli address.\\
+    Riesaminando l'esempio appena descritto dove l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} viene catalogato come address di \emph{scam} ma dopo aver condotto un attenta analisi sullo script da cui è originato l'address si può concludere che lo script nasconde 3 chiavi pubbliche al suo interno.\\
     Non effettuando quest'ultima analisi, ogni singolo address potrebbe operare singolarmente all'interno della blockchain di Bitcoin passando inosservato agli algoritmi di analisi.
  \end{example}
 
- Attraverso l'Esempio \ref{ex:probleGraphAddress} possiamo notare due tipi di grafi di address che si possono costruire utilizzando le informazioni estratte dalla blockchain di Bitcoin, cioè:
+ Attraverso l'Esempio \ref{ex:probleGraphAddress}, possiamo notare due tipi di grafi di address che si possono costruire utilizzando le informazioni estratte dalla blockchain di Bitcoin:
  \begin{itemize}
-   \item Il grafo naturale di address, utilizzando solo le informazioni contenute all'interno delgli script di blocco, ad esempio il frammento di grafo descritto dalla transazione illustrata nell'esempio \ref{ex:probleGraphAddress} con il seguente identificativo \say{82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21} rappresentato dalla Figura \ref{fig:addGrapjNatural}
+   \item Il grafo naturale di address, che utilizza solo le informazioni contenute all'interno delgli script di blocco. A titolo d'esempio, il frammento di grafo descritto dalla transazione illustrata nell'esempio \ref{ex:probleGraphAddress} con il seguente identificativo \say{82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21} viene rappresentato dalla Figura \ref{fig:addGrapjNatural}
    \begin{figure}[H]
    \centering
    \includegraphics[scale=0.35]{images/exampleWithGraph/naturalAddressGrahScamTx.png}
    \caption{Frammento del grafo naturale degli address descritto dalla transazione con identificativo 82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21.\label{fig:addGrapjNatural}}
    \end{figure}
-   Il grafo risulta essere una soluzione superficiale, perchè le chiavi pubbliche che fanno parte dello script da cui è ottenuto l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} potrebbero essere riutilizzate singolarmente all'interno della blockchain di Bitcoin passando inosservate agli algoritmi di analisi.
-   \item Il grafo degli address ottenuto con un analisi degl'indirizzi originati da script, un esempio tratto dalla porzione di grafo illustrato nella Figura \ref{fig:addGrapjNatural} in cui è stata condotta un analisi sullo script \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} è illustrato nella Figura \ref{fig:addGraphAnalisis}
+   Il grafo naturale di address, risulta essere troppo superficiale, perché le chiavi pubbliche che fanno parte dello script da cui è ottenuto l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} potrebbero essere riutilizzate singolarmente all'interno della blockchain di Bitcoin passando inosservate agli algoritmi di analisi;
+   \item Il grafo degli address ottenuto con un'analisi degli indirizzi originati da script. A titolo d'esempio, il frammento di grafo illustrato nella Figura \ref{fig:addGrapjNatural} in cui viene condotta un'analisi dello script da cui viene originato l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom} viene illustrato nella Figura \ref{fig:addGraphAnalisis}
    \begin{figure}[H]
    \centering
    \includegraphics[scale=0.35]{images/exampleWithGraph/decode-address-graph-scam.png}
    \caption{Frammento del grafo degli address ottenuto attraverso un analisi dell'address 3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom.\label{fig:addGraphAnalisis}}
    \end{figure}
+   Il grafo di address appena descritto, risolve la problematica riguardante le chiavi pubbliche, contenute all'interno dello script, con la conseguenza della perdita del riferimento riguardante l'address originato dallo script, che aumenta notevolemente il grado di complessità del grafo.\\
+   Una possibile soluzione, potrebbe essere quella di utilizzare una rappresentazione attraverso il grafo naturale rappresentato dalla Figura \ref{fig:addGrapjNatural}, con l'aggiunta delle chiavi pubbliche ricavate dallo script come informazione del nodo; ottenendo la rappresentazione illustrata in Figura \ref{fig:addGrapjNaturalPlus}
+   \begin{figure}[H]
+   \centering
+   \includegraphics[scale=0.35]{images/exampleWithGraph/naturalAddressGrahScamTx.png}
+   \caption{Frammento del grafo naturale degli address arricchito delle informazioni delle chiavi pubbliche all'interno del nodo.\label{fig:addGrapjNaturalPlus}}
+   \end{figure}
  \end{itemize}
+
+ In seguito allo studio di fattibilità sulla creazione del grafo ci siamo limitati ad una costruzione semplicistica di esso, anche perché oltre alle problematiche descritte abbiamo dovuto affrontare anche le problematiche sulla serializzazione delle transazioni M:N (molti a molti): ogni transazione può contenere M transazioni di input e N transazioni di output.\\
+ Questa caratteristica riguardante il numero di transazioni può essere risolta utilizzando una rappresentazione a multigrafo degli address.
+ In questo documento, proponiamo una soluzione in cui si forza l'utilizzo di un comune grafo, in cui ogni transazione M:N viene serializzata in maniera iterativa cioè, la prima transazione di input viene serializzata con tutte le transazioni di output e così a seguire, per le restanti transazioni di input, ignorando per il momento il problema delle chiavi pubbliche contenute all'interno degli script da cui si originano address.
+ Un frammento del grafo rappresentante una transazione M:N è illustrato dalla Figura \ref{fig:iterativeAddTx}
+
+ {\centering
+ \includegraphics[scale=0.35]{images/demo/iterationTx.png}
+ \captionof{figure}{Frammento del grafo degli address, in cui viene rappresentata una serializzazione iterativa di una transazione M:N.\label{fig:iterativeAddTx}}
+ \par}
+
+ La costruzione del grafo attraverso SpyCBlock avviene grazie all'introduzione del sottomodulo SpyCBlockRPC descritto nella Sezione \ref{sec:spycblockrpc}, il quale si incarica di accedere alle informazioni della transazione precedente tramite l'utilizzo del framework RPC di Bitcoin-core descritto nella Sezione \ref{sec:jsonrpchttp}.
+ Il parser inoltre utilizza il frameowork RPC per decodificare lo script di blocco, da cui si ottine l'address oppure gli address contenuti al suo interno.\\
+ Il framework RPC di Bitcoin-core non essendo adatto all'estrazione completa delle informazioni dalla blockchain di Bitcoin deteriora le prestazioni del parser durante l'analisi delle informazioni.\\
+ Questo problema potrebbe essere risolto estendendo l'implementazione di SpyCBlockRPC ad un implementazione \emph{multi thread} oppure implementare un decompilatore per gli script di Bitcoin; quest'ultima soluzione implica anche l'implementazione di un metodo di memorizzazione per mantenere una cronologia delle transazioni decodificate dal parser.
+
+ Una porzione di grafo delle transazioni viene rappresentata dalla Figura \ref{fig:addressGraph}
+
+ {\centering
+ \includegraphics[scale=0.25]{images/demo/address_graph.png}
+ \captionof{figure}{Frammento del grafo degli address estrapolato dalla demo descritta nella Sezione \ref{sec:SpyJSBlocks}.\label{fig:addressGraph}}
+ \vspace{10pt}
+ \par}
+
+\section{Prestazioni} \label{sec:prestazioni}
 
 
 \section{DEMO} \label{sec:solDemo}
+
+\subsection{AnalyticsPyBlock} \label{sec:AnalyticsPyBlock}
+
+Per dimostrare un possibile utilizzo della blockchain di Bitcoin serializzata in JSON è stata sviluppata una demo di analisi denominata AnalyticsPyBlock, la quale permette anche di sviluppare analisi personalizzate.\\
+AnalyticsPyBlock al momento della stesura del documento supporta solo un tipo di analisi, riguardante la tipologia di script utilizzati nel tempo nella rete Bitcoin; il software di analisi viene sviluppato in Python3 e risiede su Github sotto licenza Apache License 2.0.\\
+La Figura \ref{fig:analisisScript} illustra il risultato dell'analisi sulle tipologie di script.
+
+    \begin{figure}
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=.8\linewidth]{images/demo/analytics/result-global.png}
+      \caption{1a. Grafico che rappresenta gli script più utilizzati all'interno la blockchain di Bitcoin.}
+      \label{fig:globalAnalisis}
+    \end{subfigure}%
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=.8\linewidth]{images/demo/analytics/opt_return.png}
+      \caption{1b.  Grafico che rappresenta l'utilizzo dello script OP\_RETURN per archiviare dati.}
+      \label{fig:optReturnScript}
+    \end{subfigure}
+    \caption{Grafici estrapolati dalla demo descritta nel segunte capitolo.}
+    \label{fig:analisisScript}
+    \end{figure}
+
+La Figura \ref{fig:globalAnalisis} mostra gli script maggiormente utilizzati, che risultano essere: P2PKH, P2SH; inoltre la Figura \ref{fig:optReturnScript} mostra l'utilizzo della blockchain di Bitcoin per l'archiviazione di dati, quest'informazione è molto utile ai fini della costruzione del grafo perchè attraverso una futura operazione di \emph{data cleaning} si possono eliminare tutte le informazioni che riguardano l'archiviazione i dati attraverso l'operatore OP\_RETURN.\\
+La demo impiega meno di 12 ore per analizzare i file JSON serializzati da SpyCBlock e anche questa demo potrebbe essere migrata ad un'imlementazione multiprocessore con cui si può migliorare la velocità di analisi.
+\subsection{SpyJSBlocks} \label{sec:SpyJSBlocks}
