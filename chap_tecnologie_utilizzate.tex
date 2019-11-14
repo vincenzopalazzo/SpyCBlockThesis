@@ -6,8 +6,8 @@ La libreria Bitcoin-Cryptography-Library \cite{Bitcoin-Cryptography-Library:gith
 
 \section{RapidJSON} \label{sec:rapidjsonLib}
 
-La libreria RapidJSON \cite{rapidjson:github} ha permesso la decodifica in formato serializzato delle informazioni lette dal parser consentendo di creare una versione JSON della blockchain; è scritta in C++ dal team di sviluppo Tencent ed è rilasciata su Github sotto licenza BSD.
-Con l’utilizzo della libreria siamo riusciti ad introdurre all’interno del parser una deserializzazione quasi \emph{real-time} di ogni blocco.
+La libreria RapidJSON \cite{rapidjson:github} ha permesso la decodifica in formato serializzato delle informazioni lette dal parser consentendo di creare una versione JSON della blockchain; tale libreria è scritta in C++ dal team di sviluppo Tencent ed è rilasciata su Github sotto licenza BSD.
+Con l’utilizzo di RapidJSON siamo riusciti ad introdurre all’interno del parser una deserializzazione quasi \emph{real-time} di ogni blocco.
 
 
 \section{Bitcoin-api-cpp} \label{sec:bitcoinApiLib}
@@ -31,12 +31,32 @@ La libreria viene utilizzata per ridurre lo spazio richiesto dalle informazioni 
 Sono state utilizzate alcune parti del codice sorgente di Bitcoin core per diminuire il quantitativo di test da produrre e sopratutto diminuire il numero di errori possibili durante il parsing dei dati.\\
 Le librerie estratte sono:
 \begin{itemize}
-  \item La libreria \say{serialize.h} con le relative dipendenze, con cui è stato possibile serializzare/deserializzare ogni singolo tipo di dato nel formato corretto, ad esempio: le informazioni vengono deserializzate in \emph{little andian} e solo alcuni tipi di dato, come gli hash, vengono deserializzati in \emph{big endian}.
+  \item La libreria \say{serialize.h} con le relative dipendenze, con cui è stato possibile serializzare/deserializzare ogni singolo tipo di dato nel formato corretto, ad esempio: le informazioni vengono deserializzate in \emph{little endian} e solo alcuni tipi di dato, come gli hash, vengono deserializzati in \emph{big endian}.
   \item La libreria \say{endian.h} con le relative dipendenze, con cui è stato possibile gestire rappresentazione dei dati in formato little endian e big endian.
   \item La libreria \say{uint256.h} con le relative dipendenze, con cui è stato implementato il tipo di dato per rappresentare gli hash.
 \end{itemize}
 Tutte le librerie utilizzate ed estratte da Bitcoin core sono rilasciate sotto licenza MIT.
 
-\section{OpenMap} \label{sec:openmap}
+\section{OpenMP} \label{sec:openmp}
+
+La libreria OpenMP (Open Multi-Processing) \cite{dagum1998openmp} è un API multipiattaforma per il supporto del multiprocessing della memoria condivisa per C/C++ e Fortran.\\
+La version 5.0 della libreria rilasciata nel novembre 2018 supporta le versioni moderne del C++ come C++14 e C++17; essa viene sviluppata dal team di sviluppo OpenMP Architecture Review Board e la libreria viene inclusa nativamente all'interno delle principali versioni Unix-like.\\
+Abbiamo utilizzato questa libreria per sviluppare una versione sperimentale del parser che utilizza più processori, perché fin dai primi utilizzi di esso, abbiamo notato il basso utilizzo di memoria RAM con un utilizzo massimo della potenza di un solo core di CPU.\\
+Il modo con cui viene progettato il parser ci ha consentito di utilizzare un ciclo for che opera su multiprocessore per analizzare più file nello stesso momento (la motivazione per cui l'analisi parallela è possibile viene discussa nella Sezione \ref{sec:solGraphTX}).
 
 \section{Ngraph} \label{sec:ngraph}
+
+Ngraph \cite{vis:ngraph} rappresenta una famiglia di sottomoduli per la visualizzazione di grafi attraverso JavaScript; questi sottomoduli nascono dalla necessità di rendere versatile un noto progetto di visualizzazione open surce per grafi denominato VivagraphJS \cite{vis:vivagraphjs}.\\
+La libreria VivagraphJS e i sottomoduli ngraph.* sono sviluppati interamente in JavaScript dallo sviluppatore Andrei Kashcha; risiedono su Github sotto diverse licenze open-surce.\\
+La libreria VivagraphJS dalla version 0.7 rappresenta una libreria per la visualizzazione di grafi composta dai sottomoduli ngraph che consente il disegno del grafo attraverso la tecnologia SVG oppure la WebGl, quest'ultima ad oggi risulta essere difficile da personalizzare a livello di rendering, per questo motivo abbiamo deciso di comporre il nostro motore di rendering utilizzando diversi sottomoduli ngraph per consentire una maggiore personalizzazione di esso.\\
+Il modulo principale utilizzato per creare l'applicativo di rendering è sicuramente ngraph.graph \cite{vis:ngraph.graph} che implementa la struttura dati per rappresentare il grafo.\\
+Per implementare il motore di rendering vengono utilizzati due sottomoduli distinti che sono:
+\begin{itemize}
+  \item ngraph.pixel \cite{vis:ngraph.pexel}, forse il modulo maggiormente ottimizzato per il rendering di grafi contenuto all'interno dei moduli ngraph, ngraph.pixel ci ha consentito di visualizzare il grafo di transazioni in 3D.
+  \item ngraph.pixi \cite{vis:ngraph.pixi}, un modulo basato sul framework JavaScript PIXI.js \cite{vis:pixijs}, uno dei moduli di rendering 2D basato su WebGl più veloci della famiglia ngraph, ma anche il meno supportato, infatti abbiamo dovuto customizzare il progetto per aggiungere il supporto al rendering dei grafi diretti e il supporto per aggiunta delle label sui nodi. Al momento della stesura del documento il progetto è un fork separato del modulo ngraph.pixi ma è stato sottoposto a richiesta di unione con il progetto principale; il modulo viene utilizzato per visualizzare il grafo di address.
+\end{itemize}
+
+Vengono utilizzati inoltre i sottomoduli ngraph.native \cite{ngraph.native}, ngraph.fromprecompute \cite{ngraph.fromprecompute} e ngraph.tobinary \cite{ngraph.tobinary} con cui è stato possibile effettuare il precalcolo del layout offline; abbiamo anche ottimizzato la velocità di esecuzione del modulo ngraph.native, ottimizzando la modalità di scrittura del C++ utilizzato.\\
+Il modulo ngraph.fromprecompute viene utilizzato per il caricamento dei dati ottenuti dal modulo ngraph.native, questo modulo viene sviluppato da noi per la necessità di avere un modulo riutilizzabile.\\
+Il modulo ngraph.tobinary converte il grafo ottenuto con il sottomodulo ngraph.graph in formato binario compatibile con il modulo ngraph.native.\\
+Infine abbiamo utilizzato il modulo ngraph.louvain \cite{ngraph.tobinary} che ci ha consentito di applicare facilmente l'algoritmo Louvain per calcolare le comunità all'interno del grafo visualizzato.

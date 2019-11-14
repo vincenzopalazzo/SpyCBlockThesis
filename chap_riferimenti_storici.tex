@@ -36,7 +36,7 @@ Il risultato della scansione sequenziale dei blocchi è un grafo delle transazio
        \caption{Struttura delle transazioni in BlockSci per la costruzione del grafo delle transazioni \cite{DBLP:journals/corr/abs-1709-02489}.\label{tab:blockSciSerialization}}
    \end{table}
 
-In  \cite{DBLP:journals/corr/abs-1709-02489} Kalodner et al. descrivono i risultati di alcuni test relativi all'efficienza del parser; in tali test, il parser ha impiegato all'incirca 11 ore per effettuare l'estrazione dei dati dalla blockchain di Bitcoin\footnote{Tali risultati fanno riferimento alla dimensione della blockchain assunta nell'agosto del 2017: 478,559 blocchi e 140 GB di spazio totale.}; aumentando la dimensione della memeoria allocata a BlockSci si possono ottenere prestazioni migliori.
+In  \cite{DBLP:journals/corr/abs-1709-02489} Kalodner et al. descrivono i risultati di alcuni test relativi all'efficienza del parser; in tali test, il parser ha impiegato all'incirca 11 ore per effettuare l'estrazione dei dati dalla blockchain di Bitcoin\footnote{Tali risultati fanno riferimento alla dimensione della blockchain assunta nell'agosto del 2017: 478,559 blocchi e 140 GB di spazio totale.}; aumentando la dimensione della memoria allocata a BlockSci si possono ottenere prestazioni migliori.
 
 \section{BiVA} \label{sec:biva}
 
@@ -53,9 +53,9 @@ Una porzione di grafo prodotto attraverso BiVA è rappresentata in Figura \ref{f
 
 \section{Bitcoin Transaction Visualization} \label{sec:bitcoinTransactionVis}
 
-Uno studio condotto dall'Universita di Saskatchewan e pubblicato nel articolo \cite{inproceedings}, descrive la creazione di un grafo di transazioni, localizzato attraverso l'utilizzo delle API di \url{https://blockchain.com}.\\
-L'utilizzo di queste API, ha permesso di localizzare le transazioni, attraverso la sua posizione geografica, grazie all'IP messo a disposizione per ogni transazione. Infatti \url{https://blockchain.com} arricchisce le informazioni estratte dalla blockchain di Bitcoin, aggiungendo informazioni circa il luogo di origine della transazione; quando quest'informazione, non è presente verrà utilizzata la posizione dell'Universita di Saskatchewan.
-La demo per la dimostrazione di questo studio viene sviluppata attraverso tecnologie web, con un'uso estensivo di JQuery. La Figura \ref{fig:bitcoinTransactionVis} ne rappresenta un esempio.
+Uno studio condotto dall'Universita di Saskatchewan e pubblicato in \cite{inproceedings} descrive la creazione di un grafo di transazioni, localizzato attraverso l'utilizzo delle API di \url{https://blockchain.com}.\\
+L'utilizzo di queste API ha permesso di localizzare le transazioni, attraverso la loro posizione geografica, grazie all'IP messo a disposizione per ogni transazione. Infatti \url{https://blockchain.com} arricchisce le informazioni estratte dalla blockchain di Bitcoin, aggiungendo informazioni circa il luogo di origine della transazione; quando questa informazione non è presente, verrà utilizzata la posizione dell'Universita di Saskatchewan.
+La demo per la dimostrazione di questo studio viene sviluppata attraverso tecnologie web, con un uso estensivo di JQuery. La Figura \ref{fig:bitcoinTransactionVis} ne rappresenta un esempio.
 
 \begin{figure}[H]
 \centering
