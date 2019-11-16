@@ -6,7 +6,9 @@
 
 Il termine \emph{blockchain} denota un particolare tipo di \emph{distributed ledger} protetto mediante meccanismi crittografici.
 Il distributed ledger è un log distribuito, parzialmente o totalmente replicato a cui accedono un gruppo di peer.
-All’interno di una blockchain vengono memorizzate in modo permanente e immutabile una serie di informazioni verificate attraverso opportuni algoritmi di consenso.
+All’interno di una blockchain vengono memorizzate in modo permanente e immutabile una serie di informazioni verificate attraverso opportuni algoritmi di consenso.\\
+La prima tecnologia ad introdurre il concetto di blockchain fu Bitcoin, la quale utilizza una struttura dati per la memorizzazione che fa uso del concetto di \say{blocco}; i blocchi sono concatenati attraverso una \emph{hash pointer} e contengono un quantitativo variabile di transazioni.\\
+Le transazioni sono l'unico modo per costruire eventi che mutano lo stato della blockchain e la struttura di esse varia in base al tipo di informazioni da memorizzare; in seguito alla tecnologia Bitcoin vengono presentate altre blockchain che apportano una serie di modifiche alla struttura dati utilizzata.
 
 
 \section{Protocolli di consenso}
@@ -45,7 +47,7 @@ Il link che funge da collegamento tra i due blocchi è un puntatore crittografic
        \end{tabular}
        \caption{Rappresentazione generale del concetto di blocco in una blockchain.\label{tab:bitcoinblock}}
    \end{table}
-   
+
 
 
 \begin{itemize}

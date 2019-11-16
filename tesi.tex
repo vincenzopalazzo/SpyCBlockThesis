@@ -273,7 +273,16 @@ Non è tanto chi sono ma quello\\ che faccio che mi qualifica.
 
 % ABSTRACT - PERSONALIZZARE
 \sommario
-Piacere, sommario.
+Il termine \emph{blockchain} denota un particolare tipo di \emph{distributed ledger} protetto mediante meccanismi crittografici.
+Il distributed ledger è un log distribuito, parzialmente o totalmente replicato a cui accedono un gruppo di peer.
+All’interno di una blockchain vengono memorizzate in modo permanente e immutabile una serie di informazioni verificate attraverso opportuni algoritmi di consenso.\\
+La prima tecnologia ad introdurre il concetto di blockchain è Bitcoin ed essa è a tutti gli effetti una criptovaluta pseudo-anonima e fin dalla sua introduzione, questa  caratteristica  ha suscitato particolare interesse all’interno del \emph{Dark Web}; ciò ha reso i bitcoin, a partire dal 2011, lo strumento di pagamento elettronico principale per attività correlate al mercato nero di droghe, farmaci e armi, nonché uno dei principali strumenti per il riciclaggio di denaro.\\
+Il concetto di distributed ledger, associato all’utilizzo estensivo di Bitcoin per attività illecite, ha dato vita a numerosi studi di analisi forense per tracciare il flusso dei bitcoin. Queste analisi vengono di solito effettuate a partire da rappresentazioni a grafo della blockchain di Bitcoin.\\
+Una possibile soluzione per costruire la rappresentazione a grafo potrebbe essere l'estrazione dei dati serializzati dal nodo Bitcoin attraverso lo sviluppo di un parser con una successiva riconversione dei dati nel formato di serializzazione desiderato.\\
+La blockchain di Bitcoin è caratterizzata da una grossa mole di dati serializzati, pertanto la costruzione di un parser, in molti casi, risulta essere complessa, perché essa richiede una potenza hardware elevata per eseguire l'analisi in tempi ragionevoli.\\
+Questo lavoro di tesi vuole trovare una soluzione al problema di scalabilità eseguendo la deserializzazione della blockchain di Bitcoin in tempi accettabili attraverso lo sviluppo di un parser.\\
+In ciò che segue, dopo una prima fase di analisi della tecnologia Bitcoin e della rispettiva struttura dati utilizzata in essa, verrà illustrato il lavoro di sviluppo del software effettuato con le rispettive analisi.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -295,7 +304,12 @@ Piacere, sommario.
 
 % RINGRAZIAMENTI - PERSONALIZZARE
 \ringraziamenti
-Grazie a Grazia, Graziella e la sorella.
+Ringrazio il Dott. Carlo Sartiani per l'assegnazione di questo progetto di tesi e per avermi dato la possibilità di esprimere quanto da me appreso in questo percorso triennale riguardo lo sviluppo software e tutto quello che ne segue; inoltre lo ringrazio soprattuto per avermi sostenuto nei miei momenti di difficoltà riguardanti l'approccio ai diversi problemi affrontati nel processo di sviluppo ma soprattuto nella stesura di questo documento che è risultato essere molto complicato a causa del mio problema di dislessia scoperto recentemente.
+Senza il suo aiuto e la sua competenza professionale non sarei riuscito ad effettuare e portare a termine tutto questo lavoro.\\
+Il lavoro condotto in questo progetto di tesi mi ha offerto la possibilità di avere uno scambio di idee con il Dott. Carlo Sartiani che con la sua conoscenza ha arricchito il mio bagaglio culturale ed ha alimentato la mia voglia di continuo apprendimento.\\
+Inoltre ringrazio la mia famiglia che ha permesso e soprattuto sostenuto la possibilità di affrontare questo percorso triennale lasciando a me la possibilità di prendere scelte molto spesso discutibili, come ritardare di un'anno il completamento degli studi per condurre in maniera approfondita questo progetto di tesi nonché l'aggiunta di un esame del percorso magistrale al mio piano di studi solo per completezza personale, devo ringraziere la mia ragazza per avermi fatto credere nella possibilità di riuscire nello sviluppo di questo progetto, senza di lei quest'utlimo sarebbe stato aggiunto all'ormai lunga lista delle cose che non avrei potuto fare.\\
+Per concludere, credo che sia doveroso ringraziare anche tutte quelle persone che negli anni hanno detto almeno una volta che non lo avrei potuto fare.
+
 
 \appendix
 % INCLUSIONE APPENDICI - - PERSONALIZZARE - TENERE COERENTE CON LISTA IN ALTO

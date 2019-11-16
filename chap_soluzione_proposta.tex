@@ -20,14 +20,14 @@ La rapida crescita della blockchain porta alle seguenti problematiche:
 \section{SpyCBlock} \label{sec:spycblock}
 
 SpyCBlock rappresenta la soluzione proposta per l'estrazione di dati dalla blockchain di Bitcoin in modo scalabile. Attraverso SpyCBlock viene effettua la creazione dei due principali grafi per l'analisi forense; SpyCBlock, inoltre, produce in formato JSON (JavaScript Object Notation) una deserializzazione completa della blockchain, arricchita con informazioni addizionali; infatti, come descritto nel Capitolo \ref{chap:bitcoin}, i blocchi e le transazioni contengono solo gli identificativi dei loro predecessori, il che costringe il parser in fase di deserializzazione a ricostruire l'hash della transazione e del rispettivo blocco preso in analisi; questo è stato reso possibile dalla libreria \say{Bitcoin-Cryptography-Library} descritta nel Capitolo \ref{sec:cryptographyBitcoinLib}.\\
-SpyCBlock rappresenta un prototipo di un software di analisi accademico, sviluppato interamente in C++14 e risiede su Github sotto licenza Apache License 2.0. Esso è l'implementazione di un parser delle informazioni serializzate dal nodo Bitcoin e utilizza le librerie di Bitcoin-core, descritte nella Sezione \ref{sec:bitcoinCoreLib}.\\
-Il software è stato implementato utilizzando una metodologia agile; infatti lo sviluppo di SpyCBlock e lo studio della tecnologia Bitcoin sono avvenute in parallelo. Questo ha permesso di convalidare tutte le nozioni studiate sulla tecnologia, basando l'intero ciclo di sviluppo sulla produzione di test di unità (9 batterie di test, per un totale di 46 test di unità).\\
+SpyCBlock rappresenta un prototipo di un software di analisi accademico, sviluppato interamente in C++ e risiede su Github sotto licenza Apache License 2.0. Esso è l'implementazione di un parser delle informazioni serializzate dal nodo Bitcoin e utilizza le librerie di Bitcoin-core, descritte nella Sezione \ref{sec:bitcoinCoreLib}.\\
+Il software è stato implementato utilizzando una metodologia agile; infatti lo sviluppo di SpyCBlock e lo studio della tecnologia Bitcoin sono avvenute in parallelo. Questo ha permesso di convalidare tutte le nozioni studiate sulla tecnologia, basando l'intero ciclo di sviluppo sulla produzione di test di unità (10 batterie di test, per un totale di 60 test di unità).\\
 I dati decodificati del singolo blocco vengono verificati all'interno dei test di unità utilizzando dati prototti attraverso l'utilizzo di altri parser, come Blocktools \cite{parser:blocktools}, e attraverso i dati esposti dagli explorer, come Explora \cite{blockstream:esplora} e Blockchain explorer\cite{blockchain:explorer}.\\
 Inoltre il parser è costituito da un sottomodulo per consentire la costruzione del grafo di address, utilizzando il nodo Bitcoin-core per effettuare la decodifica degli script.
 
 \section{SpyCBlockRPC} \label{sec:spycblockrpc}
 
-SpyCBlockRPC è un sottomodulo di SpyCBlock descritto nella Sezione \ref{sec:spycblock}; esso viene sviluppato in C++11 e risiede su Github sotto licenza Apache License 2.0.\\
+SpyCBlockRPC è un sottomodulo di SpyCBlock descritto nella Sezione \ref{sec:spycblock}; esso viene sviluppato in C++ e risiede su Github sotto licenza Apache License 2.0.\\
 SpyCBlockRPC rappresenta l'implementazione di un wrapper della libreria bitcoin-api-cpp descritta nella Sezione \ref{sec:bitcoinApiLib} che consente di effettuare interi casi d'uso costituiti da più comandi RPC di Bitcoin-core.
 L'utilizzo di questo sottomodulo permette al parser di rimanere disaccoppiato dalla libreria bitcoin-cpp-api e dal framework RPC; inoltre il sottomodulo fornisce un'interfaccia comune per la serializzazione di qualsiasi tipo di grafo che si voglia costruire usando le informazioni della blockchain.\\
 SpyCBlock utilizza l'interfaccia comune offerta da SpyCBlockRPC per implementare la serializzazione del grafo di transazioni ed inoltre utilizza l'implementazione offerta dal sottomodulo SpyCBlockRPC per serializzare il grafo degli address.
@@ -225,19 +225,35 @@ Consideriamo l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom}, coinv
 
 \section{Risultati Sperimentali} \label{sec:valutazionesperimentale}
 
-La soluzione proposta si è limitata all'estrazione dei dai dalla blockchain di Bitcoin in maniera scalabile con una successiva riconversione dei dati tale da consentire la costruzione di un grafo di transazioni, oltre alla serializzazione completa in JSON della blockchain.\\
-Il parser proposto come soluzione oltre a serializzare il grafo di transazioni implementa anche una soluzione sperimentale per la creazione del grafo di address attraverso l'ausilio del framework RPC di Bitcoin descritto nella Sezione \ref{}.\\
-La valutazione sperimentale condotta si limita ad analizzare le tempistiche di analisi solo per la serializzazione in JSON della blockchain e per la serializzazione del grafo di transazioni, ignorando le tempistiche di serializzazione del grafo di address perchè risultano essere molto elevate a causa della dipendenza diretta con il framework RPC.\\
-L'analisi viene condotta eseguendo il parser su un laptop con una CPU DESCRIVI LA CPU, 
+La soluzione proposta si è limitata all'estrazione dei dati dalla blockchain di Bitcoin in modo scalabile con una successiva riconversione dei dati tale da consentire la costruzione di un grafo di transazioni, oltre alla serializzazione completa in JSON della blockchain.\\
+Il parser proposto come soluzione oltre a serializzare il grafo di transazioni implementa anche una soluzione sperimentale per la creazione del grafo di address attraverso l'ausilio del framework RPC di Bitcoin descritto nella Sezione \ref{sec:jsonrpchttp}.\\
+La valutazione sperimentale condotta si limita ad analizzare le tempistiche di analisi solo per la serializzazione in JSON della blockchain e per la serializzazione del grafo di transazioni, ignorando le tempistiche di serializzazione del grafo di address perché risultano essere molto elevate a causa della dipendenza diretta con il framework RPC.\\
+L'analisi viene condotta eseguendo il parser su una CPU \say{Intel Core i7-4790} con 8 Core da 4Ghz l'uno; le prestazioni su \emph{single core} vengono illustrati dalla Figura \ref{fig:noparallelbenchmark} dove sulle ascisse possiamo trovare la quantità di dati decodificati dal parser e sulle ordinate possiamo trovare i minuti necessari per eseguire tale operazione.
+\begin{figure}[H]
+\centering
+ \includegraphics[scale=0.2]{images/demo/no_paralel_benckmark.png}
+ \caption{Grafico delle prestazioni del parser su \emph{single core}.}\label{fig:noparallelbenchmark}
+\end{figure}
+Osservando le prestazioni descritte dalla Figura \ref{fig:noparallelbenchmark} abbiamo notato che la velocità dell'analisi dipendeva dal tipo di CPU utilizzata; con quest'ultima osservazione abbiamo aggiunto la possibilità di eseguire il parser su più processori attraveso la libreria OpenMP descritta nella Sezione \ref{sec:openmp}.\\
+Con l'esecuzione parallela del parser abbiamo ottenuto un netto miglioramento delle prestazioni, le quali vengono descritte nella Figura \ref{fig:parallelbenchmark} dove possiamo notare le tempistiche per la serializzazione in JSON (linea verde) e per la creazione del grafo di transazioni non compresso (linea viola) sono sovrapposte.\\
 
+\begin{figure*}
+	\centering
+	\subfigure[][Grafico delle prestazioni del parser eseguito su multiprocessore.]{\label{fig:parallelbenchmark}
+		\includegraphics[width=.8\linewidth]{images/demo/parallel_scalability.png}}
+	\subfigure[][Grafico che illustra la sovrapposizione delle prestazioni del parser.]{\label{fig:sovrapposition}
+		\includegraphics[width=.8\linewidth]{images/demo/sovrapposition_benchmark.png}}
+	\caption{Grafici delle prestazioni del parser descritti nel seguente capitolo.}
+	\label{fig:analisisScript}
+\end{figure*}
+
+Al momento della stesura del documento la versione parallelizzata del parser utilizza tutti i core disponibili dal processore quindi nella nostra valutazione sperimentale, il parser analizzava otto file contemporaneamente, con una CPU migliore è possibile migliorare ancora la velocità.\\
+La Figura \ref{fig:sovrapposition} illustra la sovrapposizione dei grafici tra l'esecuzione single core e quella parallela.\\
+Il parser attraverso l'esecuzione parallela con la CPU presa in considerazione in questa valutazione sperimentale esegue l'analisi sull'intera blockchain in 8 ore\footnote{Tali risultati fanno riferimento alla dimensione della blockchain assunta nel novembre del 2019: 604.038 blocchi e 249 GB di spazio totale.}, con un netto miglioramento sulla versione single core che effettua l'analisi sull'intera blockchain in circa 3 giorni ( TODO da verificare sulla attuale CPU).
 
 \section{DEMO} \label{sec:solDemo}
 
 \subsection{AnalyticsPyBlock} \label{sec:AnalyticsPyBlock}
-
-Per dimostrare un possibile utilizzo della blockchain di Bitcoin serializzata in JSON è stata sviluppato un semplice strumento di analisi denominato AnalyticsPyBlock, il quale permette anche di sviluppare analisi personalizzate.\\
-AnalyticsPyBlock al momento della stesura del documento supporta solo un tipo di analisi, riguardante la tipologia di script utilizzati nel tempo nella rete Bitcoin; il software di analisi viene sviluppato in Python3 e risiede su Github sotto licenza Apache License 2.0.\\
-La Figura \ref{fig:analisisScript} illustra il risultato dell'analisi sulle tipologie di script.
 
 \begin{figure*}
 	\centering
@@ -248,6 +264,10 @@ La Figura \ref{fig:analisisScript} illustra il risultato dell'analisi sulle tipo
 	\caption{Grafici estrapolati dalla demo descritta nel segunte capitolo.}
 	\label{fig:analisisScript}
 \end{figure*}
+
+Per dimostrare un possibile utilizzo della blockchain di Bitcoin serializzata in JSON è stata sviluppato un semplice strumento di analisi denominato AnalyticsPyBlock, il quale permette anche di sviluppare analisi personalizzate.\\
+AnalyticsPyBlock al momento della stesura del documento supporta solo un tipo di analisi, riguardante la tipologia di script utilizzati nel tempo nella rete Bitcoin; il software di analisi viene sviluppato in Python3 e risiede su Github sotto licenza Apache License 2.0.\\
+La Figura \ref{fig:analisisScript} illustra il risultato dell'analisi sulle tipologie di script.
 
 %    \begin{figure}
 %    \begin{subfigure}{\textwidth}
@@ -266,19 +286,19 @@ La Figura \ref{fig:analisisScript} illustra il risultato dell'analisi sulle tipo
 %    \label{fig:analisisScript}
 %    \end{figure}
 
-La Figura \ref{fig:globalAnalisis} mostra gli script maggiormente utilizzati, che risultano essere P2PKH e  P2SH; inoltre la Figura \ref{fig:optReturnScript} mostra l'utilizzo della blockchain di Bitcoin per l'archiviazione di dati. Questa informazione è molto utile ai fini della costruzione del grafo perchè attraverso una futura operazione di \emph{data cleaning} si possono eliminare tutte le informazioni che riguardano l'archiviazione di dati attraverso l'operatore OP\_RETURN.\\
+La Figura \ref{fig:globalAnalisis} mostra gli script maggiormente utilizzati, che risultano essere P2PKH e  P2SH; inoltre la Figura \ref{fig:optReturnScript} mostra l'utilizzo della blockchain di Bitcoin per l'archiviazione di dati. Questa informazione è molto utile ai fini della costruzione del grafo perché attraverso una futura operazione di \emph{data cleaning} si possono eliminare tutte le informazioni che riguardano l'archiviazione di dati attraverso l'operatore OP\_RETURN.\\
 La strumento impiega meno di 12 ore per analizzare i file JSON serializzati da SpyCBlock; anche tale tool potrebbe essere migrato ad un'implementazione multiprocessore con cui si può migliorare la velocità di analisi.
 
-\subsection{SpyJSBlocks} \label{sec:SpyJSBlocks}
+\subsection{SpyJSBlock} \label{sec:SpyJSBlock}
 
-Per visualizzare i grafi serializzati da SpyCBlock abbiamo sviluppato un applicazione web che fa uso delle librerie appartenenti alla famiglia ngraph descritte nella Sezione \ref{sec:ngraph}, con cui siamo riusciti ad ottenere una visualizzazione di una piccola parte dei grafi serializzati da SpyCBlock.\\
+Per visualizzare i grafi serializzati da SpyCBlock abbiamo sviluppato un'applicazione web che fa uso delle librerie appartenenti alla famiglia ngraph descritte nella Sezione \ref{sec:ngraph}, con cui siamo riusciti ad ottenere una visualizzazione di una piccola parte dei grafi serializzati da SpyCBlock.\\
 Attraverso la possibilità di visualizzare i grafi, siamo riusciti ad eseguire tutte le analisi discusse in questo documento; inoltre con l'utilizzo del modulo ngraph.louvian abbiamo condotto un'analisi minimale sul grafo degli address scomponendo quest'ultimo in comunità, anche se l'applicazione di tale algoritmo soffre delle problematiche descritte nella Sezione \ref{sec:solGraphAddress}.\\
-L'applicativo web viene sviluppata utilizzando JavaScript senza l'ausilio di framework; una possibile evoluzione di questo applicativo potrebbe essere la migrazione ad un framework come React \cite{vis:react}.\\
-Lo strumento software possiede due diverse implementazioni per via delle diverse problematiche riguardanti le librerie ngraph descritte nella Sezione \ref{sec:ngraph}; l'applicativo risiedono su Github sotto licenza Creative Commons 4.0 e vengono deniminati SpyJSBlock \cite{vis:SpyJSBlock} e SpyJSBlock-NGraph \cite{vis:SpyJSBlock-Ngraph}.
+L'applicativo web viene sviluppato utilizzando JavaScript senza l'ausilio di framework; una possibile evoluzione di questo applicativo potrebbe essere la migrazione ad un framework come React \cite{vis:react}.\\
+Lo strumento software possiede due diverse implementazioni per via delle diverse problematiche riguardanti le librerie ngraph descritte nella Sezione \ref{sec:ngraph}; gli applicativi risiedono su Github sotto licenza Creative Commons 4.0 e vengono deniminati SpyJSBlock \cite{vis:SpyJSBlock} e SpyJSBlock-NGraph \cite{vis:SpyJSBlock-Ngraph}.
 Le principali differenze tra gli strumenti software sono:
 \begin{itemize}
   \item SpyJSBlock è una prima implementazione dell'applicativo web che fa uso della libreria VivagraphJS descritta nella sezione \ref{sec:ngraph}, per via della difficoltà nel personalizzare il rendering tramite WebGl non viene eseguita nessuna personalizzazione eccetto l'aggiunta della possibilità di esplorare il nodo del grafo attraverso eventi di click che offrono la possibilità di ricercare l'id della transazione oppure l'address attraverso un'explorer come Explora \cite{blockstream:esplora}.\\
-  Non utilizzando nessuna particolare personalizzazione il rendering risulta essere molto veloce, riuscendo a visualizzare una porzione di grafo molto più grande, ma risulta essere difficoltoso cambiare la modalità di rendering oppure applicare algoritmi di analisi sul grafo.\\
+  Non utilizzando nessuna particolare personalizzazione il rendering risulta essere molto veloce, riuscendo a visualizzare una porzione di grafo abbastranza grande, ma risulta essere difficoltoso cambiare la modalità di rendering oppure applicare algoritmi di analisi sul grafo.\\
   Un frammento di grafo visualizzato attraverso SpyJSBlock viene illustrato attraverso la Figure \ref{fig:vivagraphSpyJSBlock}.
 
   \begin{figure}
@@ -288,26 +308,22 @@ Le principali differenze tra gli strumenti software sono:
   \end{figure}
 
   Per personalizzare il rendering ed avere più controllo sulla visualizzazione del grafo abbiamo sviluppato un'alternativa utilizzando le librerie della famiglia ngraph.
-  \item SpyJSBlock-NGraph è un raffinamento dello strumento SpyJSBlock, dove vengono utilizzati i moduli della famiglia ngraph per il rendering dei grafi, con cui si riesce ad ottenere un miglioramento nella qualità del rendering a discapido però delle performance: avendo la possibilità di renderizzare una porzione più piccola del grafo.
-  Viene utilizzato il modulo ngraph.pixel per il rendering in 3D del grafo delle transazioni, in cui viene implementata anche la possibilità di ricercare l'id della transazione attraverso l'explorer Explora, La Figura \ref{} illustra un frammento del grafo delle transazioni.
+  \item SpyJSBlock-NGraph è un raffinamento dello strumento SpyJSBlock, dove vengono utilizzati i moduli della famiglia ngraph per il rendering dei grafi, con cui si riesce ad ottenere un miglioramento nella qualità del rendering a discapito però delle performance: avendo la possibilità di renderizzare una porzione più piccola del grafo.
+  Viene utilizzato il modulo ngraph.pixel per il rendering in 3D del grafo delle transazioni, in cui viene implementata anche la possibilità di ricercare l'id della transazione attraverso l'explorer Explora, La Figura \ref{fig:ngraph.pixel3d} illustra un frammento del grafo delle transazioni.
   Per il rendering del grafo degli address invece viene utilizzato il modulo ngraph.pixi con cui si riesce ad ottenere una visualizzazione 2D di un grafo diretto, La Figura \ref{fig:pixiaddress} ne illustra un esempio.
   Inoltre sulla tipologia del grafo di address viene applicato un algoritmo di ricerca delle comunità attraverso il modulo ngraph.louvain descritto nella Sezione \ref{sec:ngraph}.\\
-  Dopo l'applazione dell algoritmo, le comunità di nodi vengono dipinde con colori diversi, semplificando l'individuazione di quest'utlime all'interno del grafo.\
-  La Figura \ref{fig:pixilouvianaddress} illustra una composizione in comunità del grafo di address.
-
-  \begin{figure}
-  \centering
-   \includegraphics[scale=0.25]{images/demo/3D_tx.png}
-   \caption{Frammento del grafo visualizzato attraverso l'applicativo SpyJSBlock.}\label{fig:vivagraphSpyJSBlock}
-  \end{figure}
+  Dopo l'applicazione dell'algoritmo, le comunità di nodi vengono dipinde con colori diversi, semplificando l'individuazione di quest'utlime all'interno del grafo.\
+  La Figura \ref{fig:pixilouvianaddress} illustra una scomposizione in comunità del grafo di address.
 
   \begin{figure*}
   	\centering
+    \subfigure[][Frammento del grafo delle transazioni visualizzato attraverso l'applicativo SpyJSBlock-NGraph.]{\label{fig:ngraph.pixel3d}
+  		\includegraphics[width=.8\linewidth]{images/demo/3D_tx.png}}
   	\subfigure[][Grafo di address visualizzato attraverso il modulo ngraph.pixi\cite{vis:ngraph.pixi}.]{\label{fig:pixiaddress}
   		\includegraphics[width=.8\linewidth]{images/demo/ngraphpixi.png}}
   	\subfigure[][Grafo di address scomposto in comunità attraverso l'utilizzo del modulo ngraph.louvian\cite{ngraph.louvain}]{\label{fig:pixilouvianaddress}
   		\includegraphics[width=.8\linewidth]{images/demo/ngraphlouvian.png}}
-  	\caption{Frammenti di visualizzazione dei grafi estrapolati dalla demo descritta nel segunte capitolo.}
+  	\caption{Frammenti di visualizzazione dei grafi estrapolati dagli applicativi descritti nel segunte capitolo.}
   	\label{fig:ngraphvis}
   \end{figure*}
 
