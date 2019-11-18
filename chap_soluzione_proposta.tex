@@ -43,7 +43,7 @@ L'aggiornamento al Segregated Witness ha introdutto tre nuove informazioni all'i
 \end{itemize}
 
 Il Frammento di codice descritto nell'Appendice \ref{sec:decodeTransactionCode} rappresenta il codice con cui è possibile deserializzare una transazione dopo l'aggiornamento al Segregated Witness (viene usato Python per brevità).\\
-I problemi relativi alla deserializzazione dei dati, combinati con la grande quantità di dati da deserializzare\footnote{In data {\today} la dimensione della blockchain di Bitcoin è pari a 270 Gb.}, hanno richiesto la progettazione di un metodo di testing automatico sull'intera blockchain oppure su un parte specifica.
+I problemi relativi alla deserializzazione dei dati, combinati con la grande quantità di dati da deserializzare\footnote{In data {\today} la dimensione della blockchain di Bitcoin è pari a 249 Gb.}, hanno richiesto la progettazione di un metodo di testing automatico sull'intera blockchain oppure su un parte specifica.
 Questo ha richiesto di convertire le informazioni deserializzate dal parser in un formato universale per eseguire l'elaborazione di queste informazioni con qualsiasi linguaggio.\\
 Il formato file utilizzato per la codifica delle informazioni è il formato JSON (JavaScript Object Notation) e la libreria RapidJSON descritta nella Sezione \ref{sec:rapidjsonLib} ha reso possibile la serializzazione delle informazioni lette dal parser in maniera streaming: ogni blocco decodificato viene serializzato in JSON immediatamente con la conseguenza di un utilizzo di memoria RAM irrisorio.\\
 L'adozione del formato JSON per l'organizzazione dei dati ha portato i seguenti benefici:
@@ -57,7 +57,7 @@ L'adozione del formato JSON per l'organizzazione dei dati ha portato i seguenti 
 
 {\centering
 \vspace{15pt}
-\includegraphics[scale=0.5]{images/OP_RETUTN_chart.png}
+\includegraphics[scale=0.25]{images/OP_RETUTN_chart.png}
 \captionof{figure}{Frammento di grafico estrapolato dall'applicazione della Sezione \ref{sec:AnalyticsPyBlock} dove viene rappresentato l'utilizzo del operatore OP\_RETURN all'interno degli script di blocco.\label{fig:chartOPRETURN}}
 \vspace{10pt}
 \par}
@@ -96,13 +96,13 @@ La serializzazione delle informazioni avviene in streaming, cioè ogni blocco le
 
 \end{example}
 
-Attraverso la serializzazione delle transazioni con il formato appena descritto è stato possibile realizzare un applicativo web, chiamato SpyJSBlocks e descritto nella Sezione \ref{sec:SpyJSBlocks}, per la visualizzazione del grafo utilizzando la libreria JavaScript descritta nella Sezione \ref{sec:ngraph}. Nella Figura \ref{fig:visgraphTx} è rappresentata una porzione di grafo delle transazioni; da tale rappresentazione si può notare  l'enorme quantità di transazioni conentute in una piccola parte di blockchain (50 Mb di 270 Gb) che rende difficile il rendering di esse.
+Attraverso la serializzazione delle transazioni con il formato appena descritto è stato possibile realizzare un applicativo web, chiamato SpyJSBlock e descritto nella Sezione \ref{sec:SpyJSBlock}, per la visualizzazione del grafo utilizzando la libreria JavaScript descritta nella Sezione \ref{sec:ngraph}. Nella Figura \ref{fig:visgraphTx} è rappresentata una porzione di grafo delle transazioni; da tale rappresentazione si può notare  l'enorme quantità di transazioni conentute in una piccola parte di blockchain (50 Mb di 249 Gb) che rende difficile il rendering di esse.
 Attraverso alcuni zoom effettuati si può notare l'esistenza di piccole comunità di nodi che scambiano bitcoin; in particolare possiamo notare dallo zoom \say{B} alcuni nodi che fanno parte di transazioni M:1.
 
 \begin{figure}
 \centering
-\includegraphics[scale=1.2]{images/demo/graph_tx_demo_presentation.png}
-\caption{Porzione di grafo delle transazioni visualizzata attraverso SpyJSBlocks.}
+\includegraphics[scale=0.3]{images/demo/graph_tx_demo_presentation.png}
+\caption{Porzione di grafo delle transazioni visualizzata attraverso SpyJSBlock-NGraph \ref{ec:SpyJSBlock}.}
 \label{fig:visgraphTx}
 \end{figure}
 
@@ -111,7 +111,7 @@ Consideriamo lo zoom \say{B} della Figura \ref{fig:visgraphTx}. Possiamo notare 
   Prendendo in considerazione il nodo con  identificativo di transazione \say{4e0b1f\-271c7add\-530f8a4dd6e\-cdc3eb5ca41\-7f0f587c6\-28ecf4cb0\-b8b4b\-ca40a}, si può notare attraverso l'uso di uno explorer che la transazione contiene 236 transazioni di input e 1 transazione di output, questo potrebbe indicare che il wallet abbia raggruppato tutte le transazioni su un unico address.
 \end{example}
 
-La blockchain di bitcoin serializza i blocchi all'interno di file chiamati \say{blk00000.dat} dove \say{00000} rappresenta l'indice dei file; Bitcoin-core stabilisce degli standard di dimensione per i file, pari a 100 Mb per ogni file.\\
+La blockchain di bitcoin serializza i blocchi all'interno di file chiamati \say{blk00000.dat} dove \say{00000} rappresenta l'indice dei file; Bitcoin-core stabilisce degli standard di dimensione per i file, pari a circa 100 Mb per ogni file.\\
 SpyCBlock effettua la serializazione 1 a 1, cioè per ogni file \say{blk0000.dat} produce un file con le informazioni in un specifico formato ad esempio \say{blk00000.json}; questo dà la possibilità di far evolvere facilmente il parser verso un' implementazione parallela e/o distribuita.
 
 \section{Grafo degli address} \label{sec:solGraphAddress}
@@ -193,7 +193,7 @@ Consideriamo l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom}, coinv
    Una possibile soluzione, potrebbe essere quella di utilizzare una rappresentazione attraverso il grafo naturale rappresentato dalla Figura \ref{fig:addGrapjNatural}, con l'aggiunta delle chiavi pubbliche ricavate dallo script come proprietà del nodo, ottenendo la rappresentazione illustrata in Figura \ref{fig:addGrapjNaturalPlus}
    \begin{figure}[H]
    \centering
-   \includegraphics[scale=0.35]{images/exampleWithGraph/naturalAddressGrahScamTx.png}
+   \includegraphics[scale=1.5]{images/exampleWithGraph/naturalAddressGrahScamTx_correcter.png}
    \caption{Frammento del grafo naturale degli address arricchito delle informazioni delle chiavi pubbliche all'interno del nodo.\label{fig:addGrapjNaturalPlus}}
    \end{figure}
  \end{itemize}
@@ -220,7 +220,7 @@ Consideriamo l'address \say{3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom}, coinv
 \begin{figure}
 \centering
  \includegraphics[scale=0.25]{images/demo/address_graph.png}
- \caption{Frammento del grafo degli address estrapolato dalla demo descritta nella Sezione \ref{sec:SpyJSBlocks}.}\label{fig:addressGraph}
+ \caption{Frammento del grafo degli address estrapolato dalla demo descritta nella Sezione \ref{sec:SpyJSBlock}.}\label{fig:addressGraph}
 \end{figure}
 
 \section{Risultati Sperimentali} \label{sec:valutazionesperimentale}
@@ -252,7 +252,6 @@ La Figura \ref{fig:sovrapposition} illustra la sovrapposizione dei grafici tra l
 Il parser attraverso l'esecuzione parallela con la CPU presa in considerazione in questa valutazione sperimentale esegue l'analisi sull'intera blockchain in 8 ore\footnote{Tali risultati fanno riferimento alla dimensione della blockchain assunta nel novembre del 2019: 604.038 blocchi e 249 GB di spazio totale.}, con un netto miglioramento sulla versione single core che effettua l'analisi sull'intera blockchain in circa 3 giorni ( TODO da verificare sulla attuale CPU).
 
 \section{DEMO} \label{sec:solDemo}
-
 \subsection{AnalyticsPyBlock} \label{sec:AnalyticsPyBlock}
 
 \begin{figure*}
@@ -287,7 +286,7 @@ La Figura \ref{fig:analisisScript} illustra il risultato dell'analisi sulle tipo
 %    \end{figure}
 
 La Figura \ref{fig:globalAnalisis} mostra gli script maggiormente utilizzati, che risultano essere P2PKH e  P2SH; inoltre la Figura \ref{fig:optReturnScript} mostra l'utilizzo della blockchain di Bitcoin per l'archiviazione di dati. Questa informazione è molto utile ai fini della costruzione del grafo perché attraverso una futura operazione di \emph{data cleaning} si possono eliminare tutte le informazioni che riguardano l'archiviazione di dati attraverso l'operatore OP\_RETURN.\\
-La strumento impiega meno di 12 ore per analizzare i file JSON serializzati da SpyCBlock; anche tale tool potrebbe essere migrato ad un'implementazione multiprocessore con cui si può migliorare la velocità di analisi.
+La strumento impiega meno di 6 ore per analizzare i file JSON serializzati da SpyCBlock; anche tale tool potrebbe essere migrato ad un'implementazione multiprocessore con cui si può migliorare la velocità di analisi.
 
 \subsection{SpyJSBlock} \label{sec:SpyJSBlock}
 
