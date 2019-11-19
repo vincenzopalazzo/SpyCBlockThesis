@@ -54,7 +54,7 @@ Consideriamo nuovamente l’Esempio \ref{example:aliceBobFirst}, nel quale Alice
 
 Il grafo degli address è un grafo diretto i cui nodi sono address e i cui archi rappresentano flussi di bitcoin da un address ad un altro, indotti direttamente o indirettamente da transazioni Bitcoin.
 
-La creazione di questa tipologia di grafi è molto meno intuitiva, poiché, come visto nel Capitolo \ref{chap:bitcoin}, le transazioni non contengono alcun riferimento esplicito a wallet o persone, sfruttando, invece, chiavi private e corrispondenti chiavi pubbliche. Gli address generati attraverso la chiave pubblica sono contenuti all’interno dello script di blocco in modo da rendere la transazione sbloccabile solo dal proprietario dell’address. \\
+La creazione di questa tipologia di grafi è molto meno intuitiva, poiché, come visto nel Capitolo \ref{chap:bitcoin}, le transazioni non contengono alcun riferimento esplicito a wallet o persone, sfruttando, invece, chiavi private e corrispondenti chiavi pubbliche. Gli address generati attraverso la chiave pubblica sono contenuti all’interno dello script di blocco in modo da rendere la transazione sbloccabile solo dal proprietario della chiave pubblicas. \\
 Come descritto nella Sezione \ref{sec:bitcoinScriptBitcoin}, gli address possono essere originati anche da uno script tipo P2SH, P2WPKH e P2WSH; ciò rende la creazione del grafo degli address molto insidiosa, perché gli address ricavati dagli script (se utilizzati correttamente) sono univoci e quindi rappresenterebbero un’identità diversa all’interno del grafo, anche se molti di questi potrebbero appartenere in realtà allo stesso wallet.
 
 \begin{example}
@@ -129,7 +129,7 @@ Nelle prime versioni di Bitcoin, non tutti i wallet contenevano un set di chiavi
 \begin{figure}
 \centering
   \includegraphics[scale=0.35]{images/exampleWithGraph/exchange-tx-with-same-address.png}
-  \caption{Una exchange transaction verso lo stesso indirizzo di origine\cite{blockstream:esplora}.\label{fig:exchangeaddressrecicle}}
+  \caption{Una exchange transaction verso lo stesso indirizzo di origine \cite{blockstream:esplora}.\label{fig:exchangeaddressrecicle}}
 \end{figure}
 
   In questo caso il flusso di bitcoin è chiaro e il corrispondente grafo degli address è mostrato  nella Figura \ref{fig:graphAddresssameaddresschange}.
