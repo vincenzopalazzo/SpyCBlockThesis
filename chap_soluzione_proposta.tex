@@ -293,7 +293,7 @@ La strumento impiega meno di 8 ore per analizzare i file JSON serializzati da Sp
 \subsection{SpyJSBlock} \label{sec:SpyJSBlock}
 
 Per visualizzare i grafi serializzati da SpyCBlock abbiamo sviluppato un'applicazione web che fa uso delle librerie appartenenti alla famiglia ngraph descritte nella Sezione \ref{sec:ngraph}, con cui siamo riusciti ad ottenere una visualizzazione di una piccola parte dei grafi serializzati da SpyCBlock.\\
-Attraverso la possibilità di visualizzare i grafi, siamo riusciti ad eseguire tutte le analisi discusse in questo documento; inoltre con l'utilizzo del modulo ngraph.louvian abbiamo condotto un'analisi minimale sul grafo degli address scomponendo quest'ultimo in comunità, anche se l'applicazione di tale algoritmo soffre delle problematiche descritte nella Sezione \ref{sec:solGraphAddress}.\\
+Attraverso la possibilità di visualizzare i grafi, siamo riusciti ad eseguire tutte le analisi discusse in questo documento; inoltre con l'utilizzo del modulo ngraph.louvain abbiamo condotto un'analisi minimale sul grafo degli address scomponendo quest'ultimo in comunità, anche se l'applicazione di tale algoritmo soffre delle problematiche descritte nella Sezione \ref{sec:solGraphAddress}.\\
 L'applicativo web viene sviluppato utilizzando JavaScript senza l'ausilio di framework; una possibile evoluzione di questo applicativo potrebbe essere la migrazione ad un framework come React \cite{vis:react}.\\
 Lo strumento software possiede due diverse implementazioni per via delle diverse problematiche riguardanti le librerie ngraph descritte nella Sezione \ref{sec:ngraph}; gli applicativi risiedono su Github sotto licenza Creative Commons 4.0 e vengono denominati SpyJSBlock \cite{vis:SpyJSBlock} e SpyJSBlock-NGraph \cite{vis:SpyJSBlock-Ngraph}.
 Le principali differenze tra gli strumenti software sono:
@@ -323,7 +323,7 @@ Le principali differenze tra gli strumenti software sono:
   		\includegraphics[width=.75\linewidth,scale=0.75]{images/demo/3D_tx.png}}
   	\subfigure[][Grafo degli address visualizzato attraverso il modulo ngraph.pixi \cite{vis:ngraph.pixi}.]{\label{fig:pixiaddress}
   		\includegraphics[width=.75\linewidth]{images/demo/ngraphpixi.png}}
-  	\subfigure[][Grafo degli address scomposto in comunità attraverso l'utilizzo del modulo ngraph.louvian \cite{ngraph.louvain}]{\label{fig:pixilouvianaddress}
+  	\subfigure[][Grafo degli address scomposto in comunità attraverso l'utilizzo del modulo ngraph.louvain \cite{ngraph.louvain}]{\label{fig:pixilouvianaddress}
   		\includegraphics[width=.75\linewidth]{images/demo/ngraphlouvian.png}}
   	\caption{Frammenti  dei grafi estrapolati dagli applicativi descritti nel seguente capitolo.}
   	\label{fig:ngraphvis}
