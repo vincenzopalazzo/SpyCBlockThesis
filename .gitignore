@@ -1,3 +1,9 @@
 build/
 
 tmp.*
+
+*.bak
+
+chap_bitcoin.pdf
+
+chap_bitcoin.synctex.gz

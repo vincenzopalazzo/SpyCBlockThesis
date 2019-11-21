@@ -13,13 +13,13 @@ Con l’utilizzo di RapidJSON siamo riusciti ad introdurre all’interno del par
 \section{Bitcoin-api-cpp} \label{sec:bitcoinApiLib}
 
 La libreria bitcoin-api-cpp \cite{bitcoin-api-cpp:github} implementa un wrapper per il framework RPC di Bitcoin-core; tale libreria risiede su Github sotto licenza MIT ed è stata  implementata in C++ dallo sviluppatore Krzysztof Okupski.
-Con l'utilizzo di questa liberia siamo riusciti ad'interfacciarci con il nodo Bitcoin per deserializzare le informazioni relative allo script di blocco.
+Con l'utilizzo di questa libreria siamo riusciti ad interfacciarci con il nodo Bitcoin per deserializzare le informazioni relative allo script di blocco.
 
 \section{JSON-RPC 1.0} \label{sec:jsonrpchttp}
 
-Bitcoin-core offre un framework RPC (Remote Procedure Call) basato sul protocollo HTTP per consentire l'utilizzo dei servizi offerti dal nodo Bitcoin, quali, ad esempio,  esaminare lo stato della blockchain oppure effettuare la crezione di transazioni in formato esadecimale.
+Bitcoin-core offre un framework RPC (Remote Procedure Call) basato sul protocollo HTTP per consentire l'utilizzo dei servizi offerti dal nodo Bitcoin, quali, ad esempio,  esaminare lo stato della blockchain oppure effettuare la creazione di transazioni in formato esadecimale.
 
-Abbiamo utilizzato questo servizio offerto da Bitcoin-core per l'estrazione dell'address dallo script di blocco; esso, inoltre ci ha consentito di ricavare i dati della transazionie precedente contenuta all'interno della transazione di input attualmente esaminata senza l'implementazione di una cache, a scapito, tuttavia, dell'efficienza della soluzione proposta.
+Abbiamo utilizzato questo servizio offerto da Bitcoin-core per l'estrazione dell'address dallo script di blocco; esso, inoltre ci ha consentito di ricavare i dati della transazione precedente contenuta all'interno della transazione di input attualmente esaminata senza l'implementazione di una cache, a scapito, tuttavia, dell'efficienza della soluzione proposta.
 
 \section{Zlib} \label{sec:zlib}
 

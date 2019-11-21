@@ -28,7 +28,8 @@ TEST(hash_test, first_test_comparable_transaction_hash_value_readed)
 
     hexForm += block.getRawTransactions().at(0).getTxIn().at(0)
                     .getScript().getRawScriptString().substr(0,
-                    block.getRawTransactions().at(0).getTxIn().at(0).getScript().getScriptLenght().getValue() * 2);
+                    block.getRawTransactions().at(0).getTxIn().at(0)
+                    .getScript().getScriptLenght().getValue() * 2);
 
     hexForm += SerializationUtil::toSerealizeForm(
     block.getRawTransactions().at(0).getTxIn().at(0).getSequences());
@@ -40,14 +41,16 @@ TEST(hash_test, first_test_comparable_transaction_hash_value_readed)
     block.getRawTransactions().at(0).getTxOut().at(0).getNValue());
 
     hexForm += SerializationUtil::toSerealizeForm(
-    block.getRawTransactions().at(0).getTxOut().at(0).getScript().getScriptLenght());
+    block.getRawTransactions().at(0).getTxOut().at(0).getScript()
+    .getScriptLenght());
 
     hexForm += block.getRawTransactions().at(0).getTxOut().at(0)
                     .getScript().getRawScriptString().substr(0,
                     block.getRawTransactions().at(0).getTxOut().at(0)
                     .getScript().getScriptLenght().getValue() * 2);
 
-    hexForm += SerializationUtil::toSerealizeForm(block.getRawTransactions().at(0).getLockTime());
+    hexForm += SerializationUtil::toSerealizeForm(block.getRawTransactions()
+    .at(0).getLockTime());
 
     vector<unsigned char> vectorByte = spyCBlock::UtilCrypto::ToHexIntoVectorByte(hexForm);
 

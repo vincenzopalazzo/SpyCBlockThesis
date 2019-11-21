@@ -46,7 +46,7 @@ Così come le transazioni, il blocco viene definito attraverso una struttura dat
 \end{itemize}
 
 Il blocco, oltre a contenere l’intestazione, contiene ulteriori informazioni riguardo la sua dimensione e la rete di appartenenza: infatti il client Bitcoin può essere eseguito anche in modalità testnet, in cui vengono testate le nuove versioni del software prima del rilascio ufficiale.
-La struttura finale del blocco, nella version attuale, può essere rappresentata nel modo indicato in Tabella \ref{tab:blockbitcoinc}
+La struttura finale del blocco, nella versione attuale, può essere rappresentata nel modo indicato in Tabella \ref{tab:blockbitcoinc}
 
 \begin{table}
        \centering\small
@@ -386,7 +386,7 @@ Per risolvere questi problema nell'agosto del 2019 è stato rilasciato il codice
 \subsubsection{Miniscript}
 
 Miniscript è un linguaggio implementato da Pieter Wuille, cofondatore di Blockstream e attuale sviluppatore Bitcoin core, con l'obiettivo di semplificare la scrittura di smart contract.
-Miniscript è implementato in C++ ed è stato sviluppato per rappresentare un sottinsieme di Bitcoin script in modo strutturato. Ad esempio il Codice \ref{code:complexscriptnominiscritp} può essere riscritto tramite il Codice \ref{code:complexscriptminiscritp} utilizzando miniscript:
+Miniscript è implementato in C++ ed è stato sviluppato per rappresentare un sottoinsieme di Bitcoin script in modo strutturato. Ad esempio il Codice \ref{code:complexscriptnominiscritp} può essere riscritto tramite il Codice \ref{code:complexscriptminiscritp} utilizzando miniscript:
 
 \begin{lstlisting}[language=miniscript, label={code:complexscriptminiscritp}, caption={Un esempio di utilizzo di miniscript.}]
 thresh(3, pk(key_1), pk(key_2), pk(key_3), older(12960))

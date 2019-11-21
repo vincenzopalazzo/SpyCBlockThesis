@@ -69,7 +69,7 @@ Nel momento in cui viene pubblicato il blocco il sistema crea una transazione ve
 
 \end{example}
 
-L'esempio precedente mostra come  in Bicoin si possano distinguere due tipi di transazioni: la transazione {\it coinbase\/} e la transazione comune.
+L'esempio precedente mostra come in Bicoin si possano distinguere due tipi di transazioni: la transazione {\it coinbase\/} e la transazione comune.
 \begin{itemize}
   \item La transazione coinbase è un evento speciale che si verifica sul sistema, il cui formato risulta non valido per la blockchain, poiché la sua struttura contiene zero input e un output. Questo evento rappresenta nel sistema un’emissione di nuovi bitcoin (argomento trattato nella Sezione \ref{sec:miningbitcoin}), rendendo la transazione coinbase una transazione speciale per il sistema Bitcoin.
   \item Una transazione comune è un evento che punta a sbloccare una transazione esistente su blockchain, conosciuta come UTXO, allo scopo di   creare un movimento di bitcoin.
@@ -82,7 +82,7 @@ Possono verificarsi principalmente due tipi di fallimenti durante la creazione d
 \end{enumerate}
 Bitcoin pertanto descrive le transazioni come \say{consumabili}, cioè una transazione di input consuma un UTXO e nello stesso istante produce un UTXO ex novo.
 \begin{example}
-Consideriamo nuovament l'esempio precedente  e supponiamo che Bob abbia deciso di inviare parte dei bitcoin ricevuti da Alice a Sara. Una volta ottenuto l’indirizzo Bitcoin di Sara, cioè \say{3CM8TuY8B3\-sCzVQN3FWYnd5skmzSF3uvWA}, per effettuare il trasferimento Bob  crea una nuova transazione di 0.00137927 bitcoin con il seguente identificativo \say{907538047d630d571298096028572\-08705ef3baa4b573e6e845d5a3e6ea\-11464}, raffigurata in Figura \ref{fig:examplebobsara}.
+Consideriamo nuovamente l'esempio precedente e supponiamo che Bob abbia deciso di inviare parte dei bitcoin ricevuti da Alice a Sara. Una volta ottenuto l’indirizzo Bitcoin di Sara, cioè \say{3CM8TuY8B3\-sCzVQN3FWYnd5skmzSF3uvWA}, per effettuare il trasferimento Bob  crea una nuova transazione di 0.00137927 bitcoin con il seguente identificativo \say{907538047d630d571298096028572\-08705ef3baa4b573e6e845d5a3e6ea\-11464}, raffigurata in Figura \ref{fig:examplebobsara}.
 
 {\centering
 \vspace{15pt}
@@ -330,7 +330,7 @@ Infine le firme vengono verificate con le chiavi pubbliche mediante l’operator
 Lo script {\it pay-to-script-hash \/} venne introdotto nel 2012, per semplificare l’uso degli script in transazioni complesse: infatti molto spesso accade di avere script molto grandi, come uno script P2MS 14:15, il che comporta un aumento della complessità dello script di sblocco; la motivazione dell’introduzione dello script P2SH è stata la semplificazione di quest’ultimo, come se fosse un normale pagamento ad un indirizzo Bitcoin.
 Questa nuova tipologia semplifica notevolmente lo script di blocco, perché sarà popolato solo dal suo hash, a discapito però dell’aggiunta di una copia dello script di blocco all’interno dello script di sblocco. Si consideri, ad esempio il seguente script P2SH:
 
-\lstinputlisting[label=code:p2shnokey, caption={Script P2SH completo.}]{code/script/p2sh-without-key.btcs}
+\lstinputlisting[language=bitcoinscript, label=code:p2shnokey, caption={Script P2SH completo.}]{code/script/p2sh-without-key.btcs}
 
 In questo esempio lo script P2SH (Codice \ref{code:p2shnokey}) completo viene composto dal seguente script di sblocco:
 \begin{lstlisting}[language=bitcoinscript, label={code:p2shunlock}, caption={Script P2SH di sblocco.}]
@@ -417,7 +417,7 @@ Bitcoin utilizza la convenzione dell'id wallet solo per una semplificazione per 
 \subsection{Transazioni null data (OP\_RETURN)}\label{sub:sectionNUllaDataScript}
 La blockchain di Bitcoin e, più in generale, le tecnologie blockchain hanno potenziali usi ben oltre i pagamenti. Molti sviluppatori hanno tentato di utilizzare Bitcoin script, per sfruttare la sicurezza e la resilienza del sistema, per applicazioni quali servizi notarili digitali, certificati azionari e {\it smart contract\/}.
 
-I primi tentativi di utilizzare il linguaggio di script di Bitcoin per questi scopi hanno comportato la creazione di output di transazioni, che registravano dati sulla blockchain; nella versione 0.9 di Bitcoin core del 2014, è stato aggiunto un nuovo tipo di operatore chiamato OP\_RETURN che marca la transazione come non correlata ad un movimento di bitcoin, ma ad un'archiviazione di dati. Questo operatore ha permesso ai miner di identificare la transazione e decidere se validarla o meno, considerando il problema che, archiviando una transazione con uno script non valido, oltre a creare un UTXO non spendibile, lo spazio richiesto della blockchain di bitcoin sarebbe aumentato, aumentando quindi anche le commissioni richieste dal miner.
+I primi tentativi di utilizzare il linguaggio di script di Bitcoin per questi scopi hanno comportato la creazione di output di transazioni, che registravano dati sulla blockchain; nella versione 0.9 di Bitcoin core del 2014, è stato aggiunto un nuovo tipo di operatore chiamato OP\_RETURN che marca la transazione come non correlata ad un movimento di bitcoin, ma ad un'archiviazione di dati. Questo operatore ha permesso ai miner di identificare la transazione e decidere se validarla o meno, considerando il problema che, archiviando una transazione con uno script non valido, oltre a creare un UTXO non spendibile, lo spazio richiesto della blockchain di Bitcoin sarebbe aumentato, aumentando quindi anche le commissioni richieste dal miner.
 Per aggirare questo problema, il team di sviluppo decise di limitare la porzione di dati a 80 byte.
 
 \begin{lstlisting}[language=bitcoinscript, label={code:nulldata}, caption={Uso dell'operatore OP\_RETURN.}]
