@@ -24,12 +24,12 @@ TEST(hash_test, first_test_comparable_transaction_hash_value_readed)
 
     hexForm += SerializationUtil::toSerealizeForm(
     block.getRawTransactions().at(0).getTxIn().at(0)
-    .getScript().getScriptLenght());
+    .getScript().getScriptLength());
 
     hexForm += block.getRawTransactions().at(0).getTxIn().at(0)
                     .getScript().getRawScriptString().substr(0,
                     block.getRawTransactions().at(0).getTxIn().at(0)
-                    .getScript().getScriptLenght().getValue() * 2);
+                    .getScript().getScriptLength().getValue() * 2);
 
     hexForm += SerializationUtil::toSerealizeForm(
     block.getRawTransactions().at(0).getTxIn().at(0).getSequences());
@@ -42,12 +42,12 @@ TEST(hash_test, first_test_comparable_transaction_hash_value_readed)
 
     hexForm += SerializationUtil::toSerealizeForm(
     block.getRawTransactions().at(0).getTxOut().at(0).getScript()
-    .getScriptLenght());
+    .getScriptLength());
 
     hexForm += block.getRawTransactions().at(0).getTxOut().at(0)
                     .getScript().getRawScriptString().substr(0,
                     block.getRawTransactions().at(0).getTxOut().at(0)
-                    .getScript().getScriptLenght().getValue() * 2);
+                    .getScript().getScriptLength().getValue() * 2);
 
     hexForm += SerializationUtil::toSerealizeForm(block.getRawTransactions()
     .at(0).getLockTime());

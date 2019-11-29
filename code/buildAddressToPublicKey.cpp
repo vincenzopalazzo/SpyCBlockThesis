@@ -1,7 +1,7 @@
-std::string buildAddressFromPubKey(std::string pubkey){
-    opcode = hex.substr(hex.length() - 2, 2);
-    optValue = std::stoul(opcode, nullptr, 16);
-    optMap = bitcoinOpCode.opCodeList.find(optValue);
+std::string buildAddressFromPubKey(std::string hex){
+    auto opcode = hex.substr(hex.length() - 2, 2);
+    auto opValue = std::stoul(opcode, nullptr, 16);
+    auto opMap = bitcoinOpCode.opCodeList.find(opValue);
     opcode = optMap->second;
     Bytes bytes = hexBytes(key.c_str());
     //SHA256
