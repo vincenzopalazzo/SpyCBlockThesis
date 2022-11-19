@@ -1,0 +1,40 @@
+(TeX-add-style-hook
+ "bibliography"
+ (lambda ()
+   (LaTeX-add-bibitems
+    "ethereum:paper"
+    "learnmeabitcoin:p2ms"
+    "satalight:lightningstudy"
+    "bitcoinbip:bip68"
+    "DBLP:journals/corr/abs-1709-02489"
+    "DBLP:conf/icdm/OggierPD18"
+    "DBLP:conf/icdm/2018w"
+    "inproceedings"
+    "bitcoinbook"
+    "blockstream:esplora"
+    "zlib:github"
+    "bitcoin-api-cpp:github"
+    "rapidjson:github"
+    "Bitcoin-Cryptography-Library:github"
+    "neo4j"
+    "parser:blocktools"
+    "blockchain:explorer"
+    "parser:bitcoinscript"
+    "vis:vivagraphjs"
+    "vis:ngraph"
+    "vis:pixijs"
+    "vis:ngraph.pixi"
+    "vis:ngraph.pexel"
+    "vis:ngraph.graph"
+    "ngraph.native"
+    "ngraph.fromprecompute"
+    "ngraph.tobinary"
+    "ngraph.louvain"
+    "vis:react"
+    "vis:SpyJSBlock"
+    "vis:SpyJSBlock-Ngraph"
+    "dagum1998openmp")
+   (LaTeX-add-environments
+    '("example" LaTeX-env-args ["argument"] 0)))
+ :bibtex)
+
