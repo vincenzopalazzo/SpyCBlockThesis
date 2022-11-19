@@ -1,0 +1,56 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Esempio di stato non valido per un cammino radice foglia. \blx@tocontentsinit {0}\cite {ethereum:paper}\relax }}{3}{figure.caption.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces La nuova transazione creata da Alice ricercata attraverso un explorer \blx@tocontentsinit {0}\cite {blockstream:esplora}.\relax }}{5}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Gestione degli UTXO nella blockchain di Bitcoin \blx@tocontentsinit {0}\cite {blockstream:esplora}.\relax }}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Transazione coinbase descritta \blx@tocontentsinit {0}\cite {blockstream:esplora}.\relax }}{6}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces La transazione creata da Bob verso Sara \blx@tocontentsinit {0}\cite {blockstream:esplora}.\relax }}{7}{figure.2.4}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Rappresentazione del evento di blocco e sblocco di un UTXO.\relax }}{7}{figure.2.5}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Stato iniziale dello stack.\relax }}{10}{figure.2.6}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Stato dello stack dopo l’esecuzione dell operatore OP\_DUP.\relax }}{11}{figure.2.7}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Stato dello stack dopo l’esecuzione dell’operatore OP\_HASH160.\relax }}{11}{figure.2.8}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Stato dello stack dopo l’inserimento della chiave pubblica attesa.\relax }}{11}{figure.2.9}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Stato dello stack dopo l’inserimento dello scriptSig.\relax }}{12}{figure.2.10}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Stato dello stack dopo l’inserimento del <public key>.\relax }}{12}{figure.2.11}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Rappresentazione del processo di creazione dello script P2PK e P2PKH.\relax }}{13}{figure.2.12}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Stato dello stack dopo l’inserimento dello scriptSig nello stack.\relax }}{13}{figure.2.13}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Stato dello stack dopo la verifica con OP\_2 e l’inserimento nello stack delle chiavi pubbliche.\relax }}{14}{figure.2.14}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Esecuzione dell’operatore OP\_CHECKMULTISIG per la verifica delle chiavi \blx@tocontentsinit {0}\cite {learnmeabitcoin:p2ms}.\relax }}{14}{figure.2.15}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Stato dello stack dopo l’esecuzione dello ScriptSig come script P2MS.\relax }}{15}{figure.2.16}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Stato dello stack dopo l’esecuzione dell’operatore OP\_HASH160.\relax }}{16}{figure.2.17}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Stato dello stack dopo l’inserimento dell’hash atteso.\relax }}{16}{figure.2.18}%
+\contentsline {figure}{\numberline {2.19}{\ignorespaces Grafico della crescita della potenza di hashing in data 28/09/2019. Fonte: blockchain.com.\relax }}{18}{figure.2.19}%
+\contentsline {figure}{\numberline {2.20}{\ignorespaces Grafico della crescita della difficoltà metrica in data 28/09/2019. Fonte: blockchain.com.\relax }}{18}{figure.2.20}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Confronto tra le tecnologie Lightning network e Bitcoin: transazioni per secondo (tps) \blx@tocontentsinit {0}\cite {satalight:lightningstudy}.\relax }}{25}{figure.3.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Frammento del grafo delle transazioni relativo alla transazione descritta nell’Esempio \ref {ex:complexTx}.\relax }}{29}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Frammento del grafo delle transazioni relativo alla transazione tra Alice e Bob descritta nell’Esempio \ref {example:aliceBobFirst}.\relax }}{31}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Frammento del grafo di address corrispondente alla transazione illustrata nell’Esempio \ref {example:aliceBobFirst}.\relax }}{32}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Frammento del grafo degli address coinvolti nella transazione dell’esempio \ref {example:newalicebobaddress}.\relax }}{33}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Una exchange transaction verso lo stesso indirizzo di origine \blx@tocontentsinit {0}\cite {blockstream:esplora}.\relax }}{33}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Il grafo degli address coinvolti nella transazione con id 15bf8\-b35c9210\-efe7e448c5fc\-6b69b47b3a\-8cac9c14\-8c7cc57c6\-5f26638\-4d9b8.\relax }}{34}{figure.caption.22}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Frammento del grafo degli address creato attraverso BiVA \blx@tocontentsinit {0}\cite {DBLP:conf/icdm/OggierPD18}.\relax }}{36}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Frammento del grafo di transazioni prodotto attraverso la demo pubblicata nell'articolo \blx@tocontentsinit {0}\cite {inproceedings}.\relax }}{37}{figure.caption.25}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Crescita della dimensione della blockchain di Bitcoin nel tempo.\relax }}{41}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Frammento di grafico estrapolato dall'applicazione della Sezione \ref {sec:AnalyticsPyBlock} dove viene rappresentato l'utilizzo del operatore OP\_RETURN all'interno degli script di blocco.\relax }}{44}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Rappresentazione attraverso un'explorer \blx@tocontentsinit {0}\cite {blockstream:esplora} della transazione coinbase contenuta all'interno del blocco di genesi.\relax }}{45}{figure.7.3}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Porzione di grafo delle transazioni visualizzata attraverso SpyJSBlock.\relax }}{46}{figure.caption.26}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Frammento del grafo naturale degli address descritto dalla transazione con identificativo 82\-a69\-be69e\-00937\-91ab7\-d3803\-69ec\-ffba4f\-1fe08\-27a862\-5ede9\-d89e9\-4776b\-c21.\relax }}{50}{figure.caption.27}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Frammento del grafo degli address ottenuto attraverso un analisi dell'address 3CD1\-QW6fjg\-TwKq3Pj\-97nty28W\-ZAVkz\-iNom.\relax }}{50}{figure.caption.28}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Frammento del grafo naturale degli address arricchito delle informazioni delle chiavi pubbliche all'interno del nodo.\relax }}{50}{figure.caption.29}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Frammento del grafo degli address, in cui viene rappresentata una serializzazione iterativa di una transazione M:N.\relax }}{51}{figure.caption.30}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Frammento del grafo degli address estrapolato dalla demo descritta nella Sezione \ref {sec:SpyJSBlock}.\relax }}{52}{figure.caption.31}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Grafico delle prestazioni del parser su \emph {single core}.\relax }}{53}{figure.caption.32}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Grafici delle prestazioni del parser descritti nel seguente capitolo.\relax }}{53}{figure.caption.33}%
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Grafici estrapolati dalla demo descritta nel seguente capitolo.\relax }}{54}{figure.caption.34}%
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Frammento del grafo visualizzato attraverso l'applicativo SpyJSBlock.\relax }}{56}{figure.caption.35}%
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Frammenti dei grafi estrapolati dagli applicativi descritti nel seguente capitolo.\relax }}{57}{figure.caption.36}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

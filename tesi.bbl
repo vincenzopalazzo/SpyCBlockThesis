@@ -1,0 +1,813 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nty/global//global/global}
+  \entry{ngraph.native}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=AKVP}{%
+         family={Andrei\bibnamedelima Kashcha},
+         familyi={A\bibinitperiod\bibinitdelim K\bibinitperiod},
+         given={Vincenzo\bibnamedelima Palazzo},
+         giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AKVP1}
+    \strng{fullhash}{AKVP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{ngraph.native}
+    \verb{url}
+    \verb https://github.com/anvaka/ngraph.native
+    \endverb
+  \endentry
+
+  \entry{vis:ngraph.pixi}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=AKVP}{%
+         family={Andrei\bibnamedelima Kashcha},
+         familyi={A\bibinitperiod\bibinitdelim K\bibinitperiod},
+         given={Vincenzo\bibnamedelima Palazzo},
+         giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AKVP1}
+    \strng{fullhash}{AKVP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{ngraph.pixi}
+    \verb{url}
+    \verb https://github.com/vincenzopalazzo/ngraph.pixi
+    \endverb
+  \endentry
+
+  \entry{bitcoinbook}{book}{}
+    \name{author}{1}{}{%
+      {{hash=AAM}{%
+         family={Antonopoulos},
+         familyi={A\bibinitperiod},
+         given={Andreas\bibnamedelima M.},
+         giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {O'Reilly}%
+    }
+    \strng{namehash}{AAM1}
+    \strng{fullhash}{AAM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{Mastering Bitcoin 2nd Edition - Programming the Open
+  Blockchain}
+    \field{year}{2017}
+  \endentry
+
+  \entry{blockchain:explorer}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=B}{%
+         family={Blockchain},
+         familyi={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{B1}
+    \strng{fullhash}{B1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{title}{Explorer}
+    \verb{url}
+    \verb https://www.blockchain.com/explorer
+    \endverb
+  \endentry
+
+  \entry{blockstream:esplora}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=B}{%
+         family={Blockstream},
+         familyi={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{B2}
+    \strng{fullhash}{B2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{title}{Explora}
+    \verb{url}
+    \verb https://github.com/Blockstream/esplora
+    \endverb
+  \endentry
+
+  \entry{dagum1998openmp}{article}{}
+    \name{author}{2}{}{%
+      {{hash=DL}{%
+         family={Dagum},
+         familyi={D\bibinitperiod},
+         given={Leonardo},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Menon},
+         familyi={M\bibinitperiod},
+         given={Ramesh},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{DLMR1}
+    \strng{fullhash}{DLMR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{number}{1}
+    \field{pages}{46\bibrangedash 55}
+    \field{title}{OpenMP: an industry standard API for shared-memory
+  programming}
+    \field{volume}{5}
+    \field{journaltitle}{Computational Science \& Engineering, IEEE}
+    \field{year}{1998}
+  \endentry
+
+  \entry{satalight:lightningstudy}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=D}{%
+         family={DataLight},
+         familyi={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{D1}
+    \strng{fullhash}{D1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{title}{{Lightning Network Study. Will this technology become the new
+  standard for Bitcoin transactions?}}
+    \verb{url}
+    \verb https://datalight.me/blog/researches/lightning-network-study-will-thi
+    \verb s-technology-become-the-new-standart-for-bitcoin-transactions/
+    \endverb
+  \endentry
+
+  \entry{vis:react}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=F}{%
+         family={Facebook},
+         familyi={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{F1}
+    \strng{fullhash}{F1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{title}{React}
+    \verb{url}
+    \verb https://github.com/facebook/react
+    \endverb
+  \endentry
+
+  \entry{DBLP:journals/corr/abs-1709-02489}{article}{}
+    \name{author}{5}{}{%
+      {{hash=KHA}{%
+         family={Kalodner},
+         familyi={K\bibinitperiod},
+         given={Harry\bibnamedelima A.},
+         giveni={H\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Goldfeder},
+         familyi={G\bibinitperiod},
+         given={Steven},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Chator},
+         familyi={C\bibinitperiod},
+         given={Alishah},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={M{\"{o}}ser},
+         familyi={M\bibinitperiod},
+         given={Malte},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NA}{%
+         family={Narayanan},
+         familyi={N\bibinitperiod},
+         given={Arvind},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KHA+1}
+    \strng{fullhash}{KHAGSCAMMNA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \verb{eprint}
+    \verb 1709.02489
+    \endverb
+    \field{title}{BlockSci: Design and applications of a blockchain analysis
+  platform}
+    \verb{url}
+    \verb http://arxiv.org/abs/1709.02489
+    \endverb
+    \field{volume}{abs/1709.02489}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2017}
+  \endentry
+
+  \entry{vis:ngraph}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KA}{%
+         family={Kashcha},
+         familyi={K\bibinitperiod},
+         given={Andrei},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KA1}
+    \strng{fullhash}{KA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{ngraph}
+    \verb{url}
+    \verb https://github.com/anvaka/ngraph
+    \endverb
+  \endentry
+
+  \entry{vis:ngraph.graph}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KA}{%
+         family={Kashcha},
+         familyi={K\bibinitperiod},
+         given={Andrei},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KA1}
+    \strng{fullhash}{KA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{ngraph.graph}
+    \verb{url}
+    \verb https://github.com/anvaka/ngraph.graph
+    \endverb
+  \endentry
+
+  \entry{ngraph.louvain}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KA}{%
+         family={Kashcha},
+         familyi={K\bibinitperiod},
+         given={Andrei},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KA1}
+    \strng{fullhash}{KA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{ngraph.louvain}
+    \verb{url}
+    \verb https://github.com/anvaka/ngraph.louvain
+    \endverb
+  \endentry
+
+  \entry{vis:ngraph.pexel}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KA}{%
+         family={Kashcha},
+         familyi={K\bibinitperiod},
+         given={Andrei},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KA1}
+    \strng{fullhash}{KA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{ngraph.pixel}
+    \verb{url}
+    \verb https://github.com/anvaka/ngraph.pixel
+    \endverb
+  \endentry
+
+  \entry{ngraph.tobinary}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KA}{%
+         family={Kashcha},
+         familyi={K\bibinitperiod},
+         given={Andrei},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KA1}
+    \strng{fullhash}{KA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{ngraph.tobinary}
+    \verb{url}
+    \verb https://github.com/anvaka/ngraph.tobinary
+    \endverb
+  \endentry
+
+  \entry{vis:vivagraphjs}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KA}{%
+         family={Kashcha},
+         familyi={K\bibinitperiod},
+         given={Andrei},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KA1}
+    \strng{fullhash}{KA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{VivaGraphJS}
+    \verb{url}
+    \verb https://github.com/anvaka/VivaGraphJS
+    \endverb
+  \endentry
+
+  \entry{zlib:github}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=M}{%
+         family={Madler},
+         familyi={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{M1}
+    \strng{fullhash}{M1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{zlib}
+    \verb{url}
+    \verb https://github.com/madler/zlib
+    \endverb
+  \endentry
+
+  \entry{bitcoinbip:bip68}{misc}{}
+    \name{author}{2}{}{%
+      {{hash=MFNDB}{%
+         family={Mark\bibnamedelima Friedenbach},
+         familyi={M\bibinitperiod\bibinitdelim F\bibinitperiod},
+         suffix={BtcDrak},
+         suffixi={B\bibinitperiod},
+         given={Nicolas\bibnamedelima Dorier},
+         giveni={N\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=k}{%
+         family={kinoshitajona},
+         familyi={k\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MFBNDk1}
+    \strng{fullhash}{MFBNDk1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{{Relative lock-time using consensus-enforced sequence
+  numbers}}
+    \verb{url}
+    \verb https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki
+    \endverb
+  \endentry
+
+  \entry{bitcoin-api-cpp:github}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=M}{%
+         family={Minium},
+         familyi={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{M2}
+    \strng{fullhash}{M2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{bitcoin-api-cpp}
+    \verb{url}
+    \verb https://github.com/minium/bitcoin-api-cpp
+    \endverb
+  \endentry
+
+  \entry{Bitcoin-Cryptography-Library:github}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=N}{%
+         family={Nayuki},
+         familyi={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{N1}
+    \strng{fullhash}{N1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{title}{Bitcoin-Cryptography-Library}
+    \verb{url}
+    \verb https://github.com/nayuki/Bitcoin-Cryptography-Library
+    \endverb
+  \endentry
+
+  \entry{neo4j}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=NT}{%
+         family={NEO4J},
+         familyi={N\bibinitperiod},
+         given={Team},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{NT1}
+    \strng{fullhash}{NT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{title}{NEO4J}
+    \verb{url}
+    \verb https://neo4j.com
+    \endverb
+  \endentry
+
+  \entry{DBLP:conf/icdm/OggierPD18}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=OFE}{%
+         family={Oggier},
+         familyi={O\bibinitperiod},
+         given={Fr{\'{e}}d{\'{e}}rique\bibnamedelima E.},
+         giveni={F\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=PS}{%
+         family={Phetsouvanh},
+         familyi={P\bibinitperiod},
+         given={Silivanxay},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Datta},
+         familyi={D\bibinitperiod},
+         given={Anwitaman},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \name{editor}{4}{}{%
+      {{hash=TH}{%
+         family={Tong},
+         familyi={T\bibinitperiod},
+         given={Hanghang},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=LZJ}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Zhenhui\bibnamedelima Jessie},
+         giveni={Z\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=ZF}{%
+         family={Zhu},
+         familyi={Z\bibinitperiod},
+         given={Feida},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=YJ}{%
+         family={Yu},
+         familyi={Y\bibinitperiod},
+         given={Jeffrey},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {{IEEE}}%
+    }
+    \strng{crossref}{DBLP:conf/icdm/2018w}
+    \strng{namehash}{OFEPSDA1}
+    \strng{fullhash}{OFEPSDA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \field{booktitle}{2018 {IEEE} International Conference on Data Mining
+  Workshops, {ICDM} Workshops, Singapore, Singapore, November 17-20, 2018}
+    \verb{doi}
+    \verb 10.1109/ICDMW.2018.00210
+    \endverb
+    \field{isbn}{978-1-5386-9288-2}
+    \field{pages}{1469\bibrangedash 1474}
+    \field{title}{BiVA: Bitcoin Network Visualization {\&} Analysis}
+    \verb{url}
+    \verb https://doi.org/10.1109/ICDMW.2018.00210
+    \endverb
+    \field{year}{2018}
+  \endentry
+
+  \entry{parser:bitcoinscript}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=PV}{%
+         family={Palazzo},
+         familyi={P\bibinitperiod},
+         given={Vincenzo},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PV1}
+    \strng{fullhash}{PV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{decompiler-bitcoin-script}
+    \verb{url}
+    \verb https://github.com/vincenzopalazzo/decompiler-bitcoin-script
+    \endverb
+  \endentry
+
+  \entry{ngraph.fromprecompute}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=PV}{%
+         family={Palazzo},
+         familyi={P\bibinitperiod},
+         given={Vincenzo},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PV1}
+    \strng{fullhash}{PV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{ngraph.fromprecompute}
+    \verb{url}
+    \verb https://github.com/vincenzopalazzo/ngraph.fromprecompute
+    \endverb
+  \endentry
+
+  \entry{vis:SpyJSBlock}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=PV}{%
+         family={Palazzo},
+         familyi={P\bibinitperiod},
+         given={Vincenzo},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PV1}
+    \strng{fullhash}{PV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{SpyJSBlock}
+    \verb{url}
+    \verb https://github.com/vincenzopalazzo/SpyJSBlocks
+    \endverb
+  \endentry
+
+  \entry{vis:SpyJSBlock-Ngraph}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=PV}{%
+         family={Palazzo},
+         familyi={P\bibinitperiod},
+         given={Vincenzo},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PV1}
+    \strng{fullhash}{PV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{SpyJSBlock-NGraph}
+    \verb{url}
+    \verb https://github.com/vincenzopalazzo/SpyJSBlock-NGraph
+    \endverb
+  \endentry
+
+  \entry{inproceedings}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=SA}{%
+         family={Shrestha},
+         familyi={S\bibinitperiod},
+         given={Ajay},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=VJ}{%
+         family={Vassileva},
+         familyi={V\bibinitperiod},
+         given={Julita},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SAVJ1}
+    \strng{fullhash}{SAVJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \verb{doi}
+    \verb 10.1109/ICCBB.2018.8756455
+    \endverb
+    \field{pages}{1\bibrangedash 6}
+    \field{title}{Bitcoin Blockchain Transactions Visualization}
+    \field{month}{11}
+    \field{year}{2018}
+  \endentry
+
+  \entry{ethereum:paper}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=TE}{%
+         family={Team},
+         familyi={T\bibinitperiod},
+         given={Ethereum},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TE1}
+    \strng{fullhash}{TE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{{A Next-Generation Smart Contract and Decentralized
+  Application Platform}}
+    \verb{url}
+    \verb https://github.com/ethereum/wiki/wiki/White-Paper
+    \endverb
+  \endentry
+
+  \entry{vis:pixijs}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=TPD}{%
+         family={Team},
+         familyi={T\bibinitperiod},
+         given={Pixi\bibnamedelima Developer},
+         giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TPD1}
+    \strng{fullhash}{TPD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{pixi.js}
+    \verb{url}
+    \verb https://github.com/pixijs/pixi.js
+    \endverb
+  \endentry
+
+  \entry{rapidjson:github}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=T}{%
+         family={Tencent},
+         familyi={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{T1}
+    \strng{fullhash}{T1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{rapidjson}
+    \verb{url}
+    \verb https://github.com/Tencent/rapidjson
+    \endverb
+  \endentry
+
+  \entry{parser:blocktools}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=T}{%
+         family={Tenthirtyone},
+         familyi={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{T2}
+    \strng{fullhash}{T2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{Blocktools}
+    \verb{url}
+    \verb https://github.com/tenthirtyone/blocktools
+    \endverb
+  \endentry
+
+  \entry{DBLP:conf/icdm/2018w}{proceedings}{}
+    \name{editor}{4}{}{%
+      {{hash=TH}{%
+         family={Tong},
+         familyi={T\bibinitperiod},
+         given={Hanghang},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=LZJ}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Zhenhui\bibnamedelima Jessie},
+         giveni={Z\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=ZF}{%
+         family={Zhu},
+         familyi={Z\bibinitperiod},
+         given={Feida},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=YJ}{%
+         family={Yu},
+         familyi={Y\bibinitperiod},
+         given={Jeffrey},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {{IEEE}}%
+    }
+    \strng{namehash}{TH+1}
+    \strng{fullhash}{THLZJZFYJ1}
+    \field{labelnamesource}{editor}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{isbn}{978-1-5386-9288-2}
+    \field{title}{2018 {IEEE} International Conference on Data Mining
+  Workshops, {ICDM} Workshops, Singapore, Singapore, November 17-20, 2018}
+    \verb{url}
+    \verb https://ieeexplore.ieee.org/xpl/conhome/8626049/proceeding
+    \endverb
+    \field{year}{2018}
+  \endentry
+
+  \entry{learnmeabitcoin:p2ms}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=WG}{%
+         family={Walker},
+         familyi={W\bibinitperiod},
+         given={Greg},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WG1}
+    \strng{fullhash}{WG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{title}{{Pay To Multisig}}
+    \verb{url}
+    \verb https://learnmeabitcoin.com/glossary/p2ms
+    \endverb
+  \endentry
+\enddatalist
+\endinput

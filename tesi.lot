@@ -1,0 +1,25 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Rappresentazione generale del concetto di blocco in una blockchain.\relax }}{2}{table.caption.3}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Struttura delle transazioni in Bitcoin.\relax }}{8}{table.caption.6}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Rappresentazione struttura delle transazioni di output.\relax }}{8}{table.caption.7}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Rappresentazione struttura delle transazione di input in Bitcoin.\relax }}{9}{table.caption.8}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Struttura di un block header in Bitcoin core.\relax }}{19}{table.caption.9}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Struttura di un blocco in Bitcoin core.\relax }}{20}{table.caption.10}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Struttura della transazione dopo l’aggiornamento al Segregated witness.\relax }}{21}{table.caption.11}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces La struttura della transazione input all’interno di Bitcoin core.\relax }}{22}{table.caption.12}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Struttura del tipo di dato Outpoint di Bitcoin core.\relax }}{22}{table.caption.13}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces La struttura della transazione di output di Bitcoin core.\relax }}{22}{table.caption.14}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces La struttura della serializzazione dei dati del testimone; in Bitcoin core questa struttura è chiamata CScriptWitness.\relax }}{23}{table.caption.15}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Struttura del tipi di dato CScript di Bitcoin core.\relax }}{23}{table.caption.16}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Struttura delle transazioni in BlockSci per la costruzione del grafo delle transazioni \blx@tocontentsinit {0}\cite {DBLP:journals/corr/abs-1709-02489}.\relax }}{35}{table.caption.23}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
