@@ -4,7 +4,7 @@
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("toptesi" "11pt" "a4paper" "titlepage")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("inputenc" "utf8") ("babel" "italian") ("fontenc" "T1") ("geometry" "pass") ("rotating" "figuresright") ("csquotes" "babel") ("biblatex" "backend=bibtex") ("frontespizio" "swapnames") ("subfigure" "normal")))
+                     '(("inputenc" "utf8") ("babel" "italian") ("fontenc" "T1") ("geometry" "pass") ("rotating" "figuresright") ("csquotes" "babel") ("biblatex" "backend=bibtex") ("frontespizio" "write" "signatures") ("subfigure" "normal")))
    (add-to-list 'LaTeX-verbatim-environments-local "lstlisting")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
@@ -18,15 +18,15 @@
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
-    "chap_blockchain"
-    "chap_bitcoin"
-    "chap_bitcoincore"
-    "chap_problema"
-    "chap_riferimenti_storici"
-    "chap_tecnologie_utilizzate"
-    "chap_soluzione_proposta"
-    "chap_conclusioni"
-    "app_a"
+    "sections/chap_blockchain"
+    "sections/chap_bitcoin"
+    "sections/chap_bitcoincore"
+    "sections/chap_problema"
+    "sections/chap_riferimenti_storici"
+    "sections/chap_tecnologie_utilizzate"
+    "sections/chap_soluzione_proposta"
+    "sections/chap_conclusioni"
+    "sections/app_a"
     "toptesi"
     "toptesi11"
     "inputenc"

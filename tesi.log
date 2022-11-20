@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.11.9)  19 NOV 2022 17:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.11.9)  19 NOV 2022 18:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -108,437 +108,7 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2021/06/21 v1.2n UTF-8 support
-Now handling font encoding OML ...
-... no UTF-8 mapping file for font encoding OML
-Now handling font encoding OMS ...
-... processing UTF-8 mapping file for font encoding OMS
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2021/06/21 v1.2n UTF-8 support
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
 )
-Now handling font encoding OT1 ...
-... processing UTF-8 mapping file for font encoding OT1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2021/06/21 v1.2n UTF-8 support
-   defining Unicode char U+00A0 (decimal 160)
-   defining Unicode char U+00A1 (decimal 161)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00AD (decimal 173)
-   defining Unicode char U+00B8 (decimal 184)
-   defining Unicode char U+00BF (decimal 191)
-   defining Unicode char U+00C5 (decimal 197)
-   defining Unicode char U+00C6 (decimal 198)
-   defining Unicode char U+00D8 (decimal 216)
-   defining Unicode char U+00DF (decimal 223)
-   defining Unicode char U+00E6 (decimal 230)
-   defining Unicode char U+00EC (decimal 236)
-   defining Unicode char U+00ED (decimal 237)
-   defining Unicode char U+00EE (decimal 238)
-   defining Unicode char U+00EF (decimal 239)
-   defining Unicode char U+00F8 (decimal 248)
-   defining Unicode char U+0131 (decimal 305)
-   defining Unicode char U+0141 (decimal 321)
-   defining Unicode char U+0142 (decimal 322)
-   defining Unicode char U+0152 (decimal 338)
-   defining Unicode char U+0153 (decimal 339)
-   defining Unicode char U+0174 (decimal 372)
-   defining Unicode char U+0175 (decimal 373)
-   defining Unicode char U+0176 (decimal 374)
-   defining Unicode char U+0177 (decimal 375)
-   defining Unicode char U+0218 (decimal 536)
-   defining Unicode char U+0219 (decimal 537)
-   defining Unicode char U+021A (decimal 538)
-   defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+0237 (decimal 567)
-   defining Unicode char U+2013 (decimal 8211)
-   defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2018 (decimal 8216)
-   defining Unicode char U+2019 (decimal 8217)
-   defining Unicode char U+201C (decimal 8220)
-   defining Unicode char U+201D (decimal 8221)
-   defining Unicode char U+FB00 (decimal 64256)
-   defining Unicode char U+FB01 (decimal 64257)
-   defining Unicode char U+FB02 (decimal 64258)
-   defining Unicode char U+FB03 (decimal 64259)
-   defining Unicode char U+FB04 (decimal 64260)
-   defining Unicode char U+FB05 (decimal 64261)
-   defining Unicode char U+FB06 (decimal 64262)
-)
-Now handling font encoding T1 ...
-... processing UTF-8 mapping file for font encoding T1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2021/06/21 v1.2n UTF-8 support
-   defining Unicode char U+00A0 (decimal 160)
-   defining Unicode char U+00A1 (decimal 161)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00AB (decimal 171)
-   defining Unicode char U+00AD (decimal 173)
-   defining Unicode char U+00BB (decimal 187)
-   defining Unicode char U+00BF (decimal 191)
-   defining Unicode char U+00C0 (decimal 192)
-   defining Unicode char U+00C1 (decimal 193)
-   defining Unicode char U+00C2 (decimal 194)
-   defining Unicode char U+00C3 (decimal 195)
-   defining Unicode char U+00C4 (decimal 196)
-   defining Unicode char U+00C5 (decimal 197)
-   defining Unicode char U+00C6 (decimal 198)
-   defining Unicode char U+00C7 (decimal 199)
-   defining Unicode char U+00C8 (decimal 200)
-   defining Unicode char U+00C9 (decimal 201)
-   defining Unicode char U+00CA (decimal 202)
-   defining Unicode char U+00CB (decimal 203)
-   defining Unicode char U+00CC (decimal 204)
-   defining Unicode char U+00CD (decimal 205)
-   defining Unicode char U+00CE (decimal 206)
-   defining Unicode char U+00CF (decimal 207)
-   defining Unicode char U+00D0 (decimal 208)
-   defining Unicode char U+00D1 (decimal 209)
-   defining Unicode char U+00D2 (decimal 210)
-   defining Unicode char U+00D3 (decimal 211)
-   defining Unicode char U+00D4 (decimal 212)
-   defining Unicode char U+00D5 (decimal 213)
-   defining Unicode char U+00D6 (decimal 214)
-   defining Unicode char U+00D8 (decimal 216)
-   defining Unicode char U+00D9 (decimal 217)
-   defining Unicode char U+00DA (decimal 218)
-   defining Unicode char U+00DB (decimal 219)
-   defining Unicode char U+00DC (decimal 220)
-   defining Unicode char U+00DD (decimal 221)
-   defining Unicode char U+00DE (decimal 222)
-   defining Unicode char U+00DF (decimal 223)
-   defining Unicode char U+00E0 (decimal 224)
-   defining Unicode char U+00E1 (decimal 225)
-   defining Unicode char U+00E2 (decimal 226)
-   defining Unicode char U+00E3 (decimal 227)
-   defining Unicode char U+00E4 (decimal 228)
-   defining Unicode char U+00E5 (decimal 229)
-   defining Unicode char U+00E6 (decimal 230)
-   defining Unicode char U+00E7 (decimal 231)
-   defining Unicode char U+00E8 (decimal 232)
-   defining Unicode char U+00E9 (decimal 233)
-   defining Unicode char U+00EA (decimal 234)
-   defining Unicode char U+00EB (decimal 235)
-   defining Unicode char U+00EC (decimal 236)
-   defining Unicode char U+00ED (decimal 237)
-   defining Unicode char U+00EE (decimal 238)
-   defining Unicode char U+00EF (decimal 239)
-   defining Unicode char U+00F0 (decimal 240)
-   defining Unicode char U+00F1 (decimal 241)
-   defining Unicode char U+00F2 (decimal 242)
-   defining Unicode char U+00F3 (decimal 243)
-   defining Unicode char U+00F4 (decimal 244)
-   defining Unicode char U+00F5 (decimal 245)
-   defining Unicode char U+00F6 (decimal 246)
-   defining Unicode char U+00F8 (decimal 248)
-   defining Unicode char U+00F9 (decimal 249)
-   defining Unicode char U+00FA (decimal 250)
-   defining Unicode char U+00FB (decimal 251)
-   defining Unicode char U+00FC (decimal 252)
-   defining Unicode char U+00FD (decimal 253)
-   defining Unicode char U+00FE (decimal 254)
-   defining Unicode char U+00FF (decimal 255)
-   defining Unicode char U+0100 (decimal 256)
-   defining Unicode char U+0101 (decimal 257)
-   defining Unicode char U+0102 (decimal 258)
-   defining Unicode char U+0103 (decimal 259)
-   defining Unicode char U+0104 (decimal 260)
-   defining Unicode char U+0105 (decimal 261)
-   defining Unicode char U+0106 (decimal 262)
-   defining Unicode char U+0107 (decimal 263)
-   defining Unicode char U+0108 (decimal 264)
-   defining Unicode char U+0109 (decimal 265)
-   defining Unicode char U+010A (decimal 266)
-   defining Unicode char U+010B (decimal 267)
-   defining Unicode char U+010C (decimal 268)
-   defining Unicode char U+010D (decimal 269)
-   defining Unicode char U+010E (decimal 270)
-   defining Unicode char U+010F (decimal 271)
-   defining Unicode char U+0110 (decimal 272)
-   defining Unicode char U+0111 (decimal 273)
-   defining Unicode char U+0112 (decimal 274)
-   defining Unicode char U+0113 (decimal 275)
-   defining Unicode char U+0114 (decimal 276)
-   defining Unicode char U+0115 (decimal 277)
-   defining Unicode char U+0116 (decimal 278)
-   defining Unicode char U+0117 (decimal 279)
-   defining Unicode char U+0118 (decimal 280)
-   defining Unicode char U+0119 (decimal 281)
-   defining Unicode char U+011A (decimal 282)
-   defining Unicode char U+011B (decimal 283)
-   defining Unicode char U+011C (decimal 284)
-   defining Unicode char U+011D (decimal 285)
-   defining Unicode char U+011E (decimal 286)
-   defining Unicode char U+011F (decimal 287)
-   defining Unicode char U+0120 (decimal 288)
-   defining Unicode char U+0121 (decimal 289)
-   defining Unicode char U+0122 (decimal 290)
-   defining Unicode char U+0123 (decimal 291)
-   defining Unicode char U+0124 (decimal 292)
-   defining Unicode char U+0125 (decimal 293)
-   defining Unicode char U+0128 (decimal 296)
-   defining Unicode char U+0129 (decimal 297)
-   defining Unicode char U+012A (decimal 298)
-   defining Unicode char U+012B (decimal 299)
-   defining Unicode char U+012C (decimal 300)
-   defining Unicode char U+012D (decimal 301)
-   defining Unicode char U+012E (decimal 302)
-   defining Unicode char U+012F (decimal 303)
-   defining Unicode char U+0130 (decimal 304)
-   defining Unicode char U+0131 (decimal 305)
-   defining Unicode char U+0132 (decimal 306)
-   defining Unicode char U+0133 (decimal 307)
-   defining Unicode char U+0134 (decimal 308)
-   defining Unicode char U+0135 (decimal 309)
-   defining Unicode char U+0136 (decimal 310)
-   defining Unicode char U+0137 (decimal 311)
-   defining Unicode char U+0139 (decimal 313)
-   defining Unicode char U+013A (decimal 314)
-   defining Unicode char U+013B (decimal 315)
-   defining Unicode char U+013C (decimal 316)
-   defining Unicode char U+013D (decimal 317)
-   defining Unicode char U+013E (decimal 318)
-   defining Unicode char U+0141 (decimal 321)
-   defining Unicode char U+0142 (decimal 322)
-   defining Unicode char U+0143 (decimal 323)
-   defining Unicode char U+0144 (decimal 324)
-   defining Unicode char U+0145 (decimal 325)
-   defining Unicode char U+0146 (decimal 326)
-   defining Unicode char U+0147 (decimal 327)
-   defining Unicode char U+0148 (decimal 328)
-   defining Unicode char U+014A (decimal 330)
-   defining Unicode char U+014B (decimal 331)
-   defining Unicode char U+014C (decimal 332)
-   defining Unicode char U+014D (decimal 333)
-   defining Unicode char U+014E (decimal 334)
-   defining Unicode char U+014F (decimal 335)
-   defining Unicode char U+0150 (decimal 336)
-   defining Unicode char U+0151 (decimal 337)
-   defining Unicode char U+0152 (decimal 338)
-   defining Unicode char U+0153 (decimal 339)
-   defining Unicode char U+0154 (decimal 340)
-   defining Unicode char U+0155 (decimal 341)
-   defining Unicode char U+0156 (decimal 342)
-   defining Unicode char U+0157 (decimal 343)
-   defining Unicode char U+0158 (decimal 344)
-   defining Unicode char U+0159 (decimal 345)
-   defining Unicode char U+015A (decimal 346)
-   defining Unicode char U+015B (decimal 347)
-   defining Unicode char U+015C (decimal 348)
-   defining Unicode char U+015D (decimal 349)
-   defining Unicode char U+015E (decimal 350)
-   defining Unicode char U+015F (decimal 351)
-   defining Unicode char U+0160 (decimal 352)
-   defining Unicode char U+0161 (decimal 353)
-   defining Unicode char U+0162 (decimal 354)
-   defining Unicode char U+0163 (decimal 355)
-   defining Unicode char U+0164 (decimal 356)
-   defining Unicode char U+0165 (decimal 357)
-   defining Unicode char U+0168 (decimal 360)
-   defining Unicode char U+0169 (decimal 361)
-   defining Unicode char U+016A (decimal 362)
-   defining Unicode char U+016B (decimal 363)
-   defining Unicode char U+016C (decimal 364)
-   defining Unicode char U+016D (decimal 365)
-   defining Unicode char U+016E (decimal 366)
-   defining Unicode char U+016F (decimal 367)
-   defining Unicode char U+0170 (decimal 368)
-   defining Unicode char U+0171 (decimal 369)
-   defining Unicode char U+0172 (decimal 370)
-   defining Unicode char U+0173 (decimal 371)
-   defining Unicode char U+0174 (decimal 372)
-   defining Unicode char U+0175 (decimal 373)
-   defining Unicode char U+0176 (decimal 374)
-   defining Unicode char U+0177 (decimal 375)
-   defining Unicode char U+0178 (decimal 376)
-   defining Unicode char U+0179 (decimal 377)
-   defining Unicode char U+017A (decimal 378)
-   defining Unicode char U+017B (decimal 379)
-   defining Unicode char U+017C (decimal 380)
-   defining Unicode char U+017D (decimal 381)
-   defining Unicode char U+017E (decimal 382)
-   defining Unicode char U+01CD (decimal 461)
-   defining Unicode char U+01CE (decimal 462)
-   defining Unicode char U+01CF (decimal 463)
-   defining Unicode char U+01D0 (decimal 464)
-   defining Unicode char U+01D1 (decimal 465)
-   defining Unicode char U+01D2 (decimal 466)
-   defining Unicode char U+01D3 (decimal 467)
-   defining Unicode char U+01D4 (decimal 468)
-   defining Unicode char U+01E2 (decimal 482)
-   defining Unicode char U+01E3 (decimal 483)
-   defining Unicode char U+01E6 (decimal 486)
-   defining Unicode char U+01E7 (decimal 487)
-   defining Unicode char U+01E8 (decimal 488)
-   defining Unicode char U+01E9 (decimal 489)
-   defining Unicode char U+01EA (decimal 490)
-   defining Unicode char U+01EB (decimal 491)
-   defining Unicode char U+01F0 (decimal 496)
-   defining Unicode char U+01F4 (decimal 500)
-   defining Unicode char U+01F5 (decimal 501)
-   defining Unicode char U+0218 (decimal 536)
-   defining Unicode char U+0219 (decimal 537)
-   defining Unicode char U+021A (decimal 538)
-   defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+0232 (decimal 562)
-   defining Unicode char U+0233 (decimal 563)
-   defining Unicode char U+0237 (decimal 567)
-   defining Unicode char U+02D9 (decimal 729)
-   defining Unicode char U+02DB (decimal 731)
-   defining Unicode char U+1E02 (decimal 7682)
-   defining Unicode char U+1E03 (decimal 7683)
-   defining Unicode char U+1E0D (decimal 7693)
-   defining Unicode char U+1E1E (decimal 7710)
-   defining Unicode char U+1E1F (decimal 7711)
-   defining Unicode char U+1E25 (decimal 7717)
-   defining Unicode char U+1E30 (decimal 7728)
-   defining Unicode char U+1E31 (decimal 7729)
-   defining Unicode char U+1E37 (decimal 7735)
-   defining Unicode char U+1E8E (decimal 7822)
-   defining Unicode char U+1E8F (decimal 7823)
-   defining Unicode char U+1E43 (decimal 7747)
-   defining Unicode char U+1E45 (decimal 7749)
-   defining Unicode char U+1E47 (decimal 7751)
-   defining Unicode char U+1E5B (decimal 7771)
-   defining Unicode char U+1E63 (decimal 7779)
-   defining Unicode char U+1E6D (decimal 7789)
-   defining Unicode char U+1E90 (decimal 7824)
-   defining Unicode char U+1E91 (decimal 7825)
-   defining Unicode char U+1E9E (decimal 7838)
-   defining Unicode char U+1EF2 (decimal 7922)
-   defining Unicode char U+1EF3 (decimal 7923)
-   defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2010 (decimal 8208)
-   defining Unicode char U+2011 (decimal 8209)
-   defining Unicode char U+2012 (decimal 8210)
-   defining Unicode char U+2013 (decimal 8211)
-   defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2015 (decimal 8213)
-   defining Unicode char U+2018 (decimal 8216)
-   defining Unicode char U+2019 (decimal 8217)
-   defining Unicode char U+201A (decimal 8218)
-   defining Unicode char U+201C (decimal 8220)
-   defining Unicode char U+201D (decimal 8221)
-   defining Unicode char U+201E (decimal 8222)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+2039 (decimal 8249)
-   defining Unicode char U+203A (decimal 8250)
-   defining Unicode char U+2423 (decimal 9251)
-   defining Unicode char U+1E20 (decimal 7712)
-   defining Unicode char U+1E21 (decimal 7713)
-   defining Unicode char U+FB00 (decimal 64256)
-   defining Unicode char U+FB01 (decimal 64257)
-   defining Unicode char U+FB02 (decimal 64258)
-   defining Unicode char U+FB03 (decimal 64259)
-   defining Unicode char U+FB04 (decimal 64260)
-   defining Unicode char U+FB05 (decimal 64261)
-   defining Unicode char U+FB06 (decimal 64262)
-)
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encoding TS1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2021/06/21 v1.2n UTF-8 support
-   defining Unicode char U+00A2 (decimal 162)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00A4 (decimal 164)
-   defining Unicode char U+00A5 (decimal 165)
-   defining Unicode char U+00A6 (decimal 166)
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AC (decimal 172)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B0 (decimal 176)
-   defining Unicode char U+00B1 (decimal 177)
-   defining Unicode char U+00B2 (decimal 178)
-   defining Unicode char U+00B3 (decimal 179)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B5 (decimal 181)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00B9 (decimal 185)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+00BC (decimal 188)
-   defining Unicode char U+00BD (decimal 189)
-   defining Unicode char U+00BE (decimal 190)
-   defining Unicode char U+00D7 (decimal 215)
-   defining Unicode char U+00F7 (decimal 247)
-   defining Unicode char U+0192 (decimal 402)
-   defining Unicode char U+02C7 (decimal 711)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+02DD (decimal 733)
-   defining Unicode char U+0E3F (decimal 3647)
-   defining Unicode char U+2016 (decimal 8214)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+203B (decimal 8251)
-   defining Unicode char U+203D (decimal 8253)
-   defining Unicode char U+2044 (decimal 8260)
-   defining Unicode char U+204E (decimal 8270)
-   defining Unicode char U+2052 (decimal 8274)
-   defining Unicode char U+20A1 (decimal 8353)
-   defining Unicode char U+20A4 (decimal 8356)
-   defining Unicode char U+20A6 (decimal 8358)
-   defining Unicode char U+20A9 (decimal 8361)
-   defining Unicode char U+20AB (decimal 8363)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+20B1 (decimal 8369)
-   defining Unicode char U+2103 (decimal 8451)
-   defining Unicode char U+2116 (decimal 8470)
-   defining Unicode char U+2117 (decimal 8471)
-   defining Unicode char U+211E (decimal 8478)
-   defining Unicode char U+2120 (decimal 8480)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+2127 (decimal 8487)
-   defining Unicode char U+212E (decimal 8494)
-   defining Unicode char U+2190 (decimal 8592)
-   defining Unicode char U+2191 (decimal 8593)
-   defining Unicode char U+2192 (decimal 8594)
-   defining Unicode char U+2193 (decimal 8595)
-   defining Unicode char U+2329 (decimal 9001)
-   defining Unicode char U+232A (decimal 9002)
-   defining Unicode char U+2422 (decimal 9250)
-   defining Unicode char U+25E6 (decimal 9702)
-   defining Unicode char U+25EF (decimal 9711)
-   defining Unicode char U+266A (decimal 9834)
-   defining Unicode char U+27E8 (decimal 10216)
-   defining Unicode char U+27E9 (decimal 10217)
-   defining Unicode char U+FEFF (decimal 65279)
-)
-Now handling font encoding OMX ...
-... no UTF-8 mapping file for font encoding OMX
-Now handling font encoding U ...
-... no UTF-8 mapping file for font encoding U
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+02C6 (decimal 710)
-   defining Unicode char U+02DC (decimal 732)
-   defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2026 (decimal 8230)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2423 (decimal 9251)
-   defining Unicode char U+FEFF (decimal 65279)
-))
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )
@@ -1432,36 +1002,37 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfig@bottom=\skip102
 )
 \c@example=\count486
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 63.
-Package hyperref Info: Option `colorlinks' set `true' on input line 63.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 66.
+Package hyperref Info: Option `colorlinks' set `true' on input line 66.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 22
-5.
+8.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) (./tesi.aux (./chap_blockchain.aux)
-(./chap_bitcoin.aux
+) (./tesi.aux
+(./sections/chap_blockchain.aux) (./sections/chap_bitcoin.aux
 
 LaTeX Warning: Label `sec:introduzione' multiply defined.
 
-) (./chap_bitcoincore.aux
+) (./sections/chap_bitcoincore.aux
 
 LaTeX Warning: Label `code:examplep2wsh' multiply defined.
 
 
 LaTeX Warning: Label `code:examplep2wsh' multiply defined.
 
-) (./chap_problema.aux) (./chap_riferimenti_storici.aux)
-(./chap_tecnologie_utilizzate.aux) (./chap_soluzione_proposta.aux
+) (./sections/chap_problema.aux) (./sections/chap_riferimenti_storici.aux)
+(./sections/chap_tecnologie_utilizzate.aux)
+(./sections/chap_soluzione_proposta.aux
 
 LaTeX Warning: Label `sec:spycblock' multiply defined.
 
 
 LaTeX Warning: Label `fig:analisisScript' multiply defined.
 
-) (./chap_conclusioni.aux) (./app_a.aux
+) (./sections/chap_conclusioni.aux) (./sections/app_a.aux
 
 LaTeX Warning: Label `sec:genesiBlockTxJSON' multiply defined.
 
@@ -1471,26 +1042,26 @@ LaTeX Warning: Label `code:processBuilHashTx' multiply defined.
 ))
 \openout1 = `tesi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 225.
-LaTeX Font Info:    ... okay on input line 225.
-LaTeX Info: Redefining \it@ocap on input line 225.
-LaTeX Info: Redefining \it@ccap on input line 225.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Info: Redefining \it@ocap on input line 228.
+LaTeX Info: Redefining \it@ccap on input line 228.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count487
@@ -1551,7 +1122,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 225.
+Package hyperref Info: Link coloring ON on input line 228.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -1564,15 +1135,15 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 \c@section@level=\count494
 LaTeX Info: Redefining \Ref on input line 520.
 )
-LaTeX Info: Redefining \ref on input line 225.
-LaTeX Info: Redefining \pageref on input line 225.
-LaTeX Info: Redefining \nameref on input line 225.
+LaTeX Info: Redefining \ref on input line 228.
+LaTeX Info: Redefining \pageref on input line 228.
+LaTeX Info: Redefining \nameref on input line 228.
 
 (./tesi.out) (./tesi.out)
 \@outlinefile=\write5
 \openout5 = `tesi.out'.
 
-LaTeX Info: Redefining \Ref on input line 225.
+LaTeX Info: Redefining \Ref on input line 228.
 Package biblatex Info: Trying to load language 'italian'...
 Package biblatex Info: ... file 'italian.lbx' found.
 
@@ -1596,15 +1167,15 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'tesi.bbl' found.
  (./tesi.bbl)
-Package biblatex Info: Reference section=0 on input line 225.
-Package biblatex Info: Reference segment=0 on input line 225.
+Package biblatex Info: Reference section=0 on input line 228.
+Package biblatex Info: Reference segment=0 on input line 228.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
-<tesi-frn.pdf, id=237, 597.50829pt x 845.0471pt>
+<tesi-frn.pdf, id=241, 597.50829pt x 845.0471pt>
 File: tesi-frn.pdf Graphic file (type pdf)
 <use tesi-frn.pdf>
-Package pdftex.def Info: tesi-frn.pdf  used on input line 227.
+Package pdftex.def Info: tesi-frn.pdf  used on input line 230.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 [1
 
@@ -1615,7 +1186,7 @@ ning (ext4): destination with the same identifier (name{page.i}) has been alrea
 dy used, duplicate ignored
 <to be read again> 
                    \relax 
-l.268 \cleardoublepage
+l.271 \cleardoublepage
                        [1
 
 ] [2
@@ -1668,10 +1239,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout6 = `tesi.toc'.
 
  [4]
-\openout2 = `chap_blockchain.aux'.
+\openout2 = `sections/chap_blockchain.aux'.
 
 
-(./chap_blockchain.tex
+(./sections/chap_blockchain.tex
 Capitolo 1.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 18.
@@ -1692,16 +1263,16 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
  (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [2]
-<images/image-merkle-treepng.png, id=361, 491.8375pt x 341.275pt>
+<images/image-merkle-treepng.png, id=369, 491.8375pt x 341.275pt>
 File: images/image-merkle-treepng.png Graphic file (type png)
 <use images/image-merkle-treepng.png>
 Package pdftex.def Info: images/image-merkle-treepng.png  used on input line 66
 .
 (pdftex.def)             Requested size: 256.07741pt x 177.69313pt.
 ) [3 <./images/image-merkle-treepng.png>]
-\openout2 = `chap_bitcoin.aux'.
+\openout2 = `sections/chap_bitcoin.aux'.
 
- (./chap_bitcoin.tex
+ (./sections/chap_bitcoin.tex
 Capitolo 2.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
 .
@@ -1713,7 +1284,7 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 
 ]
-<images/example_alice_bob_vincent.png, id=380, 982.67125pt x 270.00874pt>
+<images/example_alice_bob_vincent.png, id=388, 982.67125pt x 270.00874pt>
 File: images/example_alice_bob_vincent.png Graphic file (type png)
 <use images/example_alice_bob_vincent.png>
 Package pdftex.def Info: images/example_alice_bob_vincent.png  used on input li
@@ -1725,14 +1296,14 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 33.
 See the caption package documentation for explanation.
 
-<images/change_utxo.png, id=385, 1441.385pt x 943.525pt>
+<images/change_utxo.png, id=393, 1441.385pt x 943.525pt>
 File: images/change_utxo.png Graphic file (type png)
 <use images/change_utxo.png>
 Package pdftex.def Info: images/change_utxo.png  used on input line 50.
 (pdftex.def)             Requested size: 256.07741pt x 167.62442pt.
 [5 <./images/example_alice_bob_vincent.png (PNG copy)> <./images/change_utxo.pn
 g>]
-<images/example_coinbase_vincent.png, id=397, 977.6525pt x 389.455pt>
+<images/example_coinbase_vincent.png, id=405, 977.6525pt x 389.455pt>
 File: images/example_coinbase_vincent.png Graphic file (type png)
 <use images/example_coinbase_vincent.png>
 Package pdftex.def Info: images/example_coinbase_vincent.png  used on input lin
@@ -1745,7 +1316,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 [6 <./images/example_coinbase_vincent.png (PNG copy)>]
-<images/example_bob_sara.png, id=411, 983.675pt x 273.02pt>
+<images/example_bob_sara.png, id=419, 983.675pt x 273.02pt>
 File: images/example_bob_sara.png Graphic file (type png)
 <use images/example_bob_sara.png>
 Package pdftex.def Info: images/example_bob_sara.png  used on input line 89.
@@ -1756,7 +1327,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 90.
 See the caption package documentation for explanation.
 
-<images/DiagramUnlocLockUTXO.png, id=416, 1451.4225pt x 463.7325pt>
+<images/DiagramUnlocLockUTXO.png, id=424, 1451.4225pt x 463.7325pt>
 File: images/DiagramUnlocLockUTXO.png Graphic file (type png)
 <use images/DiagramUnlocLockUTXO.png>
 Package pdftex.def Info: images/DiagramUnlocLockUTXO.png  used on input line 10
@@ -1778,7 +1349,7 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 ) [9]
 (./code/enumtx.cpp) (./code/script/p2pkh.btcs)
-<images/script/p2pkh/1.png, id=450, 608.2725pt x 152.57pt>
+<images/script/p2pkh/1.png, id=458, 608.2725pt x 152.57pt>
 File: images/script/p2pkh/1.png Graphic file (type png)
 <use images/script/p2pkh/1.png>
 Package pdftex.def Info: images/script/p2pkh/1.png  used on input line 222.
@@ -1790,7 +1361,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 [10 <./images/script/p2pkh/1.png>]
-<images/script/p2pkh/2.png, id=478, 608.2725pt x 202.7575pt>
+<images/script/p2pkh/2.png, id=486, 608.2725pt x 202.7575pt>
 File: images/script/p2pkh/2.png Graphic file (type png)
 <use images/script/p2pkh/2.png>
 Package pdftex.def Info: images/script/p2pkh/2.png  used on input line 232.
@@ -1810,7 +1381,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 242.
 See the caption package documentation for explanation.
 
-<images/script/p2pkh/4.png, id=481, 608.2725pt x 257.96375pt>
+<images/script/p2pkh/4.png, id=489, 608.2725pt x 257.96375pt>
 File: images/script/p2pkh/4.png Graphic file (type png)
 <use images/script/p2pkh/4.png>
 Package pdftex.def Info: images/script/p2pkh/4.png  used on input line 250.
@@ -1821,7 +1392,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 [11 <./images/script/p2pkh/2.png> <./images/script/p2pkh/4.png>]
-<images/script/p2pk/1.png, id=490, 611.28375pt x 113.42375pt>
+<images/script/p2pk/1.png, id=498, 611.28375pt x 113.42375pt>
 File: images/script/p2pk/1.png Graphic file (type png)
 <use images/script/p2pk/1.png>
 Package pdftex.def Info: images/script/p2pk/1.png  used on input line 268.
@@ -1832,7 +1403,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 269.
 See the caption package documentation for explanation.
 
-<images/script/p2pk/2.png, id=492, 610.28pt x 190.7125pt>
+<images/script/p2pk/2.png, id=500, 610.28pt x 190.7125pt>
 File: images/script/p2pk/2.png Graphic file (type png)
 <use images/script/p2pk/2.png>
 Package pdftex.def Info: images/script/p2pk/2.png  used on input line 277.
@@ -1842,7 +1413,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 278.
 See the caption package documentation for explanation.
 
-<images/proccessBuildP2PK.png, id=494, 2376.88pt x 2081.7775pt>
+<images/proccessBuildP2PK.png, id=502, 2376.88pt x 2081.7775pt>
 File: images/proccessBuildP2PK.png Graphic file (type png)
 <use images/proccessBuildP2PK.png>
 Package pdftex.def Info: images/proccessBuildP2PK.png  used on input line 286.
@@ -1861,7 +1432,7 @@ Overfull \hbox (6.15778pt too wide) in paragraph at lines 300--301
 el-l'im-ple-men-ta-zio-ne di OP_CHE-
  []
 
-<images/script/multisig/1.png, id=506, 607.26875pt x 243.91125pt>
+<images/script/multisig/1.png, id=514, 607.26875pt x 243.91125pt>
 File: images/script/multisig/1.png Graphic file (type png)
 <use images/script/multisig/1.png>
 Package pdftex.def Info: images/script/multisig/1.png  used on input line 306.
@@ -1872,7 +1443,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 [13 <./images/proccessBuildP2PK.png> <./images/script/multisig/1.png>]
-<images/script/multisig/2.png, id=517, 612.2875pt x 512.91624pt>
+<images/script/multisig/2.png, id=525, 612.2875pt x 512.91624pt>
 File: images/script/multisig/2.png Graphic file (type png)
 <use images/script/multisig/2.png>
 Package pdftex.def Info: images/script/multisig/2.png  used on input line 315.
@@ -1889,7 +1460,7 @@ Overfull \hbox (19.20442pt too wide) in paragraph at lines 320--321
 b-bli-che me-dian-te l'o-pe-ra-to-re OP_CHECK-
  []
 
-<images/script/multisig/3.png, id=519, 722.7pt x 276.03125pt>
+<images/script/multisig/3.png, id=527, 722.7pt x 276.03125pt>
 File: images/script/multisig/3.png Graphic file (type png)
 <use images/script/multisig/3.png>
 Package pdftex.def Info: images/script/multisig/3.png  used on input line 324.
@@ -1901,7 +1472,7 @@ See the caption package documentation for explanation.
 
 [14 <./images/script/multisig/2.png> <./images/script/multisig/3.png>]
 (./code/script/p2sh-without-key.btcs)
-<images/script/p2sh/1.png, id=534, 606.265pt x 133.49875pt>
+<images/script/p2sh/1.png, id=542, 606.265pt x 133.49875pt>
 File: images/script/p2sh/1.png Graphic file (type png)
 <use images/script/p2sh/1.png>
 Package pdftex.def Info: images/script/p2sh/1.png  used on input line 366.
@@ -1916,7 +1487,7 @@ See the caption package documentation for explanation.
 Underfull \vbox (badness 1424) has occurred while \output is active []
 
  [15 <./images/script/p2sh/1.png>]
-<images/script/p2sh/2.png, id=552, 611.28375pt x 116.435pt>
+<images/script/p2sh/2.png, id=560, 611.28375pt x 116.435pt>
 File: images/script/p2sh/2.png Graphic file (type png)
 <use images/script/p2sh/2.png>
 Package pdftex.def Info: images/script/p2sh/2.png  used on input line 375.
@@ -1927,7 +1498,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 376.
 See the caption package documentation for explanation.
 
-<images/script/p2sh/3.png, id=554, 611.28375pt x 139.52126pt>
+<images/script/p2sh/3.png, id=562, 611.28375pt x 139.52126pt>
 File: images/script/p2sh/3.png Graphic file (type png)
 <use images/script/p2sh/3.png>
 Package pdftex.def Info: images/script/p2sh/3.png  used on input line 384.
@@ -1939,7 +1510,7 @@ See the caption package documentation for explanation.
 
 (./code/script/p2sh-with-key.btcs) [16 <./images/script/p2sh/2.png> <./images/s
 cript/p2sh/3.png>] [17]
-<images/hash-rate.png, id=582, 1912.14375pt x 658.46pt>
+<images/hash-rate.png, id=590, 1912.14375pt x 658.46pt>
 File: images/hash-rate.png Graphic file (type png)
 <use images/hash-rate.png>
 Package pdftex.def Info: images/hash-rate.png  used on input line 440.
@@ -1950,7 +1521,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 441.
 See the caption package documentation for explanation.
 
-<images/difficulty.png, id=583, 1912.14375pt x 707.64375pt>
+<images/difficulty.png, id=591, 1912.14375pt x 707.64375pt>
 File: images/difficulty.png Graphic file (type png)
 <use images/difficulty.png>
 Package pdftex.def Info: images/difficulty.png  used on input line 445.
@@ -1961,10 +1532,10 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 ) [18 <./images/hash-rate.png> <./images/difficulty.png>]
-\openout2 = `chap_bitcoincore.aux'.
+\openout2 = `sections/chap_bitcoincore.aux'.
 
 
-(./chap_bitcoincore.tex
+(./sections/chap_bitcoincore.tex
 Capitolo 3.
 [19
 
@@ -1976,7 +1547,7 @@ Underfull \vbox (badness 1189) has occurred while \output is active []
 
  [21]
 [22] [23] [24]
-<images/Lightning-Network-study.png, id=651, 136.1085pt x 66.0066pt>
+<images/Lightning-Network-study.png, id=659, 136.1085pt x 66.0066pt>
 File: images/Lightning-Network-study.png Graphic file (type png)
 <use images/Lightning-Network-study.png>
 Package pdftex.def Info: images/Lightning-Network-study.png  used on input line
@@ -1991,11 +1562,12 @@ See the caption package documentation for explanation.
 [25 <./images/Lightning-Network-study.png>] (./code/script/examplebip68.btcs)
 (./code/script/exampleIfThenElse.txt [26])
 (./code/script/exampleComplexNoMiniscript.btcs [27])) [28]
-\openout2 = `chap_problema.aux'.
+\openout2 = `sections/chap_problema.aux'.
 
- (./chap_problema.tex
+
+(./sections/chap_problema.tex
 Capitolo 4.
-<images/exampleWithGraph/complex-tx.png, id=718, 988.69376pt x 180.675pt>
+<images/exampleWithGraph/complex-tx.png, id=726, 988.69376pt x 180.675pt>
 File: images/exampleWithGraph/complex-tx.png Graphic file (type png)
 <use images/exampleWithGraph/complex-tx.png>
 Package pdftex.def Info: images/exampleWithGraph/complex-tx.png  used on input 
@@ -2024,7 +1596,7 @@ Overfull \hbox (6.43747pt too wide) in paragraph at lines 43--44
  Con-se-guen-te-men-te, il fram-men-
  []
 
-<images/exampleWithGraph/aliceBoxTx.png, id=732, 572.1375pt x 73.27374pt>
+<images/exampleWithGraph/aliceBoxTx.png, id=740, 572.1375pt x 73.27374pt>
 File: images/exampleWithGraph/aliceBoxTx.png Graphic file (type png)
 <use images/exampleWithGraph/aliceBoxTx.png>
 Package pdftex.def Info: images/exampleWithGraph/aliceBoxTx.png  used on input 
@@ -2035,7 +1607,7 @@ Underfull \vbox (badness 5245) has occurred while \output is active []
 
  [30]
 [31 <./images/exampleWithGraph/aliceBoxTx.png>]
-<images/exampleWithGraph/exchange-transaction-alice-bob.png, id=753, 472.76625p
+<images/exampleWithGraph/exchange-transaction-alice-bob.png, id=761, 472.76625p
 t x 126.4725pt>
 File: images/exampleWithGraph/exchange-transaction-alice-bob.png Graphic file (
 type png)
@@ -2055,7 +1627,7 @@ Overfull \hbox (8.40454pt too wide) in paragraph at lines 93--96
 o l'ad-dress di Bob ``1CP-D7Dqgu-
  []
 
-<images/exampleWithGraph/example-p2pkh-exchange-transaction.png, id=757, 400.49
+<images/exampleWithGraph/example-p2pkh-exchange-transaction.png, id=765, 400.49
 625pt x 117.43875pt>
 File: images/exampleWithGraph/example-p2pkh-exchange-transaction.png Graphic fi
 le (type png)
@@ -2067,7 +1639,7 @@ tion.png  used on input line 106.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32 <./images/exampleWithGraph/exchange-transaction-alice-bob.png>]
-<images/exampleWithGraph/exchange-tx-with-same-address.png, id=771, 733.99219pt
+<images/exampleWithGraph/exchange-tx-with-same-address.png, id=779, 733.99219pt
  x 201.75375pt>
 File: images/exampleWithGraph/exchange-tx-with-same-address.png Graphic file (t
 ype png)
@@ -2075,7 +1647,7 @@ ype png)
 Package pdftex.def Info: images/exampleWithGraph/exchange-tx-with-same-address.
 png  used on input line 131.
 (pdftex.def)             Requested size: 256.90111pt x 70.61487pt.
-<images/exampleWithGraph/exchange-tx-with-same-address-graph.png, id=775, 551.0
+<images/exampleWithGraph/exchange-tx-with-same-address-graph.png, id=783, 551.0
 5875pt x 134.5025pt>
 File: images/exampleWithGraph/exchange-tx-with-same-address-graph.png Graphic f
 ile (type png)
@@ -2086,9 +1658,10 @@ graph.png  used on input line 139.
  [33 <./images/exampleWithGraph/example-p2pkh-exchange-transaction.png> <./imag
 es/exampleWithGraph/exchange-tx-with-same-address.png (PNG copy)> <./images/exa
 mpleWithGraph/exchange-tx-with-same-address-graph.png>]) [34]
-\openout2 = `chap_riferimenti_storici.aux'.
+\openout2 = `sections/chap_riferimenti_storici.aux'.
 
- (./chap_riferimenti_storici.tex
+
+(./sections/chap_riferimenti_storici.tex
 Capitolo 5.
 
 Underfull \vbox (badness 2837) has occurred while \output is active []
@@ -2099,7 +1672,7 @@ Underfull \vbox (badness 2837) has occurred while \output is active []
 
 
 ]
-<images/bivaGraph.pdf, id=804, 232.09113pt x 184.2908pt>
+<images/bivaGraph.pdf, id=812, 232.09113pt x 184.2908pt>
 File: images/bivaGraph.pdf Graphic file (type pdf)
 <use images/bivaGraph.pdf>
 Package pdftex.def Info: images/bivaGraph.pdf  used on input line 49.
@@ -2109,15 +1682,15 @@ Package pdftex.def Info: images/bivaGraph.pdf  used on input line 49.
 
 pdfTeX warning: pdflatex (file ./images/vs_article.pdf): PDF inclusion: found P
 DF version <1.6>, but at most version <1.5> allowed
-<images/vs_article.pdf, id=894, 2413.81805pt x 1546.57805pt>
+<images/vs_article.pdf, id=902, 2413.81805pt x 1546.57805pt>
 File: images/vs_article.pdf Graphic file (type pdf)
 <use images/vs_article.pdf>
 Package pdftex.def Info: images/vs_article.pdf  used on input line 62.
 (pdftex.def)             Requested size: 241.39595pt x 154.66685pt.
 ) [37 <./images/vs_article.pdf>]
-\openout2 = `chap_tecnologie_utilizzate.aux'.
+\openout2 = `sections/chap_tecnologie_utilizzate.aux'.
 
- (./chap_tecnologie_utilizzate.tex
+ (./sections/chap_tecnologie_utilizzate.tex
 Capitolo 6.
 [38
 
@@ -2125,11 +1698,11 @@ Capitolo 6.
 
 
 ] [39]) [40]
-\openout2 = `chap_soluzione_proposta.aux'.
+\openout2 = `sections/chap_soluzione_proposta.aux'.
 
- (./chap_soluzione_proposta.tex
+ (./sections/chap_soluzione_proposta.tex
 Capitolo 7.
-<images/blockchain-size.png, id=950, 2140.99875pt x 786.94pt>
+<images/blockchain-size.png, id=958, 2140.99875pt x 786.94pt>
 File: images/blockchain-size.png Graphic file (type png)
 <use images/blockchain-size.png>
 Package pdftex.def Info: images/blockchain-size.png  used on input line 8.
@@ -2145,7 +1718,7 @@ See the caption package documentation for explanation.
 
 
  <./images/blockchain-size.png>] [42]
-<images/OP_RETUTN_chart.png, id=981, 1858.945pt x 760.8425pt>
+<images/OP_RETUTN_chart.png, id=989, 1858.945pt x 760.8425pt>
 File: images/OP_RETUTN_chart.png Graphic file (type png)
 <use images/OP_RETUTN_chart.png>
 Package pdftex.def Info: images/OP_RETUTN_chart.png  used on input line 60.
@@ -2169,7 +1742,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--72
 
  []
 
-<images/coinbase_tx_genesis_block.png, id=995, 982.67125pt x 209.78375pt>
+<images/coinbase_tx_genesis_block.png, id=1003, 982.67125pt x 209.78375pt>
 File: images/coinbase_tx_genesis_block.png Graphic file (type png)
 <use images/coinbase_tx_genesis_block.png>
 Package pdftex.def Info: images/coinbase_tx_genesis_block.png  used on input li
@@ -2192,7 +1765,7 @@ u-ra [][]7.3[][] de-co-di-fi-ca-ta nel-l'ar-co
  []
 
 (./code/exampleArch.txt)
-<images/demo/graph_tx_demo_presentation.png, id=1039, 1505.625pt x 1003.75pt>
+<images/demo/graph_tx_demo_presentation.png, id=1047, 1505.625pt x 1003.75pt>
 File: images/demo/graph_tx_demo_presentation.png Graphic file (type png)
 <use images/demo/graph_tx_demo_presentation.png>
 Package pdftex.def Info: images/demo/graph_tx_demo_presentation.png  used on in
@@ -2216,7 +1789,7 @@ Overfull \hbox (8.37811pt too wide) in paragraph at lines 171--174
 ss ``3CD1-QW6fjg-TwKq3Pj-97nty28W-
  []
 
-<images/exampleWithGraph/naturalAddressGrahScamTx.png, id=1092, 532.99126pt x 1
+<images/exampleWithGraph/naturalAddressGrahScamTx.png, id=1101, 532.99126pt x 1
 57.58875pt>
 File: images/exampleWithGraph/naturalAddressGrahScamTx.png Graphic file (type p
 ng)
@@ -2228,7 +1801,7 @@ used on input line 181.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [49]
-<images/exampleWithGraph/decode-address-graph-scam.png, id=1103, 584.1825pt x 1
+<images/exampleWithGraph/decode-address-graph-scam.png, id=1111, 584.1825pt x 1
 69.63374pt>
 File: images/exampleWithGraph/decode-address-graph-scam.png Graphic file (type 
 png)
@@ -2236,7 +1809,7 @@ png)
 Package pdftex.def Info: images/exampleWithGraph/decode-address-graph-scam.png 
  used on input line 189.
 (pdftex.def)             Requested size: 204.46693pt x 59.3727pt.
-<images/exampleWithGraph/naturalAddressGrahScamTx_correcter.png, id=1106, 191.9
+<images/exampleWithGraph/naturalAddressGrahScamTx_correcter.png, id=1114, 191.9
 973pt x 69.6201pt>
 File: images/exampleWithGraph/naturalAddressGrahScamTx_correcter.png Graphic fi
 le (type png)
@@ -2248,19 +1821,19 @@ cter.png  used on input line 196.
 [50 <./images/exampleWithGraph/naturalAddressGrahScamTx.png> <./images/exampleW
 ithGraph/decode-address-graph-scam.png> <./images/exampleWithGraph/naturalAddre
 ssGrahScamTx_correcter.png (PNG copy)>]
-<images/demo/iterationTx.png, id=1115, 936.49875pt x 705.63625pt>
+<images/demo/iterationTx.png, id=1123, 936.49875pt x 705.63625pt>
 File: images/demo/iterationTx.png Graphic file (type png)
 <use images/demo/iterationTx.png>
 Package pdftex.def Info: images/demo/iterationTx.png  used on input line 208.
 (pdftex.def)             Requested size: 327.77946pt x 246.97638pt.
  [51 <./images/demo/iterationTx.png (PNG copy)>]
-<images/demo/address_graph.png, id=1124, 1639.12375pt x 1072.005pt>
+<images/demo/address_graph.png, id=1132, 1639.12375pt x 1072.005pt>
 File: images/demo/address_graph.png Graphic file (type png)
 <use images/demo/address_graph.png>
 Package pdftex.def Info: images/demo/address_graph.png  used on input line 222.
 
 (pdftex.def)             Requested size: 409.77994pt x 268.0006pt.
-<images/demo/no_paralel_benckmark.png, id=1129, 1909.1325pt x 481.8pt>
+<images/demo/no_paralel_benckmark.png, id=1137, 1909.1325pt x 481.8pt>
 File: images/demo/no_paralel_benckmark.png Graphic file (type png)
 <use images/demo/no_paralel_benckmark.png>
 Package pdftex.def Info: images/demo/no_paralel_benckmark.png  used on input li
@@ -2271,13 +1844,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--240
 
  []
 
-<images/demo/parallel_scalability.png, id=1139, 1913.1475pt x 474.77374pt>
+<images/demo/parallel_scalability.png, id=1147, 1913.1475pt x 474.77374pt>
 File: images/demo/parallel_scalability.png Graphic file (type png)
 <use images/demo/parallel_scalability.png>
 Package pdftex.def Info: images/demo/parallel_scalability.png  used on input li
 ne 244.
 (pdftex.def)             Requested size: 341.43437pt x 84.73114pt.
-<images/demo/sovrapposition_benchmark.png, id=1140, 1914.15125pt x 472.76625pt>
+<images/demo/sovrapposition_benchmark.png, id=1148, 1914.15125pt x 472.76625pt>
 
 File: images/demo/sovrapposition_benchmark.png Graphic file (type png)
 <use images/demo/sovrapposition_benchmark.png>
@@ -2286,13 +1859,13 @@ t line 246.
 (pdftex.def)             Requested size: 341.43437pt x 84.32957pt.
 [53 <./images/demo/no_paralel_benckmark.png> <./images/demo/parallel_scalabilit
 y.png> <./images/demo/sovrapposition_benchmark.png>]
-<images/demo/analytics/result-global.png, id=1150, 1857.94125pt x 765.86125pt>
+<images/demo/analytics/result-global.png, id=1158, 1857.94125pt x 765.86125pt>
 File: images/demo/analytics/result-global.png Graphic file (type png)
 <use images/demo/analytics/result-global.png>
 Package pdftex.def Info: images/demo/analytics/result-global.png  used on input
  line 262.
 (pdftex.def)             Requested size: 341.43437pt x 140.73553pt.
-<images/demo/analytics/opt_return.png, id=1151, 1848.9075pt x 760.8425pt>
+<images/demo/analytics/opt_return.png, id=1159, 1848.9075pt x 760.8425pt>
 File: images/demo/analytics/opt_return.png Graphic file (type png)
 <use images/demo/analytics/opt_return.png>
 Package pdftex.def Info: images/demo/analytics/opt_return.png  used on input li
@@ -2305,23 +1878,23 @@ Overfull \hbox (0.1047pt too wide) in paragraph at lines 290--292
 -te uti-liz-za-ti, che ri-sul-ta-no es-se-re P2PKH
  []
 
-<images/demo/vivagraph.png, id=1172, 1927.2pt x 1084.05pt>
+<images/demo/vivagraph.png, id=1180, 1927.2pt x 1084.05pt>
 File: images/demo/vivagraph.png Graphic file (type png)
 <use images/demo/vivagraph.png>
 Package pdftex.def Info: images/demo/vivagraph.png  used on input line 307.
 (pdftex.def)             Requested size: 385.43318pt x 216.80615pt.
 [55]
-<images/demo/3D_tx.png, id=1185, 1420.30624pt x 614.295pt>
+<images/demo/3D_tx.png, id=1193, 1420.30624pt x 614.295pt>
 File: images/demo/3D_tx.png Graphic file (type png)
 <use images/demo/3D_tx.png>
 Package pdftex.def Info: images/demo/3D_tx.png  used on input line 323.
 (pdftex.def)             Requested size: 1065.22708pt x 460.72011pt.
-<images/demo/ngraphpixi.png, id=1186, 1149.29375pt x 622.325pt>
+<images/demo/ngraphpixi.png, id=1194, 1149.29375pt x 622.325pt>
 File: images/demo/ngraphpixi.png Graphic file (type png)
 <use images/demo/ngraphpixi.png>
 Package pdftex.def Info: images/demo/ngraphpixi.png  used on input line 325.
 (pdftex.def)             Requested size: 320.0935pt x 173.3192pt.
-<images/demo/ngraphlouvian.png, id=1188, 1262.7175pt x 689.57625pt>
+<images/demo/ngraphlouvian.png, id=1196, 1262.7175pt x 689.57625pt>
 File: images/demo/ngraphlouvian.png Graphic file (type png)
 <use images/demo/ngraphlouvian.png>
 Package pdftex.def Info: images/demo/ngraphlouvian.png  used on input line 327.
@@ -2333,9 +1906,10 @@ LaTeX Warning: Float too large for page by 10.41454pt on input line 330.
 
 ) [56 <./images/demo/vivagraph.png>] [57 <./images/demo/3D_tx.png> <./images/de
 mo/ngraphpixi.png> <./images/demo/ngraphlouvian.png>]
-\openout2 = `chap_conclusioni.aux'.
+\openout2 = `sections/chap_conclusioni.aux'.
 
- (./chap_conclusioni.tex
+
+(./sections/chap_conclusioni.tex
 Capitolo 8.
 ) [58
 
@@ -2347,9 +1921,9 @@ Capitolo 8.
 
 
 ]
-\openout2 = `app_a.aux'.
+\openout2 = `sections/app_a.aux'.
 
- (./app_a.tex
+ (./sections/app_a.tex
 Appendice A.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
@@ -2386,9 +1960,10 @@ l.52     hexForm
 th the same identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.314 \include{app_a}
-                      [4] (./tesi.lofpdfTeX warning (ext4): destination with th
-e same identifier (name{page.5}) has been already used, duplicate ignored
+l.317 \include{sections/app_a}
+                               [4] (./tesi.lofpdfTeX warning (ext4): destinatio
+n with the same identifier (name{page.5}) has been already used, duplicate igno
+red
 <to be read again> 
                    \relax 
 l.33 ...baddress}.\relax }}{33}{figure.caption.20}
@@ -2410,7 +1985,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.321 \listoffigures
+l.324 \listoffigures
                      [6] (./tesi.lot)
 \tf@lot=\write8
 \openout8 = `tesi.lot'.
@@ -2419,7 +1994,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.324 \listoftables
+l.327 \listoftables
                     [7
 
 
@@ -2440,16 +2015,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.327 \listofcodes
+l.330 \listofcodes
                    [9]
-Overfull \hbox (50.79918pt too wide) in paragraph at lines 336--336
+Overfull \hbox (50.79918pt too wide) in paragraph at lines 339--339
 []\T1/lmr/m/n/10.95 Vincenzo Pa-laz-zo An-drei Ka-sh-cha. \T1/lmr/m/it/10.95 ng
 ra-ph.pixi\T1/lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T
 1/lmtt/m/n/10.95 https : / / github . com / vincenzopalazzo /
  []
 
 
-Overfull \hbox (2.85454pt too wide) in paragraph at lines 336--336
+Overfull \hbox (2.85454pt too wide) in paragraph at lines 339--339
 \T1/lmtt/m/n/10.95 lightning -[] network -[] study -[] will -[] this -[] techno
 logy -[] become -[] the -[] new -[] standart -[]
  []
@@ -2458,41 +2033,41 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.336 
+l.339 
        [1
 
 
 
 ]
-Overfull \hbox (6.81104pt too wide) in paragraph at lines 336--336
+Overfull \hbox (6.81104pt too wide) in paragraph at lines 339--339
 []\T1/lmr/m/n/10.95 Nayuki. \T1/lmr/m/it/10.95 Bitcoin-Cryptography-Library\T1/
 lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmtt/m/n/10.
 95 https : / / github . com / nayuki / Bitcoin -[]
  []
 
 
-Overfull \hbox (36.74051pt too wide) in paragraph at lines 336--336
+Overfull \hbox (36.74051pt too wide) in paragraph at lines 339--339
 []\T1/lmr/m/n/10.95 Vincenzo Pa-laz-zo. \T1/lmr/m/it/10.95 decompiler-bitcoin-s
 cript\T1/lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmt
 t/m/n/10.95 https : / / github . com / vincenzopalazzo /
  []
 
 
-Overfull \hbox (30.72406pt too wide) in paragraph at lines 336--336
+Overfull \hbox (30.72406pt too wide) in paragraph at lines 339--339
 []\T1/lmr/m/n/10.95 Vincenzo Pa-laz-zo. \T1/lmr/m/it/10.95 ngra-ph.fromprecompu
 te\T1/lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmtt/m
 /n/10.95 https : / / github . com / vincenzopalazzo /
  []
 
 
-Overfull \hbox (16.0172pt too wide) in paragraph at lines 336--336
+Overfull \hbox (16.0172pt too wide) in paragraph at lines 339--339
 []\T1/lmr/m/n/10.95 Vincenzo Pa-laz-zo. \T1/lmr/m/it/10.95 SpyJSBlock-NGraph\T1
 /lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmtt/m/n/10
 .95 https : / / github . com / vincenzopalazzo /
  []
 
 
-Overfull \hbox (1.06213pt too wide) in paragraph at lines 336--336
+Overfull \hbox (1.06213pt too wide) in paragraph at lines 339--339
 \T1/lmr/m/n/10.95 2018. \T1/lmr/m/sc/10.95 isbn\T1/lmr/m/n/10.95 : 978-1-5386-9
 288-2. \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmtt/m/n/10.95 https 
 : / / ieeexplore . ieee . org / xpl / conhome /
@@ -2502,40 +2077,30 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.337 \end{document}
-                     [2] (./tesi.aux (./chap_blockchain.aux)
-(./chap_bitcoin.aux) (./chap_bitcoincore.aux) (./chap_problema.aux)
-(./chap_riferimenti_storici.aux) (./chap_tecnologie_utilizzate.aux)
-(./chap_soluzione_proposta.aux) (./chap_conclusioni.aux) (./app_a.aux))
-
-LaTeX Warning: There were undefined references.
-
+l.340 \end{document}
+                     [2] (./tesi.aux (./sections/chap_blockchain.aux)
+(./sections/chap_bitcoin.aux) (./sections/chap_bitcoincore.aux)
+(./sections/chap_problema.aux) (./sections/chap_riferimenti_storici.aux)
+(./sections/chap_tecnologie_utilizzate.aux)
+(./sections/chap_soluzione_proposta.aux) (./sections/chap_conclusioni.aux)
+(./sections/app_a.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `tesi.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `tesi.out':
-(rerunfilecheck)             Before: 1B9B1251C4E5A335DE53E3DE841C0295;8200
-(rerunfilecheck)             After:  632636D658D0211E31628F79C82A090B;8373.
-
-Package biblatex Warning: Please rerun LaTeX.
-
+Package rerunfilecheck Info: File `tesi.out' has not changed.
+(rerunfilecheck)             Checksum: 632636D658D0211E31628F79C82A090B;8373.
 Package logreq Info: Writing requests to 'tesi.run.xml'.
 \openout1 = `tesi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28151 strings out of 478287
- 498199 string characters out of 5849289
- 1294451 words of memory out of 5000000
- 45245 multiletter control sequences out of 15000+600000
+ 28137 strings out of 478287
+ 499800 string characters out of 5849289
+ 1295506 words of memory out of 5000000
+ 45240 multiletter control sequences out of 15000+600000
  565258 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,90p,1837b,2560s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,12n,90p,1837b,2561s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -2559,10 +2124,10 @@ b></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on tesi.pdf (75 pages, 6529909 bytes).
+Output written on tesi.pdf (75 pages, 6532747 bytes).
 PDF statistics:
- 1785 PDF objects out of 2073 (max. 8388607)
- 1554 compressed objects within 16 object streams
+ 1792 PDF objects out of 2073 (max. 8388607)
+ 1558 compressed objects within 16 object streams
  509 named destinations out of 1000 (max. 500000)
- 705 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 713 words of extra memory for PDF output out of 10000 (max. 10000000)
 
