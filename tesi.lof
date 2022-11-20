@@ -32,7 +32,7 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Frammento del grafo di address corrispondente alla transazione illustrata nell’Esempio \ref {example:aliceBobFirst}.\relax }}{32}{figure.caption.19}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Frammento del grafo degli address coinvolti nella transazione dell’esempio \ref {example:newalicebobaddress}.\relax }}{33}{figure.caption.20}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Una exchange transaction verso lo stesso indirizzo di origine \blx@tocontentsinit {0}\cite {blockstream:esplora}.\relax }}{33}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Il grafo degli address coinvolti nella transazione con id 15bf8\-b35c9210\-efe7e448c5fc\-6b69b47b3a\-8cac9c14\-8c7cc57c6\-5f26638\-4d9b8.\relax }}{34}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Il grafo degli address coinvolti nella transazione con id 15bf8\-b35c9210\-efe7e448c5fc\-6b69b47b3a\-8cac9c14\-8c7cc57c6\-5f26638\-4d9b8.\relax }}{33}{figure.caption.22}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Frammento del grafo degli address creato attraverso BiVA \blx@tocontentsinit {0}\cite {DBLP:conf/icdm/OggierPD18}.\relax }}{36}{figure.caption.24}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Frammento del grafo di transazioni prodotto attraverso la demo pubblicata nell'articolo \blx@tocontentsinit {0}\cite {inproceedings}.\relax }}{37}{figure.caption.25}%

@@ -1,6 +1,6 @@
-%CLASSE DOCUMENTO - LINGUA E DIMENSIONE FONT
-%!TeX spellcheck=it-IT
-% !TEX TS-program = xelatex
+% !TEX program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = it-IT
 \documentclass[11pt, a4paper, titlepage]{toptesi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,7 +39,7 @@
 %\usepackage{theorems}
 %\usepackage{tabularx}
 \usepackage{amsthm} % Mi dava problemi il package theorems, ho risolto con questo.
-\usepackage[swapnames]{frontespizio}
+\usepackage[write,signatures]{frontespizio}
 \usepackage[]{graphicx}
 \usepackage[normal]{subfigure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -205,15 +205,15 @@
 
 % LISTA DEI CAPITOLI DA INCLUDERE - PERSONALIZZARE
 \includeonly{%
-chap_blockchain,%
-chap_bitcoin,%
-chap_bitcoincore,%
-chap_problema,%
-chap_riferimenti_storici,%
-chap_tecnologie_utilizzate,%
-chap_soluzione_proposta,%
-chap_conclusioni,%
-app_a,%
+sections/chap_blockchain,%
+sections/chap_bitcoin,%
+sections/chap_bitcoincore,%
+sections/chap_problema,%
+sections/chap_riferimenti_storici,%
+sections/chap_tecnologie_utilizzate,%
+sections/chap_soluzione_proposta,%
+sections/chap_conclusioni,%
+sections/app_a,%
 }
 
 % FILE DI BIBLIOGRAFIA
@@ -240,7 +240,7 @@ app_a,%
 \Corso [Laurea Triennale]{Scienze e tecnologie informatiche}
 %\Titoletto {Tesi in Basi di dati}
 \Titoletto {\mbox {}}
-\Titolo {Estrazione di Informazioni dalla \\Blockchain di Bitcoin​}
+\Titolo {Estrazione di Informazioni dalla \\Blockchain di Bitcoin}
 \Candidato {Vincenzo Palazzo}
 \Relatore {Dott. Carlo Sartiani}
 \Annoaccademico {2018-2019}
@@ -291,14 +291,14 @@ Questo lavoro di tesi vuole trovare una soluzione al problema di scalabilità es
 \mainmatter
 
 % INCLUSIONE FILE CAPITOLI - PERSONALIZZARE - TENERE COERENTE CON LISTA IN ALTO
-\include{chap_blockchain}
-\include{chap_bitcoin}
-\include{chap_bitcoincore}
-\include{chap_problema}
-\include{chap_riferimenti_storici}
-\include{chap_tecnologie_utilizzate}
-\include{chap_soluzione_proposta}
-\include{chap_conclusioni}
+\include{sections/chap_blockchain}
+\include{sections/chap_bitcoin}
+\include{sections/chap_bitcoincore}
+\include{sections/chap_problema}
+\include{sections/chap_riferimenti_storici}
+\include{sections/chap_tecnologie_utilizzate}
+\include{sections/chap_soluzione_proposta}
+\include{sections/chap_conclusioni}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % RINGRAZIAMENTI - PERSONALIZZARE
@@ -312,7 +312,7 @@ Per concludere, credo che sia doveroso ringraziare anche tutti coloro  che, nel 
 
 \appendix
 % INCLUSIONE APPENDICI - - PERSONALIZZARE - TENERE COERENTE CON LISTA IN ALTO
-\include{app_a}
+\include{sections/app_a}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
