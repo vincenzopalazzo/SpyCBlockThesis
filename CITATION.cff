@@ -9,7 +9,7 @@ authors:
     orcid: https://orcid.org/0000-0002-6514-3569
 title: "Estrazione di Informazioni dalla Blockchain di Bitcoin"
 version: 0.2.5
-date-released: 2021-12-12
+date-released: 2019-12-12
 url: "https://github.com/vincenzopalazzo/SpyCBlockThesis"
 preferred-citation:
   type: article
@@ -28,4 +28,4 @@ preferred-citation:
   title: "Estrazione di Informazioni dalla Blockchain di Bitcoin"
   issue: 1
   volume: 1
-  year: 2021
+  year: 2019

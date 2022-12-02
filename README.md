@@ -43,7 +43,7 @@ You can use the research work in any way you want but please cite us!
   pages = {1--60},
   title = {{Estrazione di Informazioni dalla Blockchain di Bitcoin}},
   volume = {1},
-  year = {2021}
+  year = {2019}
 }
 ```
 
