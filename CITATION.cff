@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this thesis in any way you want, please cite it as below."
+authors:
+  - family-names: Palazzo
+    given-names: Vincenzo
+    orcid: https://orcid.org/0000-0001-7887-6350
+  - family-names: Carlo
+    given-names: Sartiani
+    orcid: https://orcid.org/0000-0002-6514-3569
+title: "Estrazione di Informazioni dalla Blockchain di Bitcoin"
+version: 0.2.5
+date-released: 2021-12-12

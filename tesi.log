@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.11.9)  19 NOV 2022 18:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.11.9)  2 DEC 2022 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1002,12 +1002,12 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfig@bottom=\skip102
 )
 \c@example=\count486
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 66.
-Package hyperref Info: Option `colorlinks' set `true' on input line 66.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 64.
+Package hyperref Info: Option `colorlinks' set `true' on input line 64.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 22
-8.
+6.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1042,26 +1042,26 @@ LaTeX Warning: Label `code:processBuilHashTx' multiply defined.
 ))
 \openout1 = `tesi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 228.
-LaTeX Font Info:    ... okay on input line 228.
-LaTeX Info: Redefining \it@ocap on input line 228.
-LaTeX Info: Redefining \it@ccap on input line 228.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 226.
+LaTeX Font Info:    ... okay on input line 226.
+LaTeX Info: Redefining \it@ocap on input line 226.
+LaTeX Info: Redefining \it@ccap on input line 226.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count487
@@ -1122,7 +1122,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 228.
+Package hyperref Info: Link coloring ON on input line 226.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -1135,15 +1135,15 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 \c@section@level=\count494
 LaTeX Info: Redefining \Ref on input line 520.
 )
-LaTeX Info: Redefining \ref on input line 228.
-LaTeX Info: Redefining \pageref on input line 228.
-LaTeX Info: Redefining \nameref on input line 228.
+LaTeX Info: Redefining \ref on input line 226.
+LaTeX Info: Redefining \pageref on input line 226.
+LaTeX Info: Redefining \nameref on input line 226.
 
 (./tesi.out) (./tesi.out)
 \@outlinefile=\write5
 \openout5 = `tesi.out'.
 
-LaTeX Info: Redefining \Ref on input line 228.
+LaTeX Info: Redefining \Ref on input line 226.
 Package biblatex Info: Trying to load language 'italian'...
 Package biblatex Info: ... file 'italian.lbx' found.
 
@@ -1167,15 +1167,15 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'tesi.bbl' found.
  (./tesi.bbl)
-Package biblatex Info: Reference section=0 on input line 228.
-Package biblatex Info: Reference segment=0 on input line 228.
+Package biblatex Info: Reference section=0 on input line 226.
+Package biblatex Info: Reference segment=0 on input line 226.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
 <tesi-frn.pdf, id=241, 597.50829pt x 845.0471pt>
 File: tesi-frn.pdf Graphic file (type pdf)
 <use tesi-frn.pdf>
-Package pdftex.def Info: tesi-frn.pdf  used on input line 230.
+Package pdftex.def Info: tesi-frn.pdf  used on input line 228.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 [1
 
@@ -1186,7 +1186,7 @@ ning (ext4): destination with the same identifier (name{page.i}) has been alrea
 dy used, duplicate ignored
 <to be read again> 
                    \relax 
-l.271 \cleardoublepage
+l.269 \cleardoublepage
                        [1
 
 ] [2
@@ -1960,7 +1960,7 @@ l.52     hexForm
 th the same identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.317 \include{sections/app_a}
+l.315 \include{sections/app_a}
                                [4] (./tesi.lofpdfTeX warning (ext4): destinatio
 n with the same identifier (name{page.5}) has been already used, duplicate igno
 red
@@ -1985,7 +1985,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.324 \listoffigures
+l.322 \listoffigures
                      [6] (./tesi.lot)
 \tf@lot=\write8
 \openout8 = `tesi.lot'.
@@ -1994,7 +1994,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.327 \listoftables
+l.325 \listoftables
                     [7
 
 
@@ -2015,16 +2015,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.330 \listofcodes
+l.328 \listofcodes
                    [9]
-Overfull \hbox (50.79918pt too wide) in paragraph at lines 339--339
+Overfull \hbox (50.79918pt too wide) in paragraph at lines 337--337
 []\T1/lmr/m/n/10.95 Vincenzo Pa-laz-zo An-drei Ka-sh-cha. \T1/lmr/m/it/10.95 ng
 ra-ph.pixi\T1/lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T
 1/lmtt/m/n/10.95 https : / / github . com / vincenzopalazzo /
  []
 
 
-Overfull \hbox (2.85454pt too wide) in paragraph at lines 339--339
+Overfull \hbox (2.85454pt too wide) in paragraph at lines 337--337
 \T1/lmtt/m/n/10.95 lightning -[] network -[] study -[] will -[] this -[] techno
 logy -[] become -[] the -[] new -[] standart -[]
  []
@@ -2033,41 +2033,41 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.339 
+l.337 
        [1
 
 
 
 ]
-Overfull \hbox (6.81104pt too wide) in paragraph at lines 339--339
+Overfull \hbox (6.81104pt too wide) in paragraph at lines 337--337
 []\T1/lmr/m/n/10.95 Nayuki. \T1/lmr/m/it/10.95 Bitcoin-Cryptography-Library\T1/
 lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmtt/m/n/10.
 95 https : / / github . com / nayuki / Bitcoin -[]
  []
 
 
-Overfull \hbox (36.74051pt too wide) in paragraph at lines 339--339
+Overfull \hbox (36.74051pt too wide) in paragraph at lines 337--337
 []\T1/lmr/m/n/10.95 Vincenzo Pa-laz-zo. \T1/lmr/m/it/10.95 decompiler-bitcoin-s
 cript\T1/lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmt
 t/m/n/10.95 https : / / github . com / vincenzopalazzo /
  []
 
 
-Overfull \hbox (30.72406pt too wide) in paragraph at lines 339--339
+Overfull \hbox (30.72406pt too wide) in paragraph at lines 337--337
 []\T1/lmr/m/n/10.95 Vincenzo Pa-laz-zo. \T1/lmr/m/it/10.95 ngra-ph.fromprecompu
 te\T1/lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmtt/m
 /n/10.95 https : / / github . com / vincenzopalazzo /
  []
 
 
-Overfull \hbox (16.0172pt too wide) in paragraph at lines 339--339
+Overfull \hbox (16.0172pt too wide) in paragraph at lines 337--337
 []\T1/lmr/m/n/10.95 Vincenzo Pa-laz-zo. \T1/lmr/m/it/10.95 SpyJSBlock-NGraph\T1
 /lmr/m/n/10.95 . \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmtt/m/n/10
 .95 https : / / github . com / vincenzopalazzo /
  []
 
 
-Overfull \hbox (1.06213pt too wide) in paragraph at lines 339--339
+Overfull \hbox (1.06213pt too wide) in paragraph at lines 337--337
 \T1/lmr/m/n/10.95 2018. \T1/lmr/m/sc/10.95 isbn\T1/lmr/m/n/10.95 : 978-1-5386-9
 288-2. \T1/lmr/m/sc/10.95 url\T1/lmr/m/n/10.95 : [][]$\T1/lmtt/m/n/10.95 https 
 : / / ieeexplore . ieee . org / xpl / conhome /
@@ -2077,7 +2077,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.340 \end{document}
+l.338 \end{document}
                      [2] (./tesi.aux (./sections/chap_blockchain.aux)
 (./sections/chap_bitcoin.aux) (./sections/chap_bitcoincore.aux)
 (./sections/chap_problema.aux) (./sections/chap_riferimenti_storici.aux)
@@ -2124,7 +2124,7 @@ b></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on tesi.pdf (75 pages, 6532747 bytes).
+Output written on tesi.pdf (75 pages, 6532739 bytes).
 PDF statistics:
  1792 PDF objects out of 2073 (max. 8388607)
  1558 compressed objects within 16 object streams
