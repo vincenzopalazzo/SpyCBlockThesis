@@ -34,12 +34,16 @@
 You can use the research work in any way you want but please cite us!
 
 ```
-@software{Palazzo_Estrazione_di_Informazioni_2021,
-author = {Palazzo, Vincenzo and Carlo, Sartiani},
-month = {12},
-title = {{Estrazione di Informazioni dalla Blockchain di Bitcoin}},
-version = {0.2.5},
-year = {2021}
+@article{Palazzo_Estrazione_di_Informazioni_2021,
+  author = {Palazzo, Vincenzo and Carlo, Sartiani},
+  doi = {10.0000/00000},
+  journal = {University of Basilicata thesis},
+  month = {12},
+  number = {1},
+  pages = {1--60},
+  title = {{Estrazione di Informazioni dalla Blockchain di Bitcoin}},
+  volume = {1},
+  year = {2021}
 }
 ```
 
