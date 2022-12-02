@@ -10,3 +10,22 @@ authors:
 title: "Estrazione di Informazioni dalla Blockchain di Bitcoin"
 version: 0.2.5
 date-released: 2021-12-12
+url: "https://github.com/vincenzopalazzo/SpyCBlockThesis"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Palazzo
+      given-names: Vincenzo
+      orcid: https://orcid.org/0000-0001-7887-6350
+    - family-names: Carlo
+      given-names: Sartiani
+      orcid: https://orcid.org/0000-0002-6514-3569
+  doi: "10.0000/00000"
+  journal: "University of Basilicata thesis"
+  month: 12
+  start: 1 # First page number
+  end: 60 # Last page number
+  title: "Estrazione di Informazioni dalla Blockchain di Bitcoin"
+  issue: 1
+  volume: 1
+  year: 2021
